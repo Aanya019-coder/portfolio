@@ -146,12 +146,12 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
   }, []);
 
   const statsTheme = isLight
-    ? "theme=transparent&title_color=800020&text_color=55524B&icon_color=800020&border_color=800020"
-    : "theme=transparent&title_color=D4AF37&text_color=A19E95&icon_color=D4AF37&border_color=3A3A38";
+    ? "theme=transparent&title_color=A88C52&text_color=605B55&icon_color=A88C52&border_color=A88C52"
+    : "theme=transparent&title_color=D4AF37&text_color=A09B90&icon_color=D4AF37&border_color=2D2C2A";
 
   const streakTheme = isLight
-    ? "currStreakNum=800020&sideNums=55524B&sideLabels=55524B&currStreakLabel=800020&ring=800020&fire=800020&border=800020"
-    : "background=121212&currStreakNum=D4AF37&sideNums=A19E95&sideLabels=A19E95&currStreakLabel=D4AF37&ring=D4AF37&fire=D4AF37&border=3A3A38";
+    ? "currStreakNum=A88C52&sideNums=605B55&sideLabels=605B55&currStreakLabel=A88C52&ring=A88C52&fire=A88C52&border=A88C52"
+    : "background=141312&currStreakNum=D4AF37&sideNums=A09B90&sideLabels=A09B90&currStreakLabel=D4AF37&ring=D4AF37&fire=D4AF37&border=2D2C2A";
 
   const statsCardSrc = `https://github-readme-stats.vercel.app/api?username=Aanya019-coder&show_icons=true&${statsTheme}`;
   const streakCardSrc = `https://github-readme-streak-stats.herokuapp.com/?user=Aanya019-coder&theme=transparent&${streakTheme}`;
@@ -491,7 +491,7 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
                 {/* Radar Area */}
                 <polygon
                   points="50,14 88,38 72,80.8 31.25,76.25 17.2,40.16"
-                  fill={isLight ? "rgba(128, 0, 32, 0.12)" : "rgba(197, 160, 89, 0.15)"}
+                  fill={isLight ? "rgba(168, 140, 82, 0.15)" : "rgba(197, 160, 89, 0.15)"}
                   stroke="var(--accent-primary)"
                   strokeWidth="1.5"
                 />

@@ -1,61 +1,74 @@
 import React, { useEffect, useState } from 'react';
-import { ExternalLink, Lock } from 'lucide-react';
-import { Github } from './Icons';
+import { Leaf, Monitor, FileText, Smartphone, PenTool, X, ExternalLink, Lock } from 'lucide-react';
 
 interface Project {
+  id: string;
   title: string;
   category: string;
-  badge?: string;
-  meta?: string;
   desc: string;
   tags: string[];
   link: string;
-  emoji?: string;
+  num: string;
+  meta?: string;
   enterprise?: boolean;
 }
 
 export const Projects: React.FC = () => {
+  const [selectedProj, setSelectedProj] = useState<Project | null>(null);
   const [projects, setProjects] = useState<Project[]>([
     {
-      title: 'NutriScan AI',
-      category: 'research',
-      badge: 'Undergraduate Research',
-      meta: '94.05% Accuracy',
+      id: 'nutriscan',
+      title: 'NutriScan AI Crop Scan',
+      category: 'Undergraduate Research',
       desc: 'Published undergraduate research targeting crop disease detection. Developed using EfficientNet-B3 with Dual Attention (SE + CBAM) modules, achieving 94.05% accuracy across 7 classes on a dataset of 14,000+ images. Visualised layers via Grad-CAM and integrated a Flask web gateway.',
-      tags: ['TensorFlow', 'EfficientNet-B3', 'Grad-CAM', 'Flask', 'Computer Vision'],
+      tags: ['TensorFlow', 'EfficientNet-B3', 'Grad-CAM', 'Flask', 'CV'],
       link: 'https://github.com/Aanya019-coder/Intelligent-nutrient-deficiency-analysis-for-precision-agriculture-using-ai-',
-      emoji: '🌱'
+      num: '01',
+      meta: '94.05% Accuracy'
     },
     {
-      title: 'AI Career Platform',
-      category: 'fullstack',
+      id: 'beyondcareer',
+      title: 'AI Career Accelerator',
+      category: 'Full-Stack Platform',
       desc: 'Full-stack career accelerator platform incorporating customized AI roadmaps via a RAG pipeline backed by FAISS vector search. Speeds up LLM generation to sub-2s.',
       tags: ['Next.js', 'Gemini API', 'RAG', 'FAISS', 'PostgreSQL'],
       link: 'https://beyondcareer.online',
-      emoji: '🚀'
+      num: '02',
+      meta: 'Sub-2s RAG Latency'
     },
     {
-      title: 'AI Resume Analyzer',
-      category: 'backend',
+      id: 'resumeanalyzer',
+      title: 'AI Resume ATS Analyzer',
+      category: 'Natural Language Processing',
       desc: 'An intelligent NLP analyzer extracting text from resumes and matching it against job descriptions to suggest keyword improvements and generate ATS compatibility scores.',
       tags: ['FastAPI', 'React.js', 'OpenAI API', 'NLP'],
       link: 'https://github.com/Aanya019-coder',
-      emoji: '📄'
+      num: '03',
+      meta: 'OpenAI Embeddings'
     },
     {
-      title: 'PhysicsWallah Features',
-      category: 'mobile',
-      desc: 'Integrated native mobile interfaces, modular component libraries, and interactive assessment modules for the PW edtech platform (100M+ users).',
-      tags: ['Flutter', 'Dart', 'REST APIs', 'Agile'],
+      id: 'lawxygen',
+      title: 'Legal Doc Automation',
+      category: 'Workflow Automation',
+      desc: 'Engineered legal document automation workflows powered by LLMs and natural language processing. Successfully lowered manual document generation processing times by 60% at Lawxygen.',
+      tags: ['Python', 'FastAPI', 'LLMs', 'NLP', 'Automation'],
+      link: 'https://github.com/Aanya019-coder',
+      num: '04',
+      meta: '60% Processing Save'
+    },
+    {
+      id: 'pwfeatures',
+      title: 'PW Mobile Architecture',
+      category: 'Mobile Development',
+      desc: 'Integrated native mobile features, modular component libraries, and interactive assessment modules for the PhysicsWallah (PW) edtech platform servicing 100M+ users.',
+      tags: ['Flutter', 'Dart', 'REST APIs', 'Agile', 'Mobile'],
       link: '#',
-      emoji: '📱',
+      num: '05',
+      meta: '100M+ User Platform',
       enterprise: true
     }
   ]);
 
-  const [activeFilter, setActiveFilter] = useState('all');
-
-  // Fetch Projects from API
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -63,222 +76,206 @@ export const Projects: React.FC = () => {
         if (res.ok) {
           const data = await res.json();
           if (Array.isArray(data) && data.length > 0) {
-            setProjects(data);
+            // Map incoming API data to include card designs
+            const mapped = data.map((item: any, idx: number) => {
+              const nums = ['01', '02', '03', '04', '05'];
+              return {
+                id: item.title.toLowerCase().replace(/\s+/g, '-'),
+                title: item.title,
+                category: item.badge || item.category || 'Engineering',
+                desc: item.desc,
+                tags: item.tags || [],
+                link: item.link || '#',
+                num: nums[idx] || `0${idx + 1}`,
+                meta: item.meta,
+                enterprise: item.enterprise
+              };
+            });
+            setProjects(mapped);
           }
         }
       } catch (err) {
-        console.warn("Failed to fetch projects API, using default projects fallback.", err);
+        console.warn("Failed to fetch projects API, using default fallbacks.", err);
       }
     };
-
     fetchProjects();
   }, []);
 
-  const featured = projects.find(p => p.category === 'research');
-  const others = projects.filter(p => p.category !== 'research');
+  // Card background styling based on index number
+  const getCardStyle = (num: string) => {
+    switch (num) {
+      case '01':
+        return 'bg-[#E2ECE9] hover:bg-[#D4E3DE] border-[#B9CFC8] text-[#2C4A3F] dark:bg-[#1A2D27] dark:hover:bg-[#1E362F] dark:border-[#27443C] dark:text-[#E2ECE9]';
+      case '02':
+        return 'bg-[#F5EFEB] hover:bg-[#EFE5DE] border-[#DFD1C7] text-[#5C4D43] dark:bg-[#2E241E] dark:hover:bg-[#362B24] dark:border-[#42342B] dark:text-[#F5EFEB]';
+      case '03':
+        return 'bg-[#E9EDF0] hover:bg-[#DDE3E8] border-[#CDD6DF] text-[#3D4F5E] dark:bg-[#202930] dark:hover:bg-[#27323C] dark:border-[#313E4A] dark:text-[#E9EDF0]';
+      case '04':
+        return 'bg-[#FBF6E9] hover:bg-[#F7EED2] border-[#ECE2C5] text-[#6A5A35] dark:bg-[#302A1A] dark:hover:bg-[#3A321E] dark:border-[#4A4027] dark:text-[#FBF6E9]';
+      case '05':
+      default:
+        return 'bg-[#EAEFF5] hover:bg-[#DCE5EF] border-[#CAD6E5] text-[#3A4E68] dark:bg-[#1C2530] dark:hover:bg-[#232E3C] dark:border-[#2C3A4B] dark:text-[#EAEFF5]';
+    }
+  };
 
-  const filteredOthers = activeFilter === 'all'
-    ? others
-    : others.filter(p => p.category === activeFilter);
+  const getCardIcon = (num: string) => {
+    const classStr = "w-10 h-10 stroke-[1.2] opacity-80";
+    switch (num) {
+      case '01':
+        return <Leaf className={classStr} />;
+      case '02':
+        return <Monitor className={classStr} />;
+      case '03':
+        return <FileText className={classStr} />;
+      case '04':
+        return <PenTool className={classStr} />;
+      case '05':
+      default:
+        return <Smartphone className={classStr} />;
+    }
+  };
 
   return (
-    <section id="projects" className="py-20 max-w-6xl mx-auto px-6 relative border-t border-[var(--card-border)]">
+    <section id="projects" className="py-16 max-w-6xl mx-auto px-6 relative border-t border-[var(--card-border)] select-none">
       
-      {/* Section Headline Banner */}
-      <div className="flex flex-col items-center mb-12 select-none">
+      {/* Section Header */}
+      <div className="flex flex-col items-center mb-10 select-none">
         <div className="text-center pb-2">
           <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-            SECTION II: BUSINESS, VENTURES & SYSTEMS DEVELOPMENT
+            SECTION II: INTELLECTUAL PROJECTS & PORTALS
           </span>
         </div>
-        <h2 className="font-serif text-3xl md:text-5xl font-black uppercase text-center w-full py-3 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-          The Venture Gazette
+        <h2 className="font-syne font-extrabold text-2xl md:text-4xl text-center w-full py-3 border-y border-[var(--card-border)] text-[var(--text-primary)]">
+          CONTENT & VENTURES
         </h2>
       </div>
 
-      {/* Featured Research Card */}
-      {featured && (
-        <div className="mb-16 border border-[var(--card-border)] p-6 md:p-8 relative">
-          {/* Newspaper Page Stamp */}
-          <div className="absolute top-0 right-6 transform -translate-y-1/2 bg-[var(--bg-color)] border border-[var(--accent-primary)] text-[var(--accent-primary)] text-[9px] font-mono font-bold px-2 py-0.5 uppercase tracking-widest select-none">
-            FRONT PAGE FEATURED RESEARCH
-          </div>
-
-          <div className="flex flex-col lg:flex-row gap-8 items-stretch">
-            {/* The leaf visual scanner box */}
-            <div className="w-full lg:w-1/2 min-h-64 rounded bg-black border border-[var(--card-border)] flex items-center justify-center p-4 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(197,160,89,0.08))]"></div>
-              
-              <svg className="w-full h-full max-h-56 z-10 opacity-75" viewBox="0 0 200 120" fill="none">
-                {/* Neural connections */}
-                <path d="M 30 20 L 70 40 L 110 20 L 150 50 L 170 30" stroke="rgba(197,160,89, 0.15)" strokeWidth="0.8" strokeDasharray="3" />
-                <path d="M 40 80 L 80 60 L 130 90 L 170 60" stroke="rgba(197,160,89, 0.15)" strokeWidth="0.8" strokeDasharray="3" />
-
-                {/* Grid crosshairs */}
-                <line x1="20" y1="60" x2="180" y2="60" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
-                <line x1="100" y1="10" x2="100" y2="110" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
-
-                {/* Bounding box overlay */}
-                <rect x="55" y="15" width="90" height="90" rx="2" stroke="var(--accent-primary)" strokeDasharray="3 3" strokeWidth="1" />
-
-                {/* Scanner target corners */}
-                <path d="M 50 25 L 50 15 L 60 15" stroke="var(--text-primary)" strokeWidth="1.5" />
-                <path d="M 150 25 L 150 15 L 140 15" stroke="var(--text-primary)" strokeWidth="1.5" />
-                <path d="M 50 95 L 50 105 L 60 105" stroke="var(--text-primary)" strokeWidth="1.5" />
-                <path d="M 150 95 L 150 105 L 140 105" stroke="var(--text-primary)" strokeWidth="1.5" />
-
-                {/* The Leaf model path */}
-                <path
-                  d="M 100 20 C 120 40, 140 50, 140 70 C 140 90, 120 105, 100 105 C 80 105, 60 90, 60 70 C 60 50, 80 40, 100 20 Z"
-                  stroke="var(--accent-primary)"
-                  strokeWidth="2"
-                  fill="rgba(197, 160, 89, 0.03)"
-                  strokeLinecap="round"
-                />
-
-                {/* Leaf veins */}
-                <path d="M 100 105 L 100 25" stroke="var(--accent-primary)" strokeWidth="1.2" />
-                <path d="M 100 85 C 112 75, 128 72, 134 72" stroke="var(--accent-primary)" strokeWidth="0.8" />
-                <path d="M 100 70 C 112 60, 125 58, 130 58" stroke="var(--accent-primary)" strokeWidth="0.8" />
-                <path d="M 100 55 C 110 48, 120 45, 124 45" stroke="var(--accent-primary)" strokeWidth="0.8" />
-                <path d="M 100 85 C 88 75, 72 72, 66 72" stroke="var(--accent-primary)" strokeWidth="0.8" />
-                <path d="M 100 70 C 88 60, 75 58, 70 58" stroke="var(--accent-primary)" strokeWidth="0.8" />
-                <path d="M 100 55 C 90 48, 80 45, 76 45" stroke="var(--accent-primary)" strokeWidth="0.8" />
-
-                {/* Hotspots */}
-                <circle cx="120" cy="50" r="2" fill="var(--accent-primary)" className="animate-pulse" />
-                <circle cx="85" cy="75" r="2" fill="var(--accent-primary)" className="animate-pulse" />
-
-                {/* HUD Overlay */}
-                <text x="16" y="20" fontFamily="'Courier Prime', monospace" fontSize="5.5" fill="var(--accent-primary)">SYS.OK</text>
-                <text x="16" y="27" fontFamily="'Courier Prime', monospace" fontSize="5.5" fill="var(--text-secondary)">ROI.FOUND</text>
-                <text x="153" y="100" fontFamily="'Courier Prime', monospace" fontSize="6" fill="var(--accent-primary)" className="font-bold">94.05%</text>
-                <text x="153" y="106" fontFamily="'Courier Prime', monospace" fontSize="4.5" fill="var(--text-secondary)">ACCURACY</text>
-              </svg>
-
-              <div className="absolute bottom-4 left-4 z-20 font-mono text-[9px] text-[var(--text-secondary)] bg-black/90 px-2 py-0.5 border border-[var(--card-border)]">
-                CLASSIFIER: EFFICIENTNET_B3
-              </div>
-            </div>
-
-            {/* Featured Project Info (Styled as Column Article) */}
-            <div className="w-full lg:w-1/2 flex flex-col justify-between space-y-4">
-              <div>
-                <div className="flex flex-wrap gap-2 mb-2 text-[9px] font-mono text-[var(--text-secondary)]">
-                  <span>CATEGORY: {featured.badge?.toUpperCase()}</span>
-                  <span>•</span>
-                  <span>METRIC: {featured.meta?.toUpperCase()}</span>
-                </div>
-                
-                <h3 className="font-serif font-black text-xl md:text-2xl text-[var(--text-primary)] mb-3 leading-tight">
-                  Intelligent Nutrient Scan Developed for Precision Agriculture
-                </h3>
-                
-                <p className="editorial-text font-sans text-xs text-[var(--text-secondary)] mb-4">
-                  {featured.desc}
-                </p>
-
-                {/* Footnote Tag ribbon */}
-                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-dashed border-[var(--card-border)]">
-                  {featured.tags.map((t, idx) => (
-                    <span key={idx} className="px-2 py-0.5 border border-[var(--card-border)] text-[9px] font-mono text-[var(--text-secondary)]">
-                      #{t.toUpperCase()}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-[var(--card-border)] flex gap-4">
-                <a
-                  href={featured.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 border border-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-color)] text-xs font-mono font-bold transition-all text-center flex items-center gap-1.5"
-                >
-                  <Github className="w-3.5 h-3.5" /> SOURCE CODE CODEBASE
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Filter Tabs (Styled like clean typewriter tabs) */}
-      <div className="flex flex-wrap gap-2 justify-center mb-10 select-none">
-        {['all', 'fullstack', 'backend', 'mobile'].map((filter) => (
-          <button
-            key={filter}
-            onClick={() => setActiveFilter(filter)}
-            className={`px-3 py-1.5 border font-mono text-[10px] uppercase tracking-wider transition-all cursor-pointer ${
-              activeFilter === filter
-                ? 'border-[var(--accent-primary)] text-[var(--accent-primary)] bg-[rgba(var(--accent-primary),0.05)] font-bold'
-                : 'border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-            }`}
+      {/* Grid of Poster-style Vertical Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {projects.map((p) => (
+          <div
+            key={p.num}
+            onClick={() => setSelectedProj(p)}
+            className={`border rounded-lg p-5 flex flex-col justify-between h-80 transition-all duration-300 cursor-pointer shadow-sm relative overflow-hidden group ${getCardStyle(p.num)}`}
           >
-            [{filter === 'all' ? 'Show All' : filter === 'fullstack' ? 'Full Stack' : filter}]
-          </button>
+            {/* Header info */}
+            <div>
+              <span className="font-mono text-[9px] uppercase tracking-widest opacity-60 block mb-3">
+                {p.category}
+              </span>
+              <h3 className="font-syne font-extrabold text-sm sm:text-base leading-tight uppercase select-none group-hover:underline">
+                {p.title}
+              </h3>
+            </div>
+
+            {/* Graphic Icon (Center-Bottom) */}
+            <div className="flex justify-center items-center py-6">
+              {getCardIcon(p.num)}
+            </div>
+
+            {/* Bottom: Massive Number Overlay */}
+            <div className="flex justify-between items-end border-t border-current/15 pt-3">
+              <span className="font-mono text-[9px] font-bold">
+                {p.meta ? p.meta.toUpperCase() : '[ EXPLORE ]'}
+              </span>
+              <span className="font-display font-black text-4xl leading-none opacity-40 select-none">
+                {p.num}
+              </span>
+            </div>
+          </div>
         ))}
       </div>
 
-      {/* Other Projects Column Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredOthers.map((p, index) => (
-          <article
-            key={index}
-            className="flex flex-col justify-between border-t border-[var(--card-border)] pt-4 relative group"
-          >
-            {/* Stamp indicator */}
-            <div className="font-mono text-[9px] text-[var(--accent-primary)] uppercase tracking-wider mb-2">
-              DISPATCH // {p.category.toUpperCase()}
+      {/* DETAILED PROJECT MODAL OVERLAY */}
+      {selectedProj && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 animate-fade-in">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"
+            onClick={() => setSelectedProj(null)}
+          />
+
+          {/* Modal Container */}
+          <div className="relative w-full max-w-lg bg-[var(--bg-color)] border-2 border-[var(--card-border)] p-6 md:p-8 rounded-lg shadow-2xl z-10 animate-scale-up font-mono text-xs text-[var(--text-secondary)]">
+            
+            {/* Close Button */}
+            <button 
+              onClick={() => setSelectedProj(null)}
+              className="absolute top-4 right-4 p-1.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] transition-colors rounded cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            {/* Category header */}
+            <div className="border-b border-dashed border-[var(--card-border)] pb-2 mb-6 text-[10px]">
+              <span className="text-[var(--accent-primary)] font-bold uppercase tracking-wider">
+                PROJECT REGISTRY // VENTURE {selectedProj.num}
+              </span>
             </div>
 
-            <div>
-              {/* Halftone Mini Image */}
-              <div className="w-full h-32 border border-[var(--card-border)] flex items-center justify-center mb-4 relative overflow-hidden bg-black/35 select-none halftone-wrapper">
-                <span className="text-3xl filter grayscale contrast-120 group-hover:scale-105 transition-transform duration-500 z-10">{p.emoji || '📰'}</span>
-                <div className="halftone-overlay"></div>
-              </div>
-
-              {/* Serif Title Headline */}
-              <h3 className="font-serif font-black text-lg text-[var(--text-primary)] mb-2 hover:text-[var(--accent-primary)] transition-colors leading-snug">
-                {p.title}
+            {/* Title & Meta */}
+            <div className="space-y-2 mb-6">
+              <h3 className="font-syne font-extrabold text-lg text-[var(--text-primary)] uppercase leading-tight">
+                {selectedProj.title}
               </h3>
+              <div className="flex flex-wrap gap-2 text-[9px]">
+                <span className="border border-[var(--card-border)] px-2 py-0.5 rounded text-[var(--text-primary)] font-bold">
+                  {selectedProj.category.toUpperCase()}
+                </span>
+                {selectedProj.meta && (
+                  <span className="border border-[var(--accent-primary)]/30 text-[var(--accent-primary)] px-2 py-0.5 rounded font-bold">
+                    {selectedProj.meta.toUpperCase()}
+                  </span>
+                )}
+              </div>
+            </div>
 
-              {/* Justified COPY */}
-              <p className="editorial-text font-sans text-xs text-[var(--text-secondary)] mb-4">
-                {p.desc}
+            {/* Description */}
+            <div className="space-y-4 mb-6 leading-relaxed font-sans text-xs">
+              <p className="text-justify text-[var(--text-secondary)]">
+                {selectedProj.desc}
               </p>
+            </div>
 
-              {/* Footnote specs */}
-              <div className="flex flex-wrap gap-1 mb-6">
-                {p.tags.map((t, idx) => (
-                  <span key={idx} className="text-[9px] font-mono text-[var(--text-secondary)] border-b border-dotted border-[var(--card-border)] pb-0.5">
-                    {t.toLowerCase()}
+            {/* Technology Tags */}
+            <div className="border-t border-dashed border-[var(--card-border)] pt-4 mb-6">
+              <span className="text-[9px] font-bold text-[var(--text-primary)] block mb-2 uppercase">STACK INTEGRATION</span>
+              <div className="flex flex-wrap gap-1.5">
+                {selectedProj.tags.map((tag) => (
+                  <span key={tag} className="border border-[var(--card-border)] bg-black/10 px-2 py-0.5 rounded text-[9px]">
+                    {tag}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Citations Footer Links */}
-            <div className="border-t border-dashed border-[var(--card-border)] pt-3 text-[10px] font-mono">
-              {p.enterprise ? (
-                <span className="text-[var(--text-secondary)] flex items-center gap-1">
-                  [CLASSIFIED] ACCESS RESTRICTED <Lock className="w-3 h-3 text-[var(--accent-primary)]" />
-                </span>
+            {/* Actions */}
+            <div className="flex gap-3">
+              {selectedProj.enterprise ? (
+                <div className="flex-1 py-2.5 bg-[var(--card-border)] text-stone-500 rounded flex items-center justify-center gap-1.5 select-none font-bold uppercase text-[10px]">
+                  <Lock className="w-3.5 h-3.5" /> Source Access Restricted
+                </div>
               ) : (
                 <a
-                  href={p.link}
+                  href={selectedProj.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[var(--accent-primary)] flex items-center gap-1 hover:underline group-hover:translate-x-0.5 transition-transform"
+                  className="flex-1 py-2.5 bg-[var(--text-primary)] text-[var(--bg-color)] font-bold rounded flex items-center justify-center gap-1.5 hover:opacity-95 transition-opacity text-center text-[10px]"
                 >
-                  [SOURCE] VISIT SYSTEM LINK <ExternalLink className="w-3 h-3" />
+                  <ExternalLink className="w-3.5 h-3.5" /> [ LAUNCH CODE REPOSITORY ]
                 </a>
               )}
+              <button
+                onClick={() => setSelectedProj(null)}
+                className="px-4 py-2.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] transition-all font-bold rounded text-[10px] cursor-pointer"
+              >
+                Close
+              </button>
             </div>
-          </article>
-        ))}
-      </div>
+
+          </div>
+        </div>
+      )}
     </section>
   );
 };

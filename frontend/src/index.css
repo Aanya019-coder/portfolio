@@ -3,36 +3,37 @@
 @import "tailwindcss";
 
 @theme {
-  --color-spacebg: #121212;
-  --color-surface: #1C1C1A;
+  --color-spacebg: #141312;
+  --color-surface: #22211F;
   --color-coral: #D4AF37;
   --font-sans: 'Inter', sans-serif;
-  --font-display: 'Playfair Display', serif;
+  --font-display: 'Fredoka', sans-serif;
+  --font-syne: 'Syne', sans-serif;
   --font-mono: 'Courier Prime', monospace;
   --font-serif: 'Playfair Display', serif;
   --font-typewriter: 'Courier Prime', monospace;
 }
 
 :root {
-  --bg-color: #121212;
-  --text-primary: #EADCC9; /* Creamy vintage ink */
-  --text-secondary: #A19E95;
-  --accent-primary: #D4AF37; /* Antique Gold */
-  --accent-secondary: #B8860B;
-  --card-bg: #1C1C1A;
-  --card-border: #3A3A38;
+  --bg-color: #141312; /* Rich dark charcoal paper */
+  --text-primary: #EAE3D8; /* Soft warm linen text */
+  --text-secondary: #A09B90;
+  --accent-primary: #D4AF37; /* Bright gold */
+  --accent-secondary: #A88C52;
+  --card-bg: #22211F;
+  --card-border: #2D2C2A;
   --green-line: #D4AF37;
 }
 
 :root.light-mode {
-  --bg-color: #FAF7F0; /* Premium linen white paper */
-  --text-primary: #1E1E1E; /* Charcoal black ink */
-  --text-secondary: #55524B;
-  --accent-primary: #800020; /* Editorial burgundy */
-  --accent-secondary: #4A0E17;
-  --card-bg: #F3EFE6;
-  --card-border: #2D2D2D;
-  --green-line: #800020;
+  --bg-color: #FAF8F5; /* Warm off-white poster paper */
+  --text-primary: #1A1A1A; /* Crisp charcoal ink */
+  --text-secondary: #605B55;
+  --accent-primary: #A88C52; /* Vintage Gold-Brown */
+  --accent-secondary: #8E743F;
+  --card-bg: #F5F1E9;
+  --card-border: #333333;
+  --green-line: #A88C52;
 }
 
 body {
@@ -736,5 +737,51 @@ body {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Poster layout styling additions */
+.profile-arch-frame {
+  border-radius: 9999px 9999px 24px 24px;
+  overflow: hidden;
+  border: 4px solid var(--card-border);
+}
+
+.pfp-arch-bg {
+  background-color: #22211F;
+  border-radius: 9999px 9999px 24px 24px;
+}
+.light-mode .pfp-arch-bg {
+  background-color: #ECE4D8;
+}
+
+.tool-key-badge {
+  background-color: #2D2C2A;
+  color: #EAE3D8;
+  border: 1px solid #3F3E3B;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  box-shadow: 0 2px 0 #141312;
+  transition: all 0.1s ease;
+}
+.light-mode .tool-key-badge {
+  background-color: #1A1A1A;
+  color: #FAF8F5;
+  border-color: #333333;
+  box-shadow: 0 2px 0 #000000;
+}
+
+.tool-key-badge:hover {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #141312;
+}
+.light-mode .tool-key-badge:hover {
+  box-shadow: 0 1px 0 #000000;
 }
 

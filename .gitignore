@@ -3,3 +3,6 @@ node_modules/
 messages.json
 .DS_Store
 *.log
+certifications.json
+frontend/public/certifications.json
+frontend/public/*.pdf
