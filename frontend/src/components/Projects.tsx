@@ -142,11 +142,11 @@ export const Projects: React.FC = () => {
       <div className="flex flex-col items-center mb-10 select-none">
         <div className="text-center pb-2">
           <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-            SECTION II: INTELLECTUAL PROJECTS & PORTALS
+            FEAST YOUR EYES ON MY BUILDS
           </span>
         </div>
         <h2 className="font-syne font-extrabold text-2xl md:text-4xl text-center w-full py-3 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-          CONTENT & VENTURES
+          MY PROJECTS & CREATIONS 🚀
         </h2>
       </div>
 
@@ -209,7 +209,7 @@ export const Projects: React.FC = () => {
             {/* Category header */}
             <div className="border-b border-dashed border-[var(--card-border)] pb-2 mb-6 text-[10px]">
               <span className="text-[var(--accent-primary)] font-bold uppercase tracking-wider">
-                PROJECT REGISTRY // VENTURE {selectedProj.num}
+                PROJECT DATA CARD // CARD {selectedProj.num}
               </span>
             </div>
 
@@ -253,7 +253,7 @@ export const Projects: React.FC = () => {
             <div className="flex gap-3">
               {selectedProj.enterprise ? (
                 <div className="flex-1 py-2.5 bg-[var(--card-border)] text-stone-500 rounded flex items-center justify-center gap-1.5 select-none font-bold uppercase text-[10px]">
-                  <Lock className="w-3.5 h-3.5" /> Source Access Restricted
+                  <Lock className="w-3.5 h-3.5" /> Codebase is Private 🔒
                 </div>
               ) : (
                 <a
@@ -262,7 +262,7 @@ export const Projects: React.FC = () => {
                   rel="noopener noreferrer"
                   className="flex-1 py-2.5 bg-[var(--text-primary)] text-[var(--bg-color)] font-bold rounded flex items-center justify-center gap-1.5 hover:opacity-95 transition-opacity text-center text-[10px]"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" /> [ LAUNCH CODE REPOSITORY ]
+                  <ExternalLink className="w-3.5 h-3.5" /> Check Out Code on GitHub 💻
                 </a>
               )}
               <button

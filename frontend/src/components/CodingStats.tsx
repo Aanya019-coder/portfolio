@@ -172,11 +172,11 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
         <div className="flex flex-col items-center mb-12 select-none">
           <div className="text-center pb-2">
             <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-              DAILY DIGEST · FINANCIAL & SYSTEM METRICS
+              NUMBERS, METRICS & STATS
             </span>
           </div>
-          <h2 className="font-serif text-2xl md:text-4xl font-black uppercase text-center w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-            The Coding Indices & Ledger
+          <h2 className="font-syne font-extrabold text-2xl md:text-4xl text-center w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
+            MY CODING DASHBOARD 📊
           </h2>
         </div>
 
@@ -189,10 +189,10 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
               <div className="flex items-center justify-between pb-3 border-b border-[var(--card-border)] mb-6 select-none font-mono">
                 <div className="flex items-center gap-2 text-[var(--text-primary)] font-bold text-sm">
                   <Activity className="w-4 h-4 text-[var(--accent-primary)]" />
-                  <span>LEETCODE INDEX (LCI)</span>
+                  <span>LEETCODE STATS</span>
                 </div>
                 <span className="text-[9px] border border-[var(--accent-primary)] text-[var(--accent-primary)] px-1 py-0.2">
-                  LIVE FEED
+                  LIVE SYNC
                 </span>
               </div>
 
@@ -266,9 +266,9 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
                 href="https://leetcode.com/u/Aanya_019/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] text-xs font-mono font-bold text-center block transition-all"
+                className="w-full py-2 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] text-xs font-mono font-bold text-center block transition-all rounded"
               >
-                [ VIEW ALL LC LEDGER ENTRIES <ArrowUpRight className="w-3 h-3 inline mb-0.5" /> ]
+                [ VIEW MY LEETCODE PROFILE <ArrowUpRight className="w-3 h-3 inline mb-0.5" /> ]
               </a>
             </div>
           </div>
@@ -280,10 +280,10 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
               <div className="flex items-center justify-between pb-3 border-b border-[var(--card-border)] mb-6 select-none font-mono">
                 <div className="flex items-center gap-2 text-[var(--text-primary)] font-bold text-sm">
                   <BarChart2 className="w-4 h-4 text-[var(--accent-primary)]" />
-                  <span>GITHUB INFRASTRUCTURE REPORT (GHR)</span>
+                  <span>GITHUB STATS</span>
                 </div>
                 <span className="text-[9px] border border-[var(--accent-primary)] text-[var(--accent-primary)] px-1 py-0.2">
-                  LEDGER ACTIVE
+                  ACTIVE SYNC
                 </span>
               </div>
 
@@ -323,9 +323,9 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
                 href="https://github.com/Aanya019-coder"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] text-xs font-mono font-bold text-center block transition-all"
+                className="w-full py-2 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] text-xs font-mono font-bold text-center block transition-all rounded"
               >
-                [ EXPLORE ENTIRE GITHUB INDEX <ArrowUpRight className="w-3 h-3 inline mb-0.5" /> ]
+                [ VISIT MY GITHUB PROFILE <ArrowUpRight className="w-3 h-3 inline mb-0.5" /> ]
               </a>
             </div>
           </div>
@@ -333,21 +333,21 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
         </div>
       </section>
 
-      {/* TECH STACK & MASTERY SECTION (Redesigned as CLASSIFIED ADS BOARD) */}
+      {/* TECH STACK & MASTERY SECTION */}
       <section id="skills" className="py-20 max-w-6xl mx-auto px-6 relative border-t border-[var(--card-border)] select-none">
         
-        {/* Classified Banner Masthead */}
+        {/* Skills Masthead */}
         <div className="flex flex-col items-center mb-10 text-center select-none">
           <div className="pb-2">
             <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-              THE CHAUDHARY TIMES CLASSIFIED DIRECTORY
+              TECH STACK & SKILLS 🛠️
             </span>
           </div>
-          <h2 className="font-serif text-2xl md:text-3xl font-black uppercase w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-            Classified Advertisements
+          <h2 className="font-syne font-extrabold text-2xl md:text-3xl text-center w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
+            MY SKILLS & CAPABILITIES
           </h2>
           <div className="py-1 px-4 text-[9px] font-mono text-[var(--text-secondary)] uppercase tracking-wider">
-            Job Openings · Services Offered · Systems for Lease · Technical Consultancies
+            Languages · Frameworks · Machine Learning · Cloud & Databases
           </div>
         </div>
 
@@ -355,23 +355,23 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
         <div className="flex gap-4 justify-center mb-10 select-none">
           <button
             onClick={() => setSkillsView('grid')}
-            className={`px-3 py-1 border font-mono text-[10px] uppercase transition-all cursor-pointer ${
+            className={`px-4 py-1.5 border font-mono text-[10px] uppercase transition-all cursor-pointer rounded-full ${
               skillsView === 'grid'
                 ? 'border-[var(--accent-primary)] text-[var(--accent-primary)] bg-[rgba(var(--accent-primary),0.05)] font-bold'
                 : 'border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
           >
-            [ Directory Ad View ]
+            [ Interactive Cards ]
           </button>
           <button
             onClick={() => setSkillsView('radar')}
-            className={`px-3 py-1 border font-mono text-[10px] uppercase transition-all cursor-pointer ${
+            className={`px-4 py-1.5 border font-mono text-[10px] uppercase transition-all cursor-pointer rounded-full ${
               skillsView === 'radar'
                 ? 'border-[var(--accent-primary)] text-[var(--accent-primary)] bg-[rgba(var(--accent-primary),0.05)] font-bold'
                 : 'border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
           >
-            [ Radar Weight Map ]
+            [ Skills Radar Map ]
           </button>
         </div>
 
@@ -382,54 +382,50 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
             {skillsView === 'grid' ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 
-                {/* Classified Ad 1 */}
-                <div className="classified-ad">
-                  <div className="classified-ad-header">LANGUAGES AVAILABLE</div>
-                  <div className="classified-ad-price">FOR LEASE</div>
-                  <div className="classified-ad-body">
-                    Offering high-level technical services in: <strong>Python</strong>, <strong>C++ (Data Structures/Algorithms)</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, and <strong>Dart</strong>. Fully optimized for production logic pipelines. Available immediately.
+                {/* Skill Card 1 */}
+                <div className="classified-ad rounded-xl">
+                  <div className="classified-ad-header">LANGUAGES 💻</div>
+                  <div className="classified-ad-body font-sans">
+                    Deep expertise in writing clean code and scaling logic with: <strong>Python</strong>, <strong>C++ (OOPs & DSA)</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, and <strong>Dart</strong>.
                   </div>
                 </div>
 
-                {/* Classified Ad 2 */}
-                <div className="classified-ad">
-                  <div className="classified-ad-header">FRAMEWORK REPAIR</div>
-                  <div className="classified-ad-price">SERVICES</div>
-                  <div className="classified-ad-body">
-                    Specialist engineering in modern frameworks: <strong>React.js</strong>, <strong>Next.js</strong>, <strong>FastAPI</strong>, <strong>Node.js</strong>, <strong>Express</strong>, and <strong>Flutter</strong>. Building pixel-perfect interfaces with low-latency server backends.
+                {/* Skill Card 2 */}
+                <div className="classified-ad rounded-xl">
+                  <div className="classified-ad-header">FRAMEWORKS ⚡</div>
+                  <div className="classified-ad-body font-sans">
+                    Building responsive frontend interfaces and fast APIs using: <strong>React.js</strong>, <strong>Next.js</strong>, <strong>FastAPI</strong>, <strong>Node.js</strong>, <strong>Express</strong>, and <strong>Flutter</strong>.
                   </div>
                 </div>
 
-                {/* Classified Ad 3 */}
-                <div className="classified-ad">
-                  <div className="classified-ad-header">INTELLIGENCE AGENT</div>
-                  <div className="classified-ad-price">FOR SALE</div>
-                  <div className="classified-ad-body">
-                    State of the art <strong>RAG systems</strong>, <strong>FAISS index cache pipelines</strong>, <strong>LangChain frameworks</strong>, and <strong>Gemini LLM</strong> integrations. Developed crop diagnostic <strong>CNN models</strong> yielding 94.05% validation scores.
+                {/* Skill Card 3 */}
+                <div className="classified-ad rounded-xl">
+                  <div className="classified-ad-header">AI & DEEP LEARNING 🧠</div>
+                  <div className="classified-ad-body font-sans">
+                    Designing advanced <strong>RAG architectures</strong> with <strong>FAISS vector search</strong>, integrating <strong>Gemini APIs</strong>, and training custom <strong>CNN models</strong> (EfficientNet, Grad-CAM).
                   </div>
                 </div>
 
-                {/* Classified Ad 4 */}
-                <div className="classified-ad">
-                  <div className="classified-ad-header">INFRASTRUCTURE LOGISTICS</div>
-                  <div className="classified-ad-price">WANTED</div>
-                  <div className="classified-ad-body">
-                    Seeking complex operations. Delivering containerized architectures with <strong>Docker</strong>, secure <strong>PostgreSQL</strong> & <strong>MongoDB</strong> database configurations, robust <strong>Git version control</strong>, and automated <strong>GitHub Actions CI/CD</strong>.
+                {/* Skill Card 4 */}
+                <div className="classified-ad rounded-xl">
+                  <div className="classified-ad-header">INFRASTRUCTURE & DBs 🛠️</div>
+                  <div className="classified-ad-body font-sans">
+                    Deploying applications and database models with: <strong>Docker</strong>, <strong>PostgreSQL</strong>, <strong>MongoDB</strong>, <strong>Supabase</strong>, <strong>Git</strong>, and <strong>GitHub Actions CI/CD</strong> pipelines.
                   </div>
                 </div>
 
               </div>
             ) : (
-              /* Typewriter Proficiency bars */
+              /* Proficiency bars */
               <div className="space-y-5 py-4 font-mono text-xs">
                 <div>
                   <div className="flex justify-between text-[var(--text-secondary)] mb-1">
-                    <span>SECTOR: AI ENGINEERING & RAG PIPELINES</span>
-                    <span className="font-bold text-[var(--text-primary)]">90% CAP</span>
+                    <span>AI ENGINEERING & RAG PIPELINES</span>
+                    <span className="font-bold text-[var(--text-primary)]">90%</span>
                   </div>
-                  <div className="w-full bg-[var(--card-border)] h-2 rounded-none overflow-hidden p-0.5 border border-[var(--card-border)]">
+                  <div className="w-full bg-[var(--card-border)] h-2.5 rounded-full overflow-hidden p-0.5 border border-[var(--card-border)]">
                     <div
-                      className="bg-[var(--accent-primary)] h-full transition-all duration-[1.5s]"
+                      className="bg-[var(--accent-primary)] h-full transition-all duration-[1.5s] rounded-full"
                       style={{ width: '90%' }}
                     ></div>
                   </div>
@@ -437,12 +433,12 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
                 
                 <div>
                   <div className="flex justify-between text-[var(--text-secondary)] mb-1">
-                    <span>SECTOR: FULL STACK DEVELOPMENT</span>
-                    <span className="font-bold text-[var(--text-primary)]">85% CAP</span>
+                    <span>FULL STACK DEVELOPMENT</span>
+                    <span className="font-bold text-[var(--text-primary)]">85%</span>
                   </div>
-                  <div className="w-full bg-[var(--card-border)] h-2 rounded-none overflow-hidden p-0.5 border border-[var(--card-border)]">
+                  <div className="w-full bg-[var(--card-border)] h-2.5 rounded-full overflow-hidden p-0.5 border border-[var(--card-border)]">
                     <div
-                      className="bg-[var(--accent-primary)] h-full transition-all duration-[1.5s]"
+                      className="bg-[var(--accent-primary)] h-full transition-all duration-[1.5s] rounded-full"
                       style={{ width: '85%' }}
                     ></div>
                   </div>
@@ -450,12 +446,12 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
 
                 <div>
                   <div className="flex justify-between text-[var(--text-secondary)] mb-1">
-                    <span>SECTOR: MOBILE APP ARCHITECTURES</span>
-                    <span className="font-bold text-[var(--text-primary)]">75% CAP</span>
+                    <span>MOBILE APP ARCHITECTURES</span>
+                    <span className="font-bold text-[var(--text-primary)]">75%</span>
                   </div>
-                  <div className="w-full bg-[var(--card-border)] h-2 rounded-none overflow-hidden p-0.5 border border-[var(--card-border)]">
+                  <div className="w-full bg-[var(--card-border)] h-2.5 rounded-full overflow-hidden p-0.5 border border-[var(--card-border)]">
                     <div
-                      className="bg-[var(--accent-primary)] h-full transition-all duration-[1.5s]"
+                      className="bg-[var(--accent-primary)] h-full transition-all duration-[1.5s] rounded-full"
                       style={{ width: '75%' }}
                     ></div>
                   </div>
@@ -466,7 +462,7 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
 
           {/* Right Container (Radar Chart) */}
           <div className="lg:col-span-5 flex justify-center items-center">
-            <div className="w-72 h-72 md:w-80 md:h-80 relative flex items-center justify-center border border-[var(--card-border)] p-4 bg-black/5">
+            <div className="w-72 h-72 md:w-80 md:h-80 relative flex items-center justify-center border border-[var(--card-border)] p-4 bg-black/5 rounded-2xl shadow-sm">
               <svg viewBox="0 0 100 100" className="w-full h-full">
                 {/* Grid Lines */}
                 <polygon points="50,10 90,38 75,85 25,85 10,38" fill="none" stroke="var(--card-border)" strokeWidth="0.8" />

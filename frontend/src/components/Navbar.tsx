@@ -10,11 +10,11 @@ export const Navbar: React.FC<NavbarProps> = ({ isLight, setIsLight }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const navItems = [
-    { name: 'Index', href: '#hero' },
+    { name: 'Home', href: '#hero' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Credentials', href: '#certifications' },
-    { name: 'Dispatch', href: '#contact' },
+    { name: 'Journey', href: '#experience' },
+    { name: 'Badges', href: '#certifications' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isLight, setIsLight }) => {
         
         {/* Left: Brand Monogram */}
         <a href="#hero" className="font-syne font-extrabold uppercase text-sm tracking-widest text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors">
-          A. Chaudhary <span className="text-[var(--accent-primary)]">.</span>
+          Aanya.dev <span className="text-[var(--accent-primary)]">✨</span>
         </a>
 
         {/* Center: Desktop Navigation (Monospace Braces Vibe) */}
@@ -78,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isLight, setIsLight }) => {
       >
         <div className="space-y-8">
           <div className="flex justify-between items-center pb-4 border-b border-[var(--card-border)]">
-            <span className="font-syne font-extrabold text-sm text-[var(--accent-primary)] uppercase tracking-widest">INDEX</span>
+            <span className="font-syne font-extrabold text-sm text-[var(--accent-primary)] uppercase tracking-widest">MENU</span>
             <button
               onClick={() => setDrawerOpen(false)}
               className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--card-border)] p-1.5 rounded"

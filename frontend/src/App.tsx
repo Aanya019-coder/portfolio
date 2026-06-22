@@ -225,28 +225,28 @@ function App() {
         <Timeline />
         <Certifications />
         <InlineChat />
-        {/* CONTACT FORM SECTION (Editorial Enquiries & Circulation) */}
+        {/* CONTACT FORM SECTION */}
         <section id="contact" className="py-20 max-w-6xl mx-auto px-6 relative border-t border-[var(--card-border)] select-none">
           {/* Section Header */}
           <div className="flex flex-col items-center mb-12 select-none">
             <div className="text-center pb-2">
               <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-                CIRCULATION & PUBLIC ENQUIRIES
+                LET'S BUILD SOMETHING COOL TOGETHER
               </span>
             </div>
-            <h2 className="font-serif text-2xl md:text-4xl font-black uppercase text-center w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-              Letters to the Publisher
+            <h2 className="font-syne font-extrabold text-2xl md:text-4xl text-center w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
+              SAY HELLO! ✉️
             </h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-6">
             {/* Left Info Column */}
             <div className="lg:col-span-5 space-y-6">
-              <h3 className="font-serif font-black text-xl text-[var(--text-primary)] leading-tight">
-                Submit Dispatch Instructions & Press Requests
+              <h3 className="font-syne font-black text-xl text-[var(--text-primary)] leading-tight">
+                Let's Build Something Awesome! 🚀
               </h3>
-              <p className="editorial-text font-sans text-xs text-[var(--text-secondary)]">
-                The office is actively welcoming project inquiries, technical partnerships, and opportunities with high-scale software engineering teams. Please submit formal dispatches via the typewriter console.
+              <p className="font-sans text-xs text-[var(--text-secondary)]">
+                I'm always open to talking about new projects, creative ideas, or opportunities to be part of your vision. Drop me a line, and let's get talking!
               </p>
 
               <div className="space-y-4 pt-4 font-mono text-xs">
@@ -301,7 +301,7 @@ function App() {
                     className="w-full bg-[var(--bg-color)] border border-[var(--card-border)] px-4 py-3 text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] peer"
                   />
                   <label className="absolute left-4 top-3 text-stone-500 pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-stone-500 peer-focus:top-1 peer-focus:text-[9px] peer-focus:text-[var(--accent-primary)] peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-[9px] peer-[:not(:placeholder-shown)]:text-[var(--accent-primary)]">
-                    SENDER NAME
+                    YOUR NAME
                   </label>
                 </div>
 
@@ -315,7 +315,7 @@ function App() {
                     className="w-full bg-[var(--bg-color)] border border-[var(--card-border)] px-4 py-3 text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] peer"
                   />
                   <label className="absolute left-4 top-3 text-stone-500 pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-stone-500 peer-focus:top-1 peer-focus:text-[9px] peer-focus:text-[var(--accent-primary)] peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-[9px] peer-[:not(:placeholder-shown)]:text-[var(--accent-primary)]">
-                    RETURN EMAIL ADDRESS
+                    YOUR EMAIL ADDRESS
                   </label>
                 </div>
 
@@ -329,7 +329,7 @@ function App() {
                     className="w-full bg-[var(--bg-color)] border border-[var(--card-border)] px-4 py-3 text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] peer resize-none"
                   ></textarea>
                   <label className="absolute left-4 top-3 text-stone-500 pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-stone-500 peer-focus:top-1 peer-focus:text-[9px] peer-focus:text-[var(--accent-primary)] peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-[9px] peer-[:not(:placeholder-shown)]:text-[var(--accent-primary)]">
-                    DISPATCH CONTENT
+                    YOUR MESSAGE
                   </label>
                   <div className="text-right text-[9px] text-stone-500 mt-1">
                     <span>{contactMessage.length}</span> / 500 characters
@@ -338,26 +338,26 @@ function App() {
 
                 {formStatus === 'sending' && (
                   <button type="button" disabled className="w-full py-3 bg-[var(--card-border)] text-stone-400 flex items-center justify-center gap-2">
-                    <span>TRANSMITTING DISPATCH...</span>
+                    <span>SENDING MESSAGE...</span>
                   </button>
                 )}
 
                 {formStatus === 'success' && (
                   <button type="button" disabled className="w-full py-3 bg-emerald-700/25 border border-emerald-500 text-emerald-400 flex items-center justify-center gap-2">
                     <CheckCircle className="w-4 h-4" />
-                    <span>DISPATCH SUCCESSFULLY LOGGED TO LEDGER!</span>
+                    <span>MESSAGE SENT SUCCESSFULLY! 🎉</span>
                   </button>
                 )}
 
                 {formStatus === 'error' && (
                   <button type="button" disabled className="w-full py-3 bg-red-950/20 border border-red-500 text-red-400 flex items-center justify-center gap-2">
-                    <span>TRANSMISSION FAILED. RETRY.</span>
+                    <span>SENDING FAILED. TRY AGAIN. ❌</span>
                   </button>
                 )}
 
                 {formStatus === 'idle' && (
                   <button type="submit" className="w-full py-3 bg-[var(--text-primary)] text-[var(--bg-color)] font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 cursor-pointer uppercase">
-                    <span>Transmit Message Log</span>
+                    <span>Send Message 🚀</span>
                   </button>
                 )}
               </form>
@@ -366,18 +366,15 @@ function App() {
         </section>
       </main>
 
-      {/* FOOTER (Newspaper general index) */}
+      {/* FOOTER */}
       <footer className="border-t border-[var(--card-border)] bg-[var(--bg-color)] py-12 relative overflow-hidden z-10 select-none">
-        {/* Top double border line */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-transparent border-t-4 border-double border-[var(--card-border)]"></div>
-
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left select-none">
-            <a href="#hero" className="font-serif font-black text-xl text-[var(--accent-primary)] uppercase tracking-wider">
-              The Chaudhary Times
+            <a href="#hero" className="font-syne font-extrabold text-xl text-[var(--accent-primary)] uppercase tracking-wider">
+              Aanya Chaudhary
             </a>
             <p className="text-stone-500 text-[10px] mt-2 font-mono uppercase tracking-widest">
-              PRINTED & PUBLISHED BY AANYA CHAUDHARY · © 2026 · ALL RIGHTS RESERVED
+              DESIGNED & CODED BY AANYA CHAUDHARY · © 2026 · ALL RIGHTS RESERVED
             </p>
           </div>
 

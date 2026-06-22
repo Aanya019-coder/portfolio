@@ -9,9 +9,9 @@
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Fredoka', sans-serif;
   --font-syne: 'Syne', sans-serif;
-  --font-mono: 'Courier Prime', monospace;
-  --font-serif: 'Playfair Display', serif;
-  --font-typewriter: 'Courier Prime', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-serif: 'Syne', sans-serif;
+  --font-typewriter: 'JetBrains Mono', monospace;
 }
 
 :root {
@@ -589,32 +589,34 @@ body {
   animation: scaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Sophisticated Newspaper Styles */
+/* Playful Creative Borders */
 .news-border-double-y {
-  border-top: 4px double var(--card-border);
-  border-bottom: 4px double var(--card-border);
+  border-top: 2px solid var(--card-border);
+  border-bottom: 2px solid var(--card-border);
 }
 .news-border-double-t {
-  border-top: 4px double var(--card-border);
+  border-top: 2px solid var(--card-border);
 }
 .news-border-double-b {
-  border-bottom: 4px double var(--card-border);
+  border-bottom: 2px solid var(--card-border);
 }
 .news-border-single-y {
   border-top: 1px solid var(--card-border);
   border-bottom: 1px solid var(--card-border);
 }
 
-.news-dropcap::first-letter {
-  float: left;
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
-  line-height: 2.8rem;
-  padding-top: 4px;
-  padding-right: 10px;
-  padding-left: 2px;
-  font-weight: bold;
-  color: var(--accent-primary);
+/* Chat bubble styling overrides */
+.chat-bubble-user {
+  border-radius: 16px 16px 0px 16px !important;
+  background-color: var(--accent-primary) !important;
+  color: var(--bg-color) !important;
+}
+
+.chat-bubble-ai {
+  border-radius: 16px 16px 16px 0px !important;
+  background-color: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+  color: var(--text-primary) !important;
 }
 
 /* Halftone Print Effect */
@@ -669,22 +671,20 @@ body {
 }
 
 .classified-ad {
-  border: 1px dashed var(--card-border);
+  border: 1px solid var(--card-border);
   padding: 1.25rem;
-  font-family: 'Courier Prime', monospace;
   position: relative;
   background: transparent;
   transition: all 0.3s ease;
 }
 
 .classified-ad:hover {
-  border-style: solid;
   border-color: var(--accent-primary);
-  background: rgba(197, 160, 89, 0.05);
+  background: rgba(168, 140, 82, 0.05);
 }
 
 .light-mode .classified-ad:hover {
-  background: rgba(128, 0, 32, 0.03);
+  background: rgba(168, 140, 82, 0.03);
 }
 
 .classified-ad-header {
@@ -714,8 +714,7 @@ body {
 
 /* Text alignment and column lines */
 .editorial-text {
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: left;
   line-height: 1.6;
 }
 

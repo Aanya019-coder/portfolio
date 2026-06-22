@@ -102,13 +102,13 @@ export const Hero: React.FC = () => {
               rel="noopener noreferrer"
               className="px-4 py-2.5 border border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-[var(--bg-color)] font-bold transition-all flex items-center gap-1.5"
             >
-              <Download className="w-3.5 h-3.5" /> DOWNLOAD RESUME
+              <Download className="w-3.5 h-3.5" /> Grab My Resume 📄
             </a>
             <a
               href="#contact"
               className="px-4 py-2.5 bg-[var(--text-primary)] text-[var(--bg-color)] hover:opacity-90 font-bold transition-all uppercase"
             >
-              [ Leave Message ]
+              [ Let's Chat! 💬 ]
             </a>
           </div>
 
@@ -120,7 +120,7 @@ export const Hero: React.FC = () => {
           {/* Left Block: Experience (Col span 7) */}
           <div className="md:col-span-7 flex flex-col gap-6 md:border-r border-[var(--card-border)] md:pr-8">
             <h3 className="font-syne font-extrabold text-xs uppercase tracking-widest text-[var(--accent-primary)] mb-2">
-              EXPERIENCE
+              MY JOURNEY 🚀
             </h3>
             
             <div className="space-y-6">
@@ -154,7 +154,7 @@ export const Hero: React.FC = () => {
             {/* Socials Link List */}
             <div>
               <h3 className="font-syne font-extrabold text-xs uppercase tracking-widest text-[var(--accent-primary)] mb-4">
-                SOCIALS
+                CONNECT 🌐
               </h3>
               
               <div className="space-y-3 font-mono text-xs text-[var(--text-secondary)]">
@@ -209,10 +209,10 @@ export const Hero: React.FC = () => {
             <div>
               <div className="flex justify-between items-baseline mb-4">
                 <h3 className="font-syne font-extrabold text-xs uppercase tracking-widest text-[var(--accent-primary)]">
-                  TOOLS & TECH
+                  MY FAVORITE TOOLS 🛠️
                 </h3>
                 <span className="font-mono text-[9px] text-[var(--accent-primary)] font-bold min-h-[14px]">
-                  {activeTool ? `[ ${activeTool} ]` : '[ hover keys ]'}
+                  {activeTool ? `[ ${activeTool} ]` : '[ hover a key! ]'}
                 </span>
               </div>
               
