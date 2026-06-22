@@ -50,61 +50,30 @@ export const Hero: React.FC = () => {
     <section id="hero" className="relative px-6 pt-8 pb-16 overflow-hidden select-none">
       <div className="max-w-4xl mx-auto z-10 relative">
         
-        {/* Main Poster Layout Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center border-b border-[var(--card-border)] pb-12">
+        {/* Top Header Block: Centered Title & Portrait */}
+        <div className="flex flex-col items-center text-center border-b border-[var(--card-border)] pb-12">
           
-          {/* Left Column: Huge Header & Intro (Col span 7) */}
-          <div className="md:col-span-7 flex flex-col justify-center">
-            
-            {/* Header / Brand Title */}
-            <div className="mb-2">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--accent-primary)] font-bold block mb-1">
-                AANYA CHAUDHARY
+          {/* Name & Huge "PORTFOLIO" Title */}
+          <div className="relative mb-6">
+            <div className="relative inline-block">
+              <h1 className="font-display font-black text-6xl sm:text-8xl md:text-9xl tracking-tighter leading-none text-[var(--text-primary)] uppercase select-none">
+                Portfolio
+              </h1>
+              <span className="absolute -top-4 -right-10 font-display font-bold text-xl sm:text-3xl text-[var(--accent-primary)] rotate-12 select-none">
+                '26
               </span>
-              
-              <div className="relative inline-block">
-                <h1 className="font-display font-black text-6xl sm:text-7xl lg:text-8xl tracking-tighter leading-none text-[var(--text-primary)] uppercase select-none">
-                  Portfolio
-                </h1>
-                <span className="absolute -top-3 -right-8 font-display font-bold text-lg sm:text-2xl text-[var(--accent-primary)] rotate-12 select-none">
-                  '26
-                </span>
-              </div>
             </div>
-
-            {/* Intro Header */}
-            <h2 className="font-syne font-extrabold text-2xl sm:text-3xl text-[var(--text-primary)] leading-tight mt-6 mb-4">
-              Hi, I'm Aanya
-            </h2>
-
-            {/* Intro Body Description */}
-            <p className="font-sans text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed text-justify max-w-lg mb-6">
-              I describe myself as a person with a creative mindset and a drive to achieve high-performance results. My passion lies in full-stack architecture, machine learning research, and natural language processing. Beyond that, I also have a strong knack for engineering clean developer interfaces.
-            </p>
-
-            {/* Action buttons */}
-            <div className="flex flex-wrap gap-3 font-mono text-[10px] select-none">
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-2 border border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-[var(--bg-color)] font-bold transition-all flex items-center gap-1.5"
-              >
-                <Download className="w-3.5 h-3.5" /> DOWNLOAD RESUME
-              </a>
-              <a
-                href="#contact"
-                className="px-3.5 py-2 bg-[var(--text-primary)] text-[var(--bg-color)] hover:opacity-90 font-bold transition-all uppercase"
-              >
-                [ Leave Message ]
-              </a>
+            
+            <div className="text-center mt-2">
+              <span className="font-syne font-bold text-xs sm:text-sm uppercase tracking-widest text-[var(--accent-primary)] block">
+                Aanya Chaudhary
+              </span>
             </div>
-
           </div>
 
-          {/* Right Column: Arched Profile Picture Frame (Col span 5) */}
-          <div className="md:col-span-5 flex justify-center md:justify-end">
-            <div className="relative w-64 h-80 pfp-arch-bg p-1.5 shadow-xl border-2 border-[var(--card-border)]">
+          {/* Arched Profile Picture (Centered) */}
+          <div className="my-8">
+            <div className="relative w-60 h-72 pfp-arch-bg p-1.5 shadow-xl border border-[var(--card-border)]">
               <div className="profile-arch-frame w-full h-full relative">
                 <img
                   src="/profile_pic.png"
@@ -115,9 +84,37 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
+          {/* Intro Header & Description */}
+          <div className="max-w-2xl">
+            <h2 className="font-syne font-extrabold text-2xl sm:text-3xl text-[var(--text-primary)] leading-tight mb-4 uppercase">
+              Hi, I'm Aanya
+            </h2>
+            <p className="font-sans text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed text-center">
+              I describe myself as a person with a creative mindset and a drive to achieve high-performance results. My passion lies in full-stack architecture, machine learning research, and natural language processing. Beyond that, I also have a strong knack for engineering clean developer interfaces.
+            </p>
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex flex-wrap justify-center gap-3 font-mono text-[10px] select-none mt-6">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2.5 border border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-[var(--bg-color)] font-bold transition-all flex items-center gap-1.5"
+            >
+              <Download className="w-3.5 h-3.5" /> DOWNLOAD RESUME
+            </a>
+            <a
+              href="#contact"
+              className="px-4 py-2.5 bg-[var(--text-primary)] text-[var(--bg-color)] hover:opacity-90 font-bold transition-all uppercase"
+            >
+              [ Leave Message ]
+            </a>
+          </div>
+
         </div>
 
-        {/* Bottom Poster Section: Dual Grid columns */}
+        {/* Bottom Block: Dual Grid columns */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-10">
           
           {/* Left Block: Experience (Col span 7) */}
