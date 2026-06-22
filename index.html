@@ -1,0 +1,2957 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aanya Chaudhary | Full-Stack AI Engineer Portfolio</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Aanya Chaudhary - Full-Stack Developer, AI/ML Engineer, and Tech Lead building high-performance systems from pixels to pipelines.">
+  <meta name="keywords" content="Aanya Chaudhary, Full Stack Engineer, AI/ML Researcher, Next.js, FastAPI, RAG, FAISS, C++, Python">
+  <meta name="author" content="Aanya Chaudhary">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            spacebg: '#0A0A0F',
+            surface: '#111827',
+            coral: '#F97316',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+    /* Premium Visual Layout CSS */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .gradient-mesh {
+      background: #06060c;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Developer Blueprint Grid Overlay */
+    .grid-background {
+      position: absolute;
+      inset: 0;
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .light-mode .grid-background {
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.018) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.018) 1px, transparent 1px);
+    }
+
+    /* Floating Dynamic Blur Blobs */
+    @keyframes drift1 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(80px, -60px) scale(1.15); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+    @keyframes drift2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-60px, 90px) scale(0.9); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+    .blur-blob {
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+      transition: all 1s ease-in-out;
+    }
+    .blob-purple {
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.45) 0%, transparent 70%);
+      animation: drift1 20s ease-in-out infinite;
+    }
+    .blob-cyan {
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+      animation: drift2 25s ease-in-out infinite;
+    }
+    .blob-orange {
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, transparent 70%);
+      animation: drift1 30s ease-in-out infinite alternate;
+    }
+    .light-mode .blur-blob {
+      opacity: 0.06;
+    }
+    .light-mode .blob-purple {
+      background: radial-gradient(circle, rgba(5, 150, 105, 0.4) 0%, transparent 70%);
+    }
+    .light-mode .blob-cyan {
+      background: radial-gradient(circle, rgba(31, 41, 55, 0.35) 0%, transparent 70%);
+    }
+    .light-mode .blob-orange {
+      background: radial-gradient(circle, rgba(220, 38, 38, 0.25) 0%, transparent 70%);
+    }
+
+    /* Neon Borders & Glows */
+    .neon-border {
+      position: relative;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, #7C3AED, #06B6D4);
+      padding: 1px;
+    }
+    .neon-border-inner {
+      background: #111827;
+      border-radius: 0.95rem;
+    }
+    .neon-glow-violet {
+      box-shadow: 0 0 25px rgba(124, 58, 237, 0.25);
+    }
+    .neon-glow-cyan {
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+    }
+
+    /* Premium Glassmorphism Cards */
+    .glass {
+      background: rgba(13, 13, 23, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .premium-card {
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .premium-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: linear-gradient(135deg, transparent, transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      transition: background 0.4s ease;
+      z-index: 2;
+    }
+    .premium-card:hover::before {
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+    }
+    .premium-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(6, 182, 212, 0.15);
+    }
+
+    /* Cursor elements */
+    .custom-cursor {
+      width: 8px;
+      height: 8px;
+      background: #06B6D4;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s;
+    }
+    .custom-cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(124, 58, 237, 0.5);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease-out;
+    }
+
+    /* 3D Flip Card */
+    .flip-card {
+      background-color: transparent;
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 1rem;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Holographic Foil Shimmer Effect */
+    .holographic {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+    }
+    .holographic::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 255, 255, 0.08) 0%,
+        transparent 55%
+      );
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 5;
+    }
+    .light-mode .holographic::after {
+      background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 255, 255, 0.45) 0%,
+        transparent 55%
+      );
+    }
+    .holographic:hover::after {
+      opacity: 1;
+    }
+
+    /* Dynamic Conic Border Box */
+    @keyframes rotateConic {
+      100% { transform: rotate(360deg); }
+    }
+    .conic-border-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.25rem;
+      padding: 3px;
+    }
+    .conic-border-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        #7C3AED,
+        #06B6D4,
+        #F97316,
+        #7C3AED
+      );
+      animation: rotateConic 4s linear infinite;
+      z-index: 0;
+    }
+    .conic-border-content {
+      position: relative;
+      background: #0d0d17;
+      border-radius: 1.15rem;
+      z-index: 10;
+    }
+
+    /* Matrix Rain Easter Egg Overlay */
+    #matrix-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .matrix-active #matrix-canvas {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Steaming Coffee Cup Animation */
+    @keyframes steam {
+      0% { transform: translateY(0) scaleX(1); opacity: 0; }
+      50% { transform: translateY(-5px) scaleX(1.2); opacity: 0.5; }
+      100% { transform: translateY(-10px) scaleX(0.8); opacity: 0; }
+    }
+    .steam-line {
+      animation: steam 2s ease-in-out infinite;
+    }
+
+    /* Scroll Linked Timeline Track and nodes */
+    .timeline-track-glow {
+      position: absolute;
+      left: -1px;
+      top: 0;
+      width: 2px;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--accent-secondary), var(--accent-primary));
+      transition: height 0.1s ease-out;
+      box-shadow: 0 0 10px var(--accent-primary);
+    }
+    .timeline-node-active {
+      border-color: var(--accent-primary) !important;
+      color: var(--accent-primary) !important;
+      box-shadow: 0 0 15px var(--accent-primary) !important;
+      transform: scale(1.1) !important;
+    }
+
+    /* Keycap Tech stack Badges */
+    .keycap-badge {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 2px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #cbd5e1;
+      transition: all 0.2s ease;
+    }
+    .keycap-badge:hover {
+      border-color: var(--accent-primary);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 8px rgba(6, 182, 212, 0.1);
+    }
+    .light-mode .keycap-badge {
+      background: rgba(0, 0, 0, 0.02);
+      border-color: rgba(0, 0, 0, 0.06);
+      color: #4b5563;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .light-mode .keycap-badge:hover {
+      border-color: var(--accent-primary);
+      color: var(--text-primary);
+    }
+
+    /* Persistent Floating Chat Widget */
+    .floating-chat-bubble {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7C3AED, #06B6D4);
+      color: white;
+      box-shadow: 0 8px 32px rgba(6, 182, 212, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .floating-chat-bubble:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 12px 40px rgba(6, 182, 212, 0.5);
+    }
+    .floating-chat-bubble i {
+      margin: 0 auto;
+    }
+    .chat-tray {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      width: 380px;
+      height: 500px;
+      z-index: 1000;
+      border-radius: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(40px) scale(0.9);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+    .chat-tray.tray-active {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* THEME SYSTEM STYLES */
+    :root {
+      --bg-color: #0A0A12;
+      --text-primary: #FFFFFF;
+      --text-secondary: #94A3B8;
+      --accent-primary: #06B6D4;
+      --accent-secondary: #7C3AED;
+      --card-bg: rgba(13, 13, 23, 0.65);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --green-line: #10B981;
+    }
+
+    :root.light-mode {
+      --bg-color: #FAF9F6; /* premium linen cream background */
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --accent-primary: #059669; /* green accent */
+      --accent-secondary: #1F2937;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-border: rgba(0, 0, 0, 0.06);
+      --green-line: #059669;
+    }
+
+    /* Light Mode CSS Overrides */
+    .light-mode {
+      background-color: var(--bg-color) !important;
+      color: var(--text-primary) !important;
+    }
+
+    .light-mode .gradient-mesh {
+      background: #FAF9F6 !important;
+    }
+
+    .light-mode .glass {
+      background: var(--card-bg) !important;
+      border-color: var(--card-border) !important;
+      color: var(--text-primary) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .light-mode .text-white {
+      color: var(--text-primary) !important;
+    }
+
+    .light-mode .text-slate-400,
+    .light-mode .text-slate-300 {
+      color: var(--text-secondary) !important;
+    }
+
+    .light-mode .text-slate-500 {
+      color: #6B7280 !important;
+    }
+
+    .light-mode .bg-spacebg,
+    .light-mode .bg-slate-950,
+    .light-mode .bg-slate-950\/40,
+    .light-mode .bg-slate-950\/20 {
+      background-color: var(--bg-color) !important;
+    }
+
+    .light-mode .bg-white\/5 {
+      background-color: rgba(0, 0, 0, 0.03) !important;
+    }
+
+    .light-mode .bg-white\/10 {
+      background-color: rgba(0, 0, 0, 0.06) !important;
+    }
+
+    .light-mode .border-white\/10,
+    .light-mode .border-white\/5 {
+      border-color: var(--card-border) !important;
+    }
+
+    .light-mode .text-cyan-400,
+    .light-mode .text-cyan-300 {
+      color: var(--accent-primary) !important;
+    }
+
+    .light-mode .text-purple-400,
+    .light-mode .text-purple-300 {
+      color: #047857 !important;
+    }
+
+    .light-mode .text-orange-400,
+    .light-mode .text-orange-300 {
+      color: #C2410C !important;
+    }
+
+    .light-mode .border-cyan-400 {
+      border-color: var(--accent-primary) !important;
+    }
+
+    .light-mode .border-purple-500 {
+      border-color: #059669 !important;
+    }
+
+    .light-mode .bg-gradient-to-r.from-purple-600.to-cyan-400 {
+      background-image: linear-gradient(to right, #1F2937, #059669) !important;
+    }
+
+    .light-mode .bg-gradient-to-r.from-purple-500.to-cyan-400 {
+      background-image: linear-gradient(to right, #1F2937, #059669) !important;
+    }
+
+    .light-mode .conic-border-content {
+      background: var(--card-bg) !important;
+    }
+
+    .light-mode .conic-border-box::before {
+      background: conic-gradient(from 0deg, #059669, #1F2937, #E2E8F0, #059669) !important;
+    }
+
+    .light-mode .flip-card-back {
+      background: linear-gradient(135deg, #FAF9F6, #F3F4F6) !important;
+      border-color: var(--card-border) !important;
+      color: #1F2937 !important;
+    }
+
+    .light-mode .flip-card-back p {
+      color: #4B5563 !important;
+    }
+
+    .light-mode .bg-cyan-400 {
+      background-color: #059669 !important;
+      color: #FFFFFF !important;
+    }
+
+    .light-mode .bg-cyan-400.text-slate-900 {
+      background-color: #059669 !important;
+      color: #FFFFFF !important;
+    }
+
+    .light-mode .hover\:bg-cyan-300:hover {
+      background-color: #047857 !important;
+    }
+
+    .light-mode .bg-orange-600 {
+      background-color: #059669 !important;
+    }
+
+    .light-mode .bg-orange-600:hover {
+      background-color: #047857 !important;
+    }
+
+    .light-mode .premium-card:hover {
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), 0 0 30px rgba(5, 150, 105, 0.08);
+    }
+
+    /* Mockup-style Portrait Animation & Elements */
+    .pfp-arch-bg {
+      background-color: #E2E8F0;
+      border-radius: 9999px 9999px 24px 24px;
+    }
+    
+    @keyframes rotateText {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: rotateText 25s linear infinite;
+    }
+
+    .path-draw {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawLine 4s ease-out forwards;
+    }
+
+    @keyframes drawLine {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .social-left-line::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .light-mode .social-left-line::after {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-spacebg text-white font-sans overflow-x-hidden gradient-mesh select-none relative">
+
+  <!-- Blueprint Grid Overlay -->
+  <div class="grid-background"></div>
+
+  <!-- Dynamic Blur Blobs -->
+  <div class="blur-blob blob-purple top-[10%] left-[-10%]"></div>
+  <div class="blur-blob blob-cyan top-[40%] right-[-10%]"></div>
+  <div class="blur-blob blob-orange top-[75%] left-[5%]"></div>
+
+  <!-- Custom Cursor -->
+  <div id="custom-cursor" class="custom-cursor hidden md:block"></div>
+  <div id="custom-cursor-ring" class="custom-cursor-ring hidden md:block"></div>
+
+  <!-- Matrix Easter Egg Canvas -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen" class="fixed inset-0 bg-spacebg z-[9999] flex flex-col items-center justify-center p-4">
+    <div class="w-full max-w-lg glass rounded-xl p-6 border border-purple-500/30 neon-glow-violet">
+      <div class="flex items-center gap-2 mb-4 border-b border-white/10 pb-3">
+        <div class="w-3 height-3 rounded-full bg-red-500 w-3 h-3"></div>
+        <div class="w-3 height-3 rounded-full bg-yellow-500 w-3 h-3"></div>
+        <div class="w-3 height-3 rounded-full bg-green-500 w-3 h-3"></div>
+        <span class="text-xs text-slate-400 font-mono ml-2">bash - visitor@aanya-portfolio</span>
+      </div>
+      <div class="font-mono text-sm space-y-2 text-slate-300">
+        <div class="flex items-center gap-2">
+          <span class="text-green-500">➜</span>
+          <span class="text-cyan-400">~</span>
+          <span id="loading-cmd" class="text-white"></span>
+        </div>
+        <div id="loading-logs" class="space-y-1 text-xs text-slate-400"></div>
+        <div class="pt-4">
+          <div class="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+            <div id="loading-progress" class="bg-gradient-to-r from-purple-600 to-cyan-400 h-full w-0 transition-all duration-300"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING NAVBAR -->
+  <header class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+    <nav class="glass px-6 py-3 rounded-full flex items-center justify-between w-full max-w-4xl border border-white/10 relative shadow-2xl">
+      <!-- Logo -->
+      <a href="#hero" class="text-xl font-bold font-display bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent flex items-center gap-2">
+        <span class="text-white">&lt;</span>AC<span class="text-white">/&gt;</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-8 relative">
+        <!-- Active Dot Indicator -->
+        <div id="nav-indicator" class="absolute w-2 h-2 bg-cyan-400 rounded-full blur-[2px] transition-all duration-300 -bottom-2" style="left: 0; opacity: 0;"></div>
+        
+        <a href="#hero" class="nav-item text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">Hero</a>
+        <a href="#projects" class="nav-item text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">Projects</a>
+        <a href="#experience" class="nav-item text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">Experience</a>
+        <a href="#skills" class="nav-item text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">Skills</a>
+        <a href="#certifications" class="nav-item text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">Certifications</a>
+        <a href="#contact" class="nav-item text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <!-- Theme Toggle & Resume Button (Desktop) -->
+      <div class="hidden md:flex items-center gap-4">
+        <button id="theme-toggle-btn" class="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/40 text-cyan-400 transition-all flex items-center justify-center cursor-pointer" aria-label="Toggle Design Mode">
+          <i data-lucide="sun" class="w-4 h-4" id="theme-icon-sun"></i>
+          <i data-lucide="moon" class="w-4 h-4 hidden" id="theme-icon-moon"></i>
+        </button>
+        <a href="Aanya_Chaudhary_Resume_Final (3).pdf" target="_blank" class="px-4 py-1.5 rounded-full text-xs font-bold bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/40 text-cyan-400 hover:shadow-cyan-400/20 transition-all flex items-center gap-2">
+          <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Resume
+        </a>
+      </div>
+
+      <!-- Mobile controls -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="mobile-theme-toggle-btn" class="p-2 rounded-full bg-white/5 border border-white/10 text-cyan-400" aria-label="Toggle Design Mode">
+          <i data-lucide="sun" class="w-4 h-4" id="mobile-theme-icon-sun"></i>
+          <i data-lucide="moon" class="w-4 h-4 hidden" id="mobile-theme-icon-moon"></i>
+        </button>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="fixed inset-y-0 right-0 w-64 bg-slate-950/95 backdrop-blur-xl border-l border-white/10 z-[100] transform translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between">
+    <div class="space-y-8">
+      <div class="flex justify-between items-center">
+        <span class="font-display font-bold text-lg text-cyan-400">Navigation</span>
+        <button id="close-drawer-btn" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div class="flex flex-col gap-6 font-display text-lg">
+        <a href="#hero" class="mobile-nav-link text-slate-300 hover:text-cyan-400 transition-colors">Hero</a>
+        <a href="#projects" class="mobile-nav-link text-slate-300 hover:text-cyan-400 transition-colors">Projects</a>
+        <a href="#experience" class="mobile-nav-link text-slate-300 hover:text-cyan-400 transition-colors">Experience</a>
+        <a href="#skills" class="mobile-nav-link text-slate-300 hover:text-cyan-400 transition-colors">Skills</a>
+        <a href="#certifications" class="mobile-nav-link text-slate-300 hover:text-cyan-400 transition-colors">Certifications</a>
+        <a href="#contact" class="mobile-nav-link text-slate-300 hover:text-cyan-400 transition-colors">Contact</a>
+      </div>
+    </div>
+    <div>
+      <a href="Aanya_Chaudhary_Resume_Final (3).pdf" target="_blank" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-400 flex items-center justify-center gap-2 font-semibold hover:opacity-90 transition-opacity">
+        <i data-lucide="file-text" class="w-5 h-5"></i> Download Resume
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="min-h-screen relative flex items-center justify-center px-4 pt-24 overflow-hidden">
+    <!-- Hero Particle Canvas -->
+    <canvas id="hero-particles" class="absolute inset-0 z-0 pointer-events-none"></canvas>
+
+    <!-- Left Vertically-Aligned Social Icons (Mockup style) -->
+    <div class="absolute left-6 md:left-12 top-1/2 transform -translate-y-1/2 flex flex-col items-center gap-6 z-30">
+      <a href="https://www.linkedin.com/in/aanyachaudhary" target="_blank" class="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400 hover:text-cyan-400 text-slate-400 transition-all cursor-pointer social-left-line relative" aria-label="LinkedIn">
+        <i data-lucide="linkedin" class="w-4 h-4"></i>
+      </a>
+      <a href="https://github.com/Aanya019-coder" target="_blank" class="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400 hover:text-cyan-400 text-slate-400 transition-all cursor-pointer social-left-line relative" aria-label="GitHub">
+        <i data-lucide="github" class="w-4 h-4"></i>
+      </a>
+      <a href="https://leetcode.com/u/Aanya_019/" target="_blank" class="p-2.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400 hover:text-cyan-400 text-slate-400 transition-all cursor-pointer relative" aria-label="LeetCode">
+        <i data-lucide="code" class="w-4 h-4"></i>
+      </a>
+    </div>
+
+    <div class="w-full max-w-4xl z-10 text-center relative scroll-reveal flex flex-col items-center py-12">
+      <!-- Arched Portrait Container with Looping Vector Lines & Rotating Text -->
+      <div class="relative w-80 h-96 mb-6 flex items-center justify-center select-none">
+        
+        <!-- Background Arch Solid backing -->
+        <div class="absolute w-64 h-80 bg-slate-900/40 pfp-arch-bg rounded-t-full rounded-b-2xl border border-white/10 -z-10 shadow-inner"></div>
+        
+        <!-- Actual Profile Photo (Grayscale, color on hover) -->
+        <div class="relative w-60 h-80 rounded-t-full rounded-b-2xl overflow-hidden border-2 border-white/25 shadow-2xl z-10">
+          <img src="profile_pic.png" alt="Aanya Chaudhary" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+        </div>
+
+        <!-- SVG Looping Vector Lines (wrapping around the portrait) -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none z-20" viewBox="0 0 320 380" fill="none">
+          <!-- Main green looping path -->
+          <path d="M 50 290 C 10 240, 30 170, 80 150 C 150 120, 270 200, 280 250 C 290 310, 210 330, 160 320 C 90 310, 110 230, 150 230 C 200 230, 210 270, 270 280" 
+                stroke="var(--green-line)" stroke-width="2.5" stroke-linecap="round" class="path-draw" />
+          <!-- Small accent green looping path -->
+          <path d="M 270 90 C 290 120, 280 160, 240 180 C 190 200, 140 130, 170 90 C 200 50, 250 60, 260 80" 
+                stroke="var(--green-line)" stroke-width="1.5" stroke-linecap="round" class="path-draw" style="animation-delay: 1s;" />
+        </svg>
+
+        <!-- Rotating Circular Text (top right) -->
+        <div class="absolute -right-6 top-12 w-32 h-32 z-20 animate-spin-slow pointer-events-none">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path id="textCircle" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none"></path>
+            <text class="text-[7.5px] font-mono fill-cyan-400 font-bold uppercase tracking-widest">
+              <textPath href="#textCircle">LET'S TALK · AANYA CHAUDHARY · FULL STACK · </textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Large Mockup Name -->
+      <h1 class="text-5xl md:text-8xl font-bold font-display leading-tight tracking-tight mb-2">
+        <span id="glitch-name" class="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-400" data-value="Aanya Chaudhary">Aanya Chaudhary</span>
+      </h1>
+
+      <!-- Subtitle & Typist -->
+      <div class="h-8 md:h-12 flex items-center justify-center mb-4">
+        <h2 id="typing-subtitle" class="text-sm md:text-xl font-mono text-cyan-300 border-r-2 border-cyan-400 pr-1 py-0.5"></h2>
+      </div>
+
+      <!-- Short Bio -->
+      <p class="text-slate-400 max-w-xl mx-auto text-xs md:text-sm leading-relaxed font-sans mb-8">
+        B.Tech student at IILM University specialising in full-stack development and AI/ML architectures. Tech Lead, researcher, and builder of highly performant systems.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+        <a href="#projects" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-400 font-semibold text-xs hover:shadow-lg hover:shadow-cyan-400/20 transform hover:-translate-y-0.5 transition-all">
+          View Projects
+        </a>
+        <a href="Aanya_Chaudhary_Resume_Final (3).pdf" target="_blank" class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400 text-slate-300 hover:text-white font-semibold text-xs transform hover:-translate-y-0.5 transition-all flex items-center gap-1.5">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i> Resume
+        </a>
+        <a href="#contact" class="px-5 py-2.5 rounded-full bg-orange-600 hover:bg-orange-500 text-white font-semibold text-xs transform hover:-translate-y-0.5 transition-all shadow-lg hover:shadow-orange-500/20">
+          Contact Me
+        </a>
+      </div>
+
+      <!-- Stack Logo Ribbon (Mockup style footer) -->
+      <div class="w-full max-w-3xl border-t border-white/10 pt-8 opacity-65 flex flex-wrap justify-center items-center gap-8 md:gap-14 text-xs font-mono font-bold tracking-widest text-slate-400 select-none">
+        <span class="hover:text-cyan-400 transition-colors flex items-center gap-2">&lt;NEXT.JS/&gt;</span>
+        <span class="hover:text-cyan-400 transition-colors flex items-center gap-2">#FASTAPI</span>
+        <span class="hover:text-cyan-400 transition-colors flex items-center gap-2">{} NODE.JS</span>
+        <span class="hover:text-cyan-400 transition-colors flex items-center gap-2">[] TENSORFLOW</span>
+        <span class="hover:text-cyan-400 transition-colors flex items-center gap-2">() FLUTTER</span>
+        <span class="hover:text-cyan-400 transition-colors flex items-center gap-2">+= C++</span>
+      </div>
+    </div>
+
+    <!-- Scroll Down indicator with Bouncing Steam Coffee Cup -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1 opacity-60">
+      <div class="relative w-8 h-8 flex justify-center items-end">
+        <!-- Steam elements -->
+        <span class="steam-line absolute w-0.5 h-3 bg-slate-400 rounded-full left-[11px] bottom-6"></span>
+        <span class="steam-line absolute w-0.5 h-2.5 bg-slate-400 rounded-full left-[15px] bottom-6" style="animation-delay: 0.4s;"></span>
+        <span class="steam-line absolute w-0.5 h-3.5 bg-slate-400 rounded-full left-[19px] bottom-6" style="animation-delay: 0.8s;"></span>
+        <!-- Coffee cup icon -->
+        <i data-lucide="coffee" class="w-6 h-6 text-slate-400"></i>
+      </div>
+      <span class="text-[10px] uppercase tracking-widest text-slate-500 font-mono">Scroll Down</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="py-24 max-w-6xl mx-auto px-6 relative">
+    <div class="flex flex-col items-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold font-display text-center relative pb-4 scroll-reveal">
+        Things I've Shipped
+        <!-- Animated underline -->
+        <span id="projects-underline" class="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 rounded-full transition-all duration-1000"></span>
+      </h2>
+    </div>
+
+    <!-- Featured Project Full Width -->
+    <div class="mb-12 scroll-reveal">
+      <div class="glass rounded-2xl border border-white/10 p-6 md:p-8 flex flex-col lg:flex-row gap-8 hover:border-purple-500/30 transition-all duration-300 relative overflow-hidden group">
+        <!-- Gradient overlay background -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        
+        <!-- Mockup Thumbnail area -->
+        <div class="w-full lg:w-1/2 h-64 md:h-80 rounded-xl bg-slate-950/80 border border-white/10 flex items-center justify-center p-6 relative overflow-hidden group">
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(6,182,212,0.15))] from-cyan-500/5 via-transparent to-transparent"></div>
+          
+          <svg class="w-full h-full max-h-56 z-10 opacity-80 group-hover:opacity-100 transition-opacity" viewBox="0 0 200 120" fill="none">
+            <style>
+              @keyframes scanLaser {
+                0% { transform: translateY(0); }
+                50% { transform: translateY(90px); }
+                100% { transform: translateY(0); }
+              }
+              .laser-line {
+                animation: scanLaser 4s linear infinite;
+              }
+            </style>
+            <!-- Neural network connections in background -->
+            <path d="M 30 20 L 70 40 L 110 20 L 150 50 L 170 30" stroke="rgba(124, 58, 237, 0.2)" stroke-width="1" stroke-dasharray="3" />
+            <path d="M 40 80 L 80 60 L 130 90 L 170 60" stroke="rgba(6, 182, 212, 0.2)" stroke-width="1" stroke-dasharray="3" />
+            
+            <!-- Grid crosshairs -->
+            <line x1="20" y1="60" x2="180" y2="60" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" />
+            <line x1="100" y1="10" x2="100" y2="110" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" />
+            
+            <!-- Bounding box overlay -->
+            <rect x="55" y="15" width="90" height="90" rx="4" stroke="#F97316" stroke-dasharray="4 2" stroke-width="1.5" />
+            
+            <!-- Scanner target corners -->
+            <path d="M 50 25 L 50 15 L 60 15" stroke="#06B6D4" stroke-width="2" />
+            <path d="M 150 25 L 150 15 L 140 15" stroke="#06B6D4" stroke-width="2" />
+            <path d="M 50 95 L 50 105 L 60 105" stroke="#06B6D4" stroke-width="2" />
+            <path d="M 150 95 L 150 105 L 140 105" stroke="#06B6D4" stroke-width="2" />
+
+            <!-- The Leaf model path -->
+            <path d="M 100 20 C 120 40, 140 50, 140 70 C 140 90, 120 105, 100 105 C 80 105, 60 90, 60 70 C 60 50, 80 40, 100 20 Z" 
+                  stroke="#10B981" stroke-width="2.5" fill="rgba(16, 185, 129, 0.05)" stroke-linecap="round" />
+            
+            <!-- Leaf veins -->
+            <path d="M 100 105 L 100 25" stroke="#10B981" stroke-width="1.5" />
+            <path d="M 100 85 C 112 75, 128 72, 134 72" stroke="#10B981" stroke-width="1" />
+            <path d="M 100 70 C 112 60, 125 58, 130 58" stroke="#10B981" stroke-width="1" />
+            <path d="M 100 55 C 110 48, 120 45, 124 45" stroke="#10B981" stroke-width="1" />
+            
+            <path d="M 100 85 C 88 75, 72 72, 66 72" stroke="#10B981" stroke-width="1" />
+            <path d="M 100 70 C 88 60, 75 58, 70 58" stroke="#10B981" stroke-width="1" />
+            <path d="M 100 55 C 90 48, 80 45, 76 45" stroke="#10B981" stroke-width="1" />
+            
+            <!-- Scanning target dots / hotspots -->
+            <circle cx="120" cy="50" r="2.5" fill="#EF4444" class="animate-ping" style="transform-origin: 120px 50px;" />
+            <circle cx="120" cy="50" r="1.5" fill="#EF4444" />
+            <circle cx="85" cy="75" r="2.5" fill="#EF4444" class="animate-ping" style="transform-origin: 85px 75px; animation-delay: 1s;" />
+            <circle cx="85" cy="75" r="1.5" fill="#EF4444" />
+
+            <!-- HUD stats overlay -->
+            <text x="16" y="20" font-family="'JetBrains Mono', monospace" font-size="5" fill="#94A3B8">SYS.OK</text>
+            <text x="16" y="27" font-family="'JetBrains Mono', monospace" font-size="5" fill="#F97316">ROI.FOUND</text>
+            
+            <text x="153" y="100" font-family="'JetBrains Mono', monospace" font-size="5.5" fill="#10B981" font-weight="bold">94.05%</text>
+            <text x="153" y="106" font-family="'JetBrains Mono', monospace" font-size="4.5" fill="#94A3B8">ACCURACY</text>
+            
+            <!-- Scanning laser line -->
+            <g class="laser-line">
+              <line x1="50" y1="15" x2="150" y2="15" stroke="#06B6D4" stroke-width="1.5" style="filter: drop-shadow(0 0 3px #06B6D4);" />
+              <polygon points="50,15 47,13 47,17" fill="#06B6D4" />
+              <polygon points="150,15 153,13 153,17" fill="#06B6D4" />
+            </g>
+          </svg>
+          
+          <!-- Holographic scanner label overlay -->
+          <div class="absolute bottom-4 left-4 z-20 font-mono text-[10px] text-slate-400 bg-slate-900/80 px-2 py-1 rounded border border-white/5">
+            <span class="text-cyan-400 font-bold">MODE:</span> DL_SCANNER_V3
+          </div>
+        </div>
+
+        <!-- Featured Project Info -->
+        <div class="w-full lg:w-1/2 flex flex-col justify-between space-y-6 relative z-10">
+          <div>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-semibold border border-cyan-500/20">Undergraduate Research</span>
+              <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-semibold border border-purple-500/20">94.05% Accuracy</span>
+            </div>
+            <h3 class="text-2xl font-bold font-display text-white mb-4">NutriScan AI: Intelligent Precision Agriculture</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Published undergraduate research targeting crop disease detection. Developed using EfficientNet-B3 with Dual Attention (SE + CBAM) modules, achieving 94.05% accuracy across 7 classes on a dataset of 14,000+ images. Visualised layers via Grad-CAM and integrated a Flask web gateway.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-xs text-slate-300 font-mono">TensorFlow</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-xs text-slate-300 font-mono">EfficientNet-B3</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-xs text-slate-300 font-mono">Grad-CAM</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-xs text-slate-300 font-mono">Flask</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-xs text-slate-300 font-mono">Computer Vision</span>
+            </div>
+          </div>
+          
+          <div class="flex gap-4">
+            <a href="https://github.com/Aanya019-coder/Intelligent-nutrient-deficiency-analysis-for-precision-agriculture-using-ai-" target="_blank" class="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400 text-sm font-semibold flex items-center gap-2 transition-all">
+              <i data-lucide="github" class="w-4 h-4"></i> GitHub Code
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="flex flex-wrap gap-2 justify-center mb-10 scroll-reveal">
+      <button class="project-tab-btn px-4 py-2 rounded-full text-xs font-semibold bg-cyan-400 text-slate-900 border border-cyan-400 transition-all" data-filter="all">All</button>
+      <button class="project-tab-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white border border-white/10 transition-all" data-filter="fullstack">Full Stack</button>
+      <button class="project-tab-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white border border-white/10 transition-all" data-filter="backend">Backend</button>
+      <button class="project-tab-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white border border-white/10 transition-all" data-filter="mobile">Mobile</button>
+    </div>
+
+    <!-- Project Grid -->
+    <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Project 1 (Full Stack) -->
+      <div class="project-card-item glass rounded-2xl border border-white/10 p-6 flex flex-col justify-between hover:border-cyan-400/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-400/10 transition-all duration-300 group scroll-reveal" data-category="fullstack">
+        <div>
+          <!-- Thumbnail Emoji Box -->
+          <div class="w-full h-36 rounded-xl bg-gradient-to-br from-cyan-900/30 to-purple-900/30 border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+            <span class="text-4xl">🚀</span>
+          </div>
+          <h3 class="text-xl font-bold font-display text-white mb-2">AI Career Platform</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">
+            Full-stack career accelerator platform incorporating customized AI roadmaps via a RAG pipeline backed by FAISS vector search. Speeds up LLM generation to sub-2s.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">Next.js</span>
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">Gemini API</span>
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">RAG</span>
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">FAISS</span>
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">PostgreSQL</span>
+          </div>
+        </div>
+        <a href="https://beyondcareer.online" target="_blank" class="text-cyan-400 text-xs font-semibold flex items-center gap-1 hover:underline">
+          Visit Live Site <i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>
+      </div>
+
+      <!-- Project 2 (Backend / NLP) -->
+      <div class="project-card-item glass rounded-2xl border border-white/10 p-6 flex flex-col justify-between hover:border-cyan-400/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-400/10 transition-all duration-300 group scroll-reveal" data-category="backend">
+        <div>
+          <div class="w-full h-36 rounded-xl bg-gradient-to-br from-cyan-900/30 to-purple-900/30 border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+            <span class="text-4xl">📄</span>
+          </div>
+          <h3 class="text-xl font-bold font-display text-white mb-2">AI Resume Analyzer</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">
+            An intelligent NLP analyzer extracting text from resumes and matching it against job descriptions to suggest keyword improvements and generate ATS compatibility scores.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">FastAPI</span>
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">React.js</span>
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">OpenAI API</span>
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">NLP</span>
+          </div>
+        </div>
+        <a href="https://github.com/Aanya019-coder" target="_blank" class="text-cyan-400 text-xs font-semibold flex items-center gap-1 hover:underline">
+          GitHub Code <i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>
+      </div>
+
+      <!-- Project 3 (Mobile) -->
+      <div class="project-card-item glass rounded-2xl border border-white/10 p-6 flex flex-col justify-between hover:border-cyan-400/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-400/10 transition-all duration-300 group scroll-reveal" data-category="mobile">
+        <div>
+          <div class="w-full h-36 rounded-xl bg-gradient-to-br from-cyan-900/30 to-purple-900/30 border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+            <span class="text-4xl">📱</span>
+          </div>
+          <h3 class="text-xl font-bold font-display text-white mb-2">PhysicsWallah Features</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">
+            Integrated native mobile interfaces, modular component libraries, and interactive assessment modules for the PW edtech platform (100M+ users).
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">Flutter</span>
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">Dart</span>
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">REST APIs</span>
+            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">Agile</span>
+          </div>
+        </div>
+        <span class="text-slate-500 text-xs font-semibold flex items-center gap-1">
+          Internal Enterprise App <i data-lucide="lock" class="w-3 h-3"></i>
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIVE CODING STATS SECTION -->
+  <section id="coding-stats" class="py-24 max-w-6xl mx-auto px-6 relative">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold font-display mb-4 scroll-reveal">Live Coding Metrics</h2>
+      <p class="text-slate-400 text-sm">Real-time statistics fetched directly from GitHub and LeetCode profiles</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <!-- LeetCode live stats widget (Col span 5) -->
+      <div class="lg:col-span-5 glass rounded-2xl border border-white/10 p-6 flex flex-col justify-between hover:border-cyan-400/40 transition-all duration-300 scroll-reveal">
+        <div>
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+                <i data-lucide="code" class="w-4 h-4 text-orange-400"></i>
+              </span>
+              <span class="font-display font-bold text-white text-lg">LeetCode Activity</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 text-[10px] font-mono uppercase font-bold tracking-wider">Live API</span>
+          </div>
+
+          <!-- Live solver circles/progress -->
+          <div class="flex items-center justify-around gap-4 mb-6">
+            <!-- Acceptance Rate Ring (Mockup screenshot style) -->
+            <div class="relative w-28 h-28 flex items-center justify-center">
+              <svg class="w-full h-full transform -rotate-90">
+                <circle cx="56" cy="56" r="46" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="transparent" />
+                <circle id="lc-progress-circle" cx="56" cy="56" r="46" stroke="var(--green-line)" stroke-width="8" fill="transparent" 
+                        stroke-dasharray="289" stroke-dashoffset="18" class="transition-all duration-1000 ease-out" />
+              </svg>
+              <div class="absolute text-center">
+                <div class="flex items-baseline justify-center">
+                  <span id="lc-acceptance-main" class="text-2xl font-bold font-display text-white">93</span>
+                  <span id="lc-acceptance-sub" class="text-xs font-semibold text-slate-400 font-sans">.52%</span>
+                </div>
+                <span class="block text-[8px] uppercase tracking-wider text-slate-500 font-mono">Acceptance</span>
+                <span id="lc-submissions" class="block text-[7px] text-slate-400 font-mono">108 submissions</span>
+              </div>
+            </div>
+ 
+            <!-- Breakdown list -->
+            <div class="space-y-3 font-mono text-[11px] w-1/2">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-green-400 font-bold">Easy</span>
+                  <span id="lc-easy-count" class="text-slate-300">28/950</span>
+                </div>
+                <div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
+                  <div id="lc-easy-bar" class="bg-green-400 h-full rounded-full transition-all duration-1000" style="width: 15%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-yellow-400 font-bold">Med.</span>
+                  <span id="lc-medium-count" class="text-slate-300">48/2069</span>
+                </div>
+                <div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
+                  <div id="lc-medium-bar" class="bg-yellow-400 h-full rounded-full transition-all duration-1000" style="width: 12%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-red-400 font-bold">Hard</span>
+                  <span id="lc-hard-count" class="text-slate-300">11/943</span>
+                </div>
+                <div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
+                  <div id="lc-hard-bar" class="bg-red-400 h-full rounded-full transition-all duration-1000" style="width: 6%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Ranking/Acceptance -->
+          <div class="grid grid-cols-2 gap-4 bg-white/5 rounded-xl p-4 border border-white/5 font-mono text-xs text-slate-400">
+            <div>
+              <span class="block text-[10px] text-slate-500 mb-1">Global Ranking</span>
+              <span id="lc-ranking" class="text-sm font-bold text-white">Top 8.5%</span>
+            </div>
+            <div>
+              <span class="block text-[10px] text-slate-500 mb-1">Acceptance Rate</span>
+              <span id="lc-acceptance" class="text-sm font-bold text-white">93.52%</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://leetcode.com/u/Aanya_019/" target="_blank" class="mt-6 text-orange-400 text-xs font-semibold flex items-center justify-center gap-1 hover:underline border border-orange-500/20 hover:border-orange-500/40 bg-orange-500/5 py-2.5 rounded-xl transition-all">
+          Visit LeetCode Profile <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+
+      <!-- GitHub Live stats widget (Col span 7) -->
+      <div class="lg:col-span-7 glass rounded-2xl border border-white/10 p-6 flex flex-col justify-between hover:border-cyan-400/40 transition-all duration-300 scroll-reveal">
+        <div>
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                <i data-lucide="github" class="w-4 h-4 text-cyan-400"></i>
+              </span>
+              <span class="font-display font-bold text-white text-lg">GitHub Infrastructure</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 text-[10px] font-mono uppercase font-bold tracking-wider">Live API</span>
+          </div>
+
+          <!-- Basic numbers grid -->
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-white/5 rounded-xl p-3 border border-white/5 text-center font-mono">
+              <span class="block text-[10px] text-slate-500 mb-1">Public Repos</span>
+              <span id="gh-repos" class="text-lg font-bold text-white">18</span>
+            </div>
+            <div class="bg-white/5 rounded-xl p-3 border border-white/5 text-center font-mono">
+              <span class="block text-[10px] text-slate-500 mb-1">Followers</span>
+              <span id="gh-followers" class="text-lg font-bold text-white font-sans">14</span>
+            </div>
+            <div class="bg-white/5 rounded-xl p-3 border border-white/5 text-center font-mono">
+              <span class="block text-[10px] text-slate-500 mb-1">Total Stars</span>
+              <span id="gh-stars" class="text-lg font-bold text-white font-sans">12</span>
+            </div>
+          </div>
+
+          <!-- SVG GitHub Stats card images -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <img id="github-stats-card" src="https://github-readme-stats.vercel.app/api?username=Aanya019-coder&show_icons=true&theme=transparent&title_color=06B6D4&text_color=94A3B8&icon_color=06B6D4&border_color=22D3EE" alt="Aanya's GitHub Stats" class="w-full sm:w-1/2 max-h-48 object-contain">
+            <img id="github-streak-card" src="https://github-readme-streak-stats.herokuapp.com/?user=Aanya019-coder&theme=transparent&background=0A0A0F&currStreakNum=06B6D4&sideNums=94A3B8&sideLabels=94A3B8&currStreakLabel=06B6D4&ring=06B6D4&fire=06B6D4&border=22D3EE" alt="Aanya's GitHub Streak" class="w-full sm:w-1/2 max-h-48 object-contain animate-pulse">
+          </div>
+        </div>
+
+        <a href="https://github.com/Aanya019-coder" target="_blank" class="mt-6 text-cyan-400 text-xs font-semibold flex items-center justify-center gap-1 hover:underline border border-cyan-500/20 hover:border-cyan-500/40 bg-cyan-500/5 py-2.5 rounded-xl transition-all">
+          Explore GitHub Repositories <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME & TIMELINE SECTION -->
+  <section id="experience" class="py-24 max-w-5xl mx-auto px-6 relative">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold font-display mb-4 scroll-reveal">Professional Timeline</h2>
+      <p class="text-slate-400 text-sm">Where I've built, managed, and optimized software architectures</p>
+    </div>
+
+    <!-- Vertical Timeline -->
+    <div id="experience-timeline" class="relative border-l border-white/10 ml-4 md:ml-32 space-y-12 pb-8">
+      
+      <!-- Node 1 -->
+      <div class="relative pl-8 md:pl-12 scroll-reveal group">
+        <!-- Floating Counter Indicator -->
+        <span class="absolute -left-6 md:-left-8 top-1.5 w-12 h-12 rounded-full bg-slate-900 border-2 border-purple-500 flex items-center justify-center text-xs font-bold text-purple-400 z-10 group-hover:scale-110 transition-transform neon-glow-violet">
+          1
+        </span>
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+          <div>
+            <h3 class="text-lg md:text-xl font-bold font-display text-white">Tech Lead</h3>
+            <span class="text-purple-400 font-semibold text-sm">Beyond Career</span>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-slate-400 font-mono border border-white/10 w-fit">Jul 2025 – Present</span>
+        </div>
+        <p class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-3xl mb-4">
+          Architected beyondcareer.online on Next.js, Node.js, and Gemini API. Implemented RAG pipeline with FAISS vector search, reducing average response time to sub-2s. Led a 5-member development team, decreasing deployment cycles by 30% via Git, Docker, and CI/CD pipelines.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300 font-mono">Next.js</span>
+          <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300 font-mono">FastAPI</span>
+          <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300 font-mono">FAISS</span>
+          <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300 font-mono">Docker</span>
+          <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300 font-mono">CI/CD</span>
+        </div>
+      </div>
+
+      <!-- Node 2 -->
+      <div class="relative pl-8 md:pl-12 scroll-reveal group">
+        <span class="absolute -left-6 md:-left-8 top-1.5 w-12 h-12 rounded-full bg-slate-900 border-2 border-cyan-400 flex items-center justify-center text-xs font-bold text-cyan-300 z-10 group-hover:scale-110 transition-transform neon-glow-cyan">
+          2
+        </span>
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+          <div>
+            <h3 class="text-lg md:text-xl font-bold font-display text-white">Founder's Office Intern</h3>
+            <span class="text-cyan-400 font-semibold text-sm">Lawxygen</span>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-slate-400 font-mono border border-white/10 w-fit">Feb 2026 – Present</span>
+        </div>
+        <p class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-3xl mb-4">
+          Engineered legal document automation workflows powered by large language models and natural language processing. Successfully lowered manual document generation processing times by 60%.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-300 font-mono">NLP</span>
+          <span class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-300 font-mono">LLMs</span>
+          <span class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-300 font-mono">Python</span>
+          <span class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-xs text-cyan-300 font-mono">FastAPI</span>
+        </div>
+      </div>
+
+      <!-- Node 3 -->
+      <div class="relative pl-8 md:pl-12 scroll-reveal group">
+        <span class="absolute -left-6 md:-left-8 top-1.5 w-12 h-12 rounded-full bg-slate-900 border-2 border-orange-500 flex items-center justify-center text-xs font-bold text-orange-400 z-10 group-hover:scale-110 transition-transform shadow-lg shadow-orange-500/20">
+          3
+        </span>
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+          <div>
+            <h3 class="text-lg md:text-xl font-bold font-display text-white">App Developer</h3>
+            <span class="text-orange-400 font-semibold text-sm">PW (PhysicsWallah)</span>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-slate-400 font-mono border border-white/10 w-fit">Dec 2024 – Mar 2025</span>
+        </div>
+        <p class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-3xl mb-4">
+          Integrated native mobile features using Flutter and Dart for an edtech platform servicing 100M+ users. Developed clean, high-performance modular components.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20 text-xs text-orange-300 font-mono">Flutter</span>
+          <span class="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20 text-xs text-orange-300 font-mono">Dart</span>
+          <span class="px-2 py-0.5 rounded bg-orange-500/10 border border-orange-500/20 text-xs text-orange-300 font-mono">Firebase</span>
+        </div>
+      </div>
+
+      <!-- Node 4 -->
+      <div class="relative pl-8 md:pl-12 scroll-reveal group">
+        <span class="absolute -left-6 md:-left-8 top-1.5 w-12 h-12 rounded-full bg-slate-900 border-2 border-purple-500 flex items-center justify-center text-xs font-bold text-purple-400 z-10 group-hover:scale-110 transition-transform neon-glow-violet">
+          4
+        </span>
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+          <div>
+            <h3 class="text-lg md:text-xl font-bold font-display text-white">COO, Frontend Developer & Designer</h3>
+            <span class="text-purple-400 font-semibold text-sm">SGCA Technologies Pvt. Ltd.</span>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-slate-400 font-mono border border-white/10 w-fit">Dec 2023 – Jun 2025</span>
+        </div>
+        <p class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-3xl mb-4">
+          Managed operational pipelines and client delivery schedules for 10+ software projects, reducing average lead times by 25%. Built reusable UI libraries in React, cutting layout styling times by 35%.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300 font-mono">React.js</span>
+          <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300 font-mono">Figma</span>
+          <span class="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300 font-mono">Operations</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Education Section -->
+    <div class="mt-20 pt-10 border-t border-white/10 scroll-reveal">
+      <h3 class="text-2xl font-bold font-display text-center mb-8 flex items-center justify-center gap-2">
+        <i data-lucide="graduation-cap" class="text-cyan-400"></i> Education
+      </h3>
+      <div class="glass p-6 rounded-2xl border border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 max-w-3xl mx-auto">
+        <div>
+          <h4 class="text-lg font-bold text-white">B.Tech in Mathematics & Computer Science</h4>
+          <p class="text-slate-400 text-sm">IILM University (2024 – 2028)</p>
+        </div>
+        <div class="text-right">
+          <span class="px-4 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 font-mono font-bold text-sm">
+            CGPA: 8.54 / 10
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS & TECH STACK SECTION -->
+  <section id="skills" class="py-24 bg-slate-950/40 relative">
+    <!-- Subtle slow floating tech logos in background -->
+    <div class="absolute inset-0 pointer-events-none opacity-5 overflow-hidden">
+      <div class="absolute top-10 left-10 text-9xl select-none animate-pulse">JS</div>
+      <div class="absolute top-1/2 right-10 text-9xl select-none animate-pulse" style="animation-delay: 2s;">PY</div>
+      <div class="absolute bottom-10 left-1/3 text-9xl select-none animate-pulse" style="animation-delay: 4s;">C++</div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="flex flex-col items-center mb-12">
+        <h2 class="text-3xl md:text-5xl font-bold font-display mb-4 text-center scroll-reveal">Tech Stack & Mastery</h2>
+        <div class="flex gap-4 scroll-reveal">
+          <button id="skills-grid-btn" class="px-4 py-2 rounded-full text-xs font-semibold bg-cyan-400 text-slate-900">Grid View</button>
+          <button id="skills-radar-btn" class="px-4 py-2 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white border border-white/10">Radar Chart</button>
+        </div>
+      </div>
+
+      <!-- Skills Display Area -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Proficiency Bars / Grid -->
+        <div id="skills-left-pane" class="lg:col-span-7 space-y-6 scroll-reveal">
+          
+          <div id="skills-grid-view" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            
+            <!-- Skill Category Card -->
+            <div class="glass p-4 rounded-xl border border-white/10 hover:border-purple-500/30 transition-all group premium-card">
+              <span class="text-cyan-400 font-bold text-sm block mb-3 font-display">Languages</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="keycap-badge">Python</span>
+                <span class="keycap-badge">C++ (DSA)</span>
+                <span class="keycap-badge">JavaScript</span>
+                <span class="keycap-badge">SQL</span>
+                <span class="keycap-badge">Dart</span>
+              </div>
+            </div>
+
+            <div class="glass p-4 rounded-xl border border-white/10 hover:border-purple-500/30 transition-all group premium-card">
+              <span class="text-cyan-400 font-bold text-sm block mb-3 font-display">Frameworks</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="keycap-badge">React.js</span>
+                <span class="keycap-badge">Next.js</span>
+                <span class="keycap-badge">FastAPI</span>
+                <span class="keycap-badge">Node.js</span>
+                <span class="keycap-badge">Express</span>
+                <span class="keycap-badge">Flutter</span>
+              </div>
+            </div>
+
+            <div class="glass p-4 rounded-xl border border-white/10 hover:border-purple-500/30 transition-all group premium-card">
+              <span class="text-cyan-400 font-bold text-sm block mb-3 font-display">AI / ML</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="keycap-badge">TensorFlow</span>
+                <span class="keycap-badge">CNNs</span>
+                <span class="keycap-badge">FAISS Index</span>
+                <span class="keycap-badge">RAG Systems</span>
+                <span class="keycap-badge">LangChain</span>
+                <span class="keycap-badge">Gemini / LLMs</span>
+              </div>
+            </div>
+
+            <div class="glass p-4 rounded-xl border border-white/10 hover:border-purple-500/30 transition-all group premium-card">
+              <span class="text-cyan-400 font-bold text-sm block mb-3 font-display">DevOps & DBs</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="keycap-badge">Docker</span>
+                <span class="keycap-badge">PostgreSQL</span>
+                <span class="keycap-badge">MongoDB</span>
+                <span class="keycap-badge">Git</span>
+                <span class="keycap-badge">GH Actions</span>
+              </div>
+            </div>
+
+            <div class="glass p-4 rounded-xl border border-white/10 hover:border-purple-500/30 transition-all group premium-card">
+              <span class="text-cyan-400 font-bold text-sm block mb-3 font-display">Competitive Prog.</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="keycap-badge">LeetCode (87 Solved)</span>
+                <span class="keycap-badge">C++ OOPs</span>
+                <span class="keycap-badge">Data Structures</span>
+                <span class="keycap-badge">Algorithms</span>
+              </div>
+            </div>
+
+            <div class="glass p-4 rounded-xl border border-white/10 hover:border-purple-500/30 transition-all group premium-card">
+              <span class="text-cyan-400 font-bold text-sm block mb-3 font-display">Tools & Others</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="keycap-badge">Figma</span>
+                <span class="keycap-badge">Postman</span>
+                <span class="keycap-badge">Linux</span>
+                <span class="keycap-badge">Shell Scripts</span>
+                <span class="keycap-badge">Vercel</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Proficiency bars (Shows underneath/in-sync) -->
+          <div class="space-y-4 pt-4">
+            <div>
+              <div class="flex justify-between text-xs font-mono text-slate-400 mb-1">
+                <span>AI Engineering & RAG</span>
+                <span>90%</span>
+              </div>
+              <div class="w-full bg-white/5 h-2 rounded-full overflow-hidden">
+                <div class="proficiency-bar bg-gradient-to-r from-purple-500 to-cyan-400 h-full rounded-full transition-all duration-[1.5s]" style="width: 0;" data-target="90%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-mono text-slate-400 mb-1">
+                <span>Full Stack (React, Next.js, FastAPI)</span>
+                <span>85%</span>
+              </div>
+              <div class="w-full bg-white/5 h-2 rounded-full overflow-hidden">
+                <div class="proficiency-bar bg-gradient-to-r from-purple-500 to-cyan-400 h-full rounded-full transition-all duration-[1.5s]" style="width: 0;" data-target="85%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-mono text-slate-400 mb-1">
+                <span>Mobile Development (Flutter & Dart)</span>
+                <span>75%</span>
+              </div>
+              <div class="w-full bg-white/5 h-2 rounded-full overflow-hidden">
+                <div class="proficiency-bar bg-gradient-to-r from-purple-500 to-cyan-400 h-full rounded-full transition-all duration-[1.5s]" style="width: 0;" data-target="75%"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Radar Chart SVG -->
+        <div id="skills-right-pane" class="lg:col-span-5 flex justify-center items-center scroll-reveal">
+          <div id="skills-radar-chart" class="w-72 h-72 md:w-80 md:h-80 relative hidden lg:flex items-center justify-center">
+            <!-- Custom Radar SVG will render here dynamically or as markup -->
+            <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+              <!-- Grid Lines -->
+              <polygon points="50,10 90,38 75,85 25,85 10,38" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+              <polygon points="50,20 82,44 70,80 30,80 18,44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+              <polygon points="50,30 74,50 65,75 35,75 26,50" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+              <polygon points="50,40 66,56 60,70 40,70 34,56" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+              
+              <!-- Axes -->
+              <line x1="50" y1="50" x2="50" y2="10" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+              <line x1="50" y1="50" x2="90" y2="38" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+              <line x1="50" y1="50" x2="75" y2="85" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+              <line x1="50" y1="50" x2="25" y2="85" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+              <line x1="50" y1="50" x2="10" y2="38" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+
+              <!-- Labels -->
+              <text x="50" y="7" text-anchor="middle" font-size="2.5" fill="#FFFFFF" font-family="monospace">Full Stack</text>
+              <text x="93" y="38" text-anchor="start" font-size="2.5" fill="#FFFFFF" font-family="monospace">AI / ML</text>
+              <text x="78" y="88" text-anchor="start" font-size="2.5" fill="#FFFFFF" font-family="monospace">Backend</text>
+              <text x="22" y="88" text-anchor="end" font-size="2.5" fill="#FFFFFF" font-family="monospace">Mobile</text>
+              <text x="7" y="38" text-anchor="end" font-size="2.5" fill="#FFFFFF" font-family="monospace">DevOps</text>
+
+              <!-- Radar Area (Skill level points: Full Stack: 90%, AI: 95%, Backend: 88%, Mobile: 75%, DevOps: 82%) -->
+              <polygon points="50,14 88,38 72,80.8 31.25,76.25 17.2,40.16" fill="rgba(6,182,212,0.25)" stroke="#06B6D4" stroke-width="1"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS SECTION -->
+  <section id="certifications" class="py-24 max-w-6xl mx-auto px-6 relative">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold font-display mb-4 scroll-reveal">Credentials & Certifications</h2>
+      <p class="text-slate-400 text-sm">Validating specialized technical capabilities</p>
+    </div>
+
+    <!-- Category Tabs & Search Bar -->
+    <div class="flex flex-col md:flex-row gap-4 items-center justify-between mb-8 scroll-reveal">
+      <div id="cert-category-tabs" class="flex flex-wrap gap-2 justify-center">
+        <button class="cert-tab-btn px-4 py-2 rounded-full text-xs font-semibold bg-cyan-400 text-slate-900 border border-cyan-400 transition-all cursor-pointer" data-filter="all">All</button>
+        <button class="cert-tab-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white border border-white/10 transition-all cursor-pointer" data-filter="AI & Machine Learning">AI & ML</button>
+        <button class="cert-tab-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white border border-white/10 transition-all cursor-pointer" data-filter="Cloud Computing">Cloud</button>
+        <button class="cert-tab-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white border border-white/10 transition-all cursor-pointer" data-filter="Data Analytics">Data Analytics</button>
+        <button class="cert-tab-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white border border-white/10 transition-all cursor-pointer" data-filter="Software & Emerging Tech">Software/Network</button>
+      </div>
+
+      <div class="relative w-full md:w-72">
+        <input type="text" id="cert-search-input" placeholder="Search credentials..." class="w-full bg-slate-900/50 border border-white/10 rounded-full px-5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors">
+        <i data-lucide="search" class="w-4 h-4 text-slate-500 absolute right-4 top-2.5"></i>
+      </div>
+    </div>
+
+    <!-- Certification Flip Grid -->
+    <div id="certifications-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Dynamic cards will render here -->
+    </div>
+
+    <!-- Show More Button -->
+    <div id="cert-show-more-container" class="mt-12 flex justify-center hidden">
+      <button id="cert-show-more-btn" class="px-6 py-2.5 rounded-full border border-white/10 hover:border-cyan-400 text-slate-400 hover:text-white text-xs font-semibold font-mono transition-all cursor-pointer flex items-center gap-1.5">
+        <span id="show-more-btn-text">Show All Credentials</span>
+        <i data-lucide="chevron-down" class="w-4 h-4" id="show-more-btn-icon"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- AI PORTFOLIO CHAT (JOURNEY) -->
+  <section id="ai-chat" class="py-24 bg-slate-950/20 relative">
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-5xl font-bold font-display mb-4 scroll-reveal">Ask My AI Assistant</h2>
+        <p class="text-slate-400 text-sm">Ask about technical research, MAANG pitch, projects, or background</p>
+      </div>
+
+      <!-- Quick prompts -->
+      <div class="flex flex-wrap gap-2 justify-center mb-6 scroll-reveal">
+        <button onclick="sendQuickQuestion('What are Aanya\'s strongest technical skills?')" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-300 font-mono transition-all">🔧 Technical skills</button>
+        <button onclick="sendQuickQuestion('Tell me about Aanya\'s AI/ML research')" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-300 font-mono transition-all">🧠 AI/ML research</button>
+        <button onclick="sendQuickQuestion('Why should we hire Aanya at a MAANG company?')" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-300 font-mono transition-all">🚀 MAANG pitch</button>
+        <button onclick="sendQuickQuestion('What projects has Aanya built?')" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-300 font-mono transition-all">💼 Projects</button>
+      </div>
+
+      <!-- Chat Container -->
+      <div class="glass rounded-2xl border border-white/10 overflow-hidden shadow-2xl scroll-reveal">
+        <div class="bg-white/5 px-6 py-4 border-b border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+            <span class="font-display font-semibold text-sm">Assistant Agent</span>
+          </div>
+          <span class="text-xs text-slate-500 font-mono">Mock LLM Framework</span>
+        </div>
+        
+        <!-- Messages Area -->
+        <div id="chat-messages" class="h-80 overflow-y-auto p-6 space-y-4 text-xs md:text-sm">
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-400 flex items-center justify-center font-bold text-xs shrink-0">AI</div>
+            <div class="bg-white/5 p-3 rounded-2xl border border-white/5 max-w-[80%] text-slate-300 leading-relaxed">
+              Hello! I'm Aanya's virtual portfolio assistant. Feel free to ask me questions regarding her B.Tech studies, Next.js systems architecture, Python research, or engineering internships!
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input Form -->
+        <div class="p-4 border-t border-white/10 bg-white/5 flex gap-2">
+          <input id="chat-input-field" type="text" placeholder="Ask a question about Aanya..." class="flex-1 bg-slate-900/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors">
+          <button id="send-chat-btn" class="px-5 py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm transition-colors flex items-center gap-1.5">
+            Send <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-24 max-w-6xl mx-auto px-6 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Left side animated SVG -->
+      <div class="lg:col-span-5 space-y-6 scroll-reveal">
+        <h2 class="text-3xl md:text-5xl font-bold font-display leading-tight">Let's Connect &<br><span class="text-cyan-400">Collaborate</span></h2>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          I'm actively seeking opportunities with top-tier technology teams working on challenging problems at scale. Feel free to send a message directly or connect via social platforms.
+        </p>
+
+        <!-- Social hexagons / links -->
+        <div class="space-y-4 pt-4">
+          <a href="mailto:aanyachaudhary024@gmail.com" class="flex items-center gap-4 group">
+            <span class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-cyan-500/10 border border-white/10 group-hover:border-cyan-400/50 flex items-center justify-center transition-colors">
+              <i data-lucide="mail" class="w-5 h-5 text-slate-400 group-hover:text-cyan-400"></i>
+            </span>
+            <span class="text-slate-300 group-hover:text-cyan-400 transition-colors text-sm font-semibold">aanyachaudhary024@gmail.com</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/aanyachaudhary" target="_blank" class="flex items-center gap-4 group">
+            <span class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-cyan-500/10 border border-white/10 group-hover:border-cyan-400/50 flex items-center justify-center transition-colors">
+              <i data-lucide="linkedin" class="w-5 h-5 text-slate-400 group-hover:text-cyan-400"></i>
+            </span>
+            <span class="text-slate-300 group-hover:text-cyan-400 transition-colors text-sm font-semibold">linkedin.com/in/aanyachaudhary</span>
+          </a>
+
+          <a href="https://github.com/Aanya019-coder" target="_blank" class="flex items-center gap-4 group">
+            <span class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-cyan-500/10 border border-white/10 group-hover:border-cyan-400/50 flex items-center justify-center transition-colors">
+              <i data-lucide="github" class="w-5 h-5 text-slate-400 group-hover:text-cyan-400"></i>
+            </span>
+            <span class="text-slate-300 group-hover:text-cyan-400 transition-colors text-sm font-semibold">github.com/Aanya019-coder</span>
+          </a>
+
+          <a href="https://leetcode.com/u/Aanya_019/" target="_blank" class="flex items-center gap-4 group">
+            <span class="w-10 h-10 rounded-xl bg-white/5 group-hover:bg-cyan-500/10 border border-white/10 group-hover:border-cyan-400/50 flex items-center justify-center transition-colors">
+              <i data-lucide="code" class="w-5 h-5 text-slate-400 group-hover:text-cyan-400"></i>
+            </span>
+            <span class="text-slate-300 group-hover:text-cyan-400 transition-colors text-sm font-semibold">leetcode.com/u/Aanya_019</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right side form -->
+      <div class="lg:col-span-7 scroll-reveal">
+        <form id="contact-form" class="glass rounded-2xl border border-white/10 p-8 space-y-6">
+          <div class="relative group">
+            <input type="text" id="form-name" required placeholder=" " class="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-4 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors peer">
+            <label for="form-name" class="absolute left-4 top-4 text-slate-500 text-sm transition-all duration-300 pointer-events-none peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-500 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-cyan-400 peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-cyan-400">Name</label>
+          </div>
+
+          <div class="relative group">
+            <input type="email" id="form-email" required placeholder=" " class="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-4 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors peer">
+            <label for="form-email" class="absolute left-4 top-4 text-slate-500 text-sm transition-all duration-300 pointer-events-none peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-500 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-cyan-400 peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-cyan-400">Email Address</label>
+          </div>
+
+          <div class="relative group">
+            <textarea id="form-message" required placeholder=" " rows="4" class="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-4 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors peer resize-none"></textarea>
+            <label for="form-message" class="absolute left-4 top-4 text-slate-500 text-sm transition-all duration-300 pointer-events-none peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-500 peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-cyan-400 peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-cyan-400">Your Message</label>
+            <div class="text-right text-[10px] text-slate-500 font-mono mt-1">
+              <span id="char-counter">0</span> / 500 characters
+            </div>
+          </div>
+
+          <button type="submit" id="form-submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-400 font-bold text-sm text-white hover:shadow-lg hover:shadow-cyan-400/20 transition-all flex items-center justify-center gap-2">
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-slate-950 py-12 relative overflow-hidden">
+    <!-- Top animated gradient divider line -->
+    <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500 via-cyan-400 to-orange-500 animate-pulse"></div>
+
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-center md:text-left">
+        <a href="#hero" class="text-xl font-bold font-display bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent">
+          &lt;Aanya Chaudhary/&gt;
+        </a>
+        <p class="text-slate-500 text-xs mt-2 font-mono">Built with passion & caffeine ☕ · © 2026 All Rights Reserved</p>
+      </div>
+
+      <div class="flex gap-6 text-xs font-mono uppercase tracking-wider text-slate-500">
+        <a href="#hero" class="hover:text-white transition-colors">Top</a>
+        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+        <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+        <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING CHAT WIDGET -->
+  <div id="floating-chat-bubble" class="floating-chat-bubble animate-bounce" aria-label="Open AI Assistant" style="animation-duration: 3s;">
+    <i data-lucide="message-square" class="w-5 h-5"></i>
+  </div>
+
+  <div id="floating-chat-tray" class="chat-tray glass">
+    <!-- Header -->
+    <div class="bg-white/5 px-4 py-3 border-b border-white/10 flex items-center justify-between rounded-t-3xl">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+        <span class="font-display font-semibold text-xs text-white">Aanya's AI Assistant</span>
+      </div>
+      <button id="close-chat-tray-btn" class="text-slate-400 hover:text-white transition-colors cursor-pointer">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+    
+    <!-- Messages Area -->
+    <div id="floating-chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3 text-[11px]">
+      <div class="flex gap-2">
+        <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-400 flex items-center justify-center font-bold text-[9px] shrink-0 text-white">AI</div>
+        <div class="bg-white/5 p-2.5 rounded-xl border border-white/5 text-slate-300 leading-relaxed">
+          Hi! Ask me anything about Aanya's software skills, AI/ML crop scanner research, or internships!
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Prompts inside floating tray -->
+    <div class="px-4 py-2 flex flex-wrap gap-1 bg-black/10 border-t border-white/5">
+      <button onclick="sendQuickQuestionFloating('What are Aanya\'s technical skills?')" class="px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-[9px] text-slate-400 font-mono transition-all">Skills</button>
+      <button onclick="sendQuickQuestionFloating('Why hire Aanya?')" class="px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-[9px] text-slate-400 font-mono transition-all">Why Hire</button>
+      <button onclick="sendQuickQuestionFloating('Tell me about Beyond Career')" class="px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-[9px] text-slate-400 font-mono transition-all">Projects</button>
+    </div>
+
+    <!-- Input Form -->
+    <div class="p-3 border-t border-white/10 bg-white/5 flex gap-1.5 rounded-b-3xl">
+      <input id="floating-chat-input" type="text" placeholder="Ask a question..." class="flex-1 bg-slate-900/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors">
+      <button id="send-floating-chat-btn" class="p-2 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 transition-colors flex items-center justify-center cursor-pointer">
+        <i data-lucide="send" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // INITIALIZE LUCIDE ICONS
+    lucide.createIcons();
+
+    // GLOBAL STATE VARIABLES
+    let allCertificates = [];
+    let certLimit = 8;
+    let showAllCerts = false;
+    let activeCertFilter = 'all';
+    let activeCertSearch = '';
+
+    // CUSTOM CURSOR FOLLOWING WITH LAG
+    const cursor = document.getElementById('custom-cursor');
+    const cursorRing = document.getElementById('custom-cursor-ring');
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (cursor) {
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+      }
+    });
+
+    function updateCursorRing() {
+      // Lagging physics
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      if (cursorRing) {
+        cursorRing.style.left = ringX + 'px';
+        cursorRing.style.top = ringY + 'px';
+      }
+      requestAnimationFrame(updateCursorRing);
+    }
+    updateCursorRing();
+
+    // Glitch Name Effect
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let interval = null;
+    const glitchElement = document.getElementById('glitch-name');
+    
+    function startGlitch() {
+      let iteration = 0;
+      clearInterval(interval);
+      
+      interval = setInterval(() => {
+        glitchElement.innerText = glitchElement.innerText
+          .split("")
+          .map((letter, index) => {
+            if(index < iteration) {
+              return glitchElement.dataset.value[index];
+            }
+            return letters[Math.floor(Math.random() * 26)]
+          })
+          .join("");
+        
+        if(iteration >= glitchElement.dataset.value.length){ 
+          clearInterval(interval);
+        }
+        iteration += 1 / 3;
+      }, 30);
+    }
+    
+    if (glitchElement) {
+      glitchElement.addEventListener('mouseover', startGlitch);
+    }
+
+    // Typing Effect Subtitle
+    const words = ["Full Stack Engineer", "Backend Architect", "Frontend Craftsman", "Mobile Developer", "Problem Solver"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newWordDelay = 2000;
+    const typingTextEl = document.getElementById('typing-subtitle');
+
+    function type() {
+      if (!typingTextEl) return;
+      const currentWord = words[wordIndex];
+      if (isDeleting) {
+        typingTextEl.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingTextEl.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = typingDelay;
+      if (isDeleting) typeSpeed = erasingDelay;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = newWordDelay;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+
+    // DYNAMIC DATA LOADING FROM BACKEND
+    const fallbackProjects = [
+      {
+        title: 'AI Career Platform',
+        category: 'fullstack',
+        desc: 'Full-stack career accelerator platform incorporating customized AI roadmaps via a RAG pipeline backed by FAISS vector search. Speeds up LLM generation to sub-2s.',
+        tags: ['Next.js', 'Gemini API', 'RAG', 'FAISS', 'PostgreSQL'],
+        link: 'https://beyondcareer.online',
+        emoji: '🚀'
+      },
+      {
+        title: 'AI Resume Analyzer',
+        category: 'backend',
+        desc: 'An intelligent NLP analyzer extracting text from resumes and matching it against job descriptions to suggest keyword improvements and generate ATS compatibility scores.',
+        tags: ['FastAPI', 'React.js', 'OpenAI API', 'NLP'],
+        link: 'https://github.com/Aanya019-coder',
+        emoji: '📄'
+      },
+      {
+        title: 'PhysicsWallah Features',
+        category: 'mobile',
+        desc: 'Integrated native mobile interfaces, modular component libraries, and interactive assessment modules for the PW edtech platform (100M+ users).',
+        tags: ['Flutter', 'Dart', 'REST APIs', 'Agile'],
+        link: '#',
+        emoji: '📱',
+        enterprise: true
+      }
+    ];
+
+    const fallbackExperience = [
+      {
+        role: 'Tech Lead',
+        company: 'Beyond Career',
+        duration: 'Jul 2025 – Present',
+        details: 'Architected beyondcareer.online on Next.js, Node.js, and Gemini API. Engineered RAG pipeline with FAISS vector search, reducing average response times to sub-2s. Managed 5 development engineers and decreased deployment pipeline cycles by 30% using Git, Docker, and CI/CD tools.',
+        skills: ['Next.js', 'FastAPI', 'FAISS', 'Docker', 'CI/CD']
+      },
+      {
+        role: "Founder's Office Intern",
+        company: 'Lawxygen',
+        duration: 'Feb 2026 – Present',
+        details: 'Engineered legal document automation workflows powered by large language models and natural language processing. Successfully lowered manual document generation processing times by 60%.',
+        skills: ['NLP', 'LLMs', 'Python', 'FastAPI']
+      },
+      {
+        role: 'App Developer',
+        company: 'PW (PhysicsWallah)',
+        duration: 'Dec 2024 – Mar 2025',
+        details: 'Integrated native mobile features using Flutter and Dart for an edtech platform servicing 100M+ users. Developed clean, high-performance modular components.',
+        skills: ['Flutter', 'Dart', 'Firebase']
+      },
+      {
+        role: 'COO, Frontend Developer & Designer',
+        company: 'SGCA Technologies Pvt. Ltd.',
+        duration: 'Dec 2023 – Jun 2025',
+        details: 'Managed operational pipelines and client delivery schedules for 10+ software projects, reducing average lead times by 25%. Built reusable UI libraries in React, cutting layout styling times by 35%.',
+        skills: ['React.js', 'Figma', 'Operations']
+      }
+    ];
+
+    const fallbackCertifications = [
+      { name: "Claude with the Anthropic API", issuer: "Anthropic", fileName: "all claude certificates.pdf", gold: true },
+      { name: "Claude Code 101 & In Action", issuer: "Anthropic", fileName: "all claude certificates.pdf", gold: true },
+      { name: "Model Context Protocol", issuer: "Anthropic", fileName: "all claude certificates.pdf", gold: false },
+      { name: "Network Addressing & Troubleshooting", issuer: "Cisco", fileName: "Network_Addressing_and_Basic_Troubleshooting_certificate_aanya-chaudhary-cs28-iilm-edu_f3d95d0b-7da0-4019-8bd5-e3bf86ab5e7b.pdf", gold: false },
+      { name: "Apply AI: Analyze Customer Reviews", issuer: "Cisco", fileName: "Apply_AI-_Analyze_Customer_Reviews_certificate_aanya-chaudhary-cs28-iilm-edu_72d1a5ce-06f5-48b7-9a94-4e88238ffbb2.pdf", gold: false },
+      { name: "AI Essentials & Prompting Essentials", issuer: "Google", fileName: "Coursera google ai essentials.pdf", gold: true }
+    ];
+
+    async function loadProjects() {
+      const grid = document.getElementById('project-grid');
+      if (!grid) return;
+      
+      try {
+        const res = await fetch('/api/projects');
+        const data = await res.json();
+        renderProjects(data);
+      } catch (err) {
+        console.warn("Using fallback projects data.", err);
+        renderProjects(fallbackProjects);
+      }
+    }
+
+    function renderProjects(projects) {
+      const grid = document.getElementById('project-grid');
+      // Filter out 'research' which is displayed as featured
+      const list = projects.filter(p => p.category !== 'research');
+      
+      grid.innerHTML = list.map(p => `
+        <div class="project-card-item glass rounded-2xl border border-white/10 p-6 flex flex-col justify-between hover:border-cyan-400/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-400/10 transition-all duration-300 group scroll-reveal" data-category="${p.category}">
+          <div>
+            <div class="w-full h-36 rounded-xl bg-gradient-to-br from-cyan-900/30 to-purple-900/30 border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+              <span class="text-4xl">${p.emoji || '🚀'}</span>
+            </div>
+            <h3 class="text-xl font-bold font-display text-white mb-2">${p.title}</h3>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">${p.desc}</p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              ${p.tags.map(t => `<span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-slate-300 font-mono">${t}</span>`).join('')}
+            </div>
+          </div>
+          ${p.enterprise 
+            ? `<span class="text-slate-500 text-xs font-semibold flex items-center gap-1">Internal Enterprise App <i class="w-3 h-3" data-lucide="lock"></i></span>`
+            : `<a href="${p.link}" target="_blank" class="text-cyan-400 text-xs font-semibold flex items-center gap-1 hover:underline">Link <i class="w-3 h-3" data-lucide="external-link"></i></a>`
+          }
+        </div>
+      `).join('');
+      
+      lucide.createIcons();
+      setupProjectFilters();
+      setupObserver();
+    }
+
+    async function loadExperience() {
+      const timeline = document.getElementById('experience-timeline');
+      if (!timeline) return;
+
+      try {
+        const res = await fetch('/api/experience');
+        const data = await res.json();
+        renderExperience(data);
+      } catch (err) {
+        console.warn("Using fallback experience data.", err);
+        renderExperience(fallbackExperience);
+      }
+    }
+
+    function renderExperience(exp) {
+      const timeline = document.getElementById('experience-timeline');
+      timeline.innerHTML = `
+        <div id="timeline-track-glow" class="timeline-track-glow"></div>
+      ` + exp.map((node, index) => `
+        <div class="relative pl-8 md:pl-12 scroll-reveal group timeline-node" data-index="${index}">
+          <span class="timeline-dot absolute -left-6 md:-left-8 top-1.5 w-12 h-12 rounded-full bg-slate-900 border-2 ${index % 2 === 0 ? 'border-purple-500 text-purple-400' : 'border-cyan-400 text-cyan-300'} flex items-center justify-center text-xs font-bold z-10 transition-all duration-300">
+            ${index + 1}
+          </span>
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+            <div>
+              <h3 class="text-lg md:text-xl font-bold font-display text-white">${node.role}</h3>
+              <span class="text-purple-400 font-semibold text-sm">${node.company}</span>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-white/5 text-xs text-slate-400 font-mono border border-white/10 w-fit">${node.duration}</span>
+          </div>
+          <p class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-3xl mb-4">${node.details}</p>
+          <div class="flex flex-wrap gap-2">
+            ${node.skills.map(s => `<span class="keycap-badge">${s}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+      
+      setupObserver();
+      handleTimelineScroll(); // Initial call
+    }
+
+    async function loadCertifications() {
+      try {
+        const res = await fetch('/api/certifications');
+        const data = await res.json();
+        if (data && data.length > 0) {
+          allCertificates = data;
+        } else {
+          allCertificates = fallbackCertifications;
+        }
+      } catch (err) {
+        console.warn("Using fallback certifications data.", err);
+        allCertificates = fallbackCertifications;
+      }
+      renderCertifications();
+      setupCertFilters();
+    }
+
+    function renderCertifications() {
+      const grid = document.getElementById('certifications-grid');
+      if (!grid) return;
+
+      // Filter by category
+      let filtered = allCertificates;
+      if (activeCertFilter !== 'all') {
+        filtered = allCertificates.filter(c => c.category === activeCertFilter);
+      }
+
+      // Filter by search query
+      if (activeCertSearch.trim() !== '') {
+        const q = activeCertSearch.toLowerCase();
+        filtered = filtered.filter(c => 
+          c.name.toLowerCase().includes(q) || 
+          c.issuer.toLowerCase().includes(q)
+        );
+      }
+
+      // Show More limit
+      const totalFiltered = filtered.length;
+      const showMoreContainer = document.getElementById('cert-show-more-container');
+      
+      if (totalFiltered > certLimit && !showAllCerts) {
+        filtered = filtered.slice(0, certLimit);
+        if (showMoreContainer) showMoreContainer.classList.remove('hidden');
+      } else {
+        if (showMoreContainer) {
+          if (totalFiltered <= certLimit) {
+            showMoreContainer.classList.add('hidden');
+          } else {
+            showMoreContainer.classList.remove('hidden');
+          }
+        }
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-500 font-mono text-xs">
+            No matching certifications found. Try adjusting filters.
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(c => `
+        <div class="flip-card h-48 w-full scroll-reveal">
+          <div class="flip-card-inner">
+            <div class="flip-card-front glass p-6 border border-white/10 hover:border-cyan-400/40 flex flex-col justify-between holographic">
+              <div>
+                <span class="text-orange-500 text-xs font-bold font-mono tracking-wider block mb-2">${c.issuer.toUpperCase()}</span>
+                <h4 class="text-base font-bold text-white font-display leading-snug">${c.name}</h4>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-500 font-mono">Verification Info</span>
+                <span class="text-yellow-500">${c.gold ? '🏆 Gold Tier' : '🛡️ Silver Tier'}</span>
+              </div>
+            </div>
+            <div class="flip-card-back bg-gradient-to-br from-slate-900 to-purple-950 p-6 border border-cyan-400 flex flex-col justify-between">
+              <p class="text-slate-300 text-[10px] text-left leading-relaxed">
+                Dynamic credential verifying technical proficiency in ${c.name}.
+              </p>
+              <a href="${c.fileName}" target="_blank" class="w-full py-2 bg-cyan-400 text-slate-950 rounded-lg text-xs font-bold text-center block hover:opacity-90 transition-opacity">
+                View Credential PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+      setupObserver();
+    }
+
+    function setupCertFilters() {
+      // 1. Tab buttons click listeners
+      const tabs = document.querySelectorAll('.cert-tab-btn');
+      tabs.forEach(tab => {
+        // Clear old listeners by cloning
+        const newTab = tab.cloneNode(true);
+        tab.parentNode.replaceChild(newTab, tab);
+      });
+
+      const freshTabs = document.querySelectorAll('.cert-tab-btn');
+      freshTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          freshTabs.forEach(t => {
+            t.classList.remove('bg-cyan-400', 'text-slate-900', 'border-cyan-400');
+            t.classList.add('bg-white/5', 'text-slate-400', 'hover:text-white', 'border-white/10');
+          });
+          tab.classList.add('bg-cyan-400', 'text-slate-900', 'border-cyan-400');
+          tab.classList.remove('bg-white/5', 'text-slate-400', 'hover:text-white', 'border-white/10');
+
+          activeCertFilter = tab.dataset.filter;
+          showAllCerts = false; // reset show more
+          updateShowMoreBtnState();
+          renderCertifications();
+        });
+      });
+
+      // 2. Search input listener
+      const searchInput = document.getElementById('cert-search-input');
+      if (searchInput) {
+        // Clear old listener
+        const newSearchInput = searchInput.cloneNode(true);
+        searchInput.parentNode.replaceChild(newSearchInput, searchInput);
+        
+        document.getElementById('cert-search-input').addEventListener('input', (e) => {
+          activeCertSearch = e.target.value;
+          showAllCerts = false; // reset show more
+          updateShowMoreBtnState();
+          renderCertifications();
+        });
+      }
+
+      // 3. Show More button listener
+      const showMoreBtn = document.getElementById('cert-show-more-btn');
+      if (showMoreBtn) {
+        // Clear old listener
+        const newShowMoreBtn = showMoreBtn.cloneNode(true);
+        showMoreBtn.parentNode.replaceChild(newShowMoreBtn, showMoreBtn);
+        
+        document.getElementById('cert-show-more-btn').addEventListener('click', () => {
+          showAllCerts = !showAllCerts;
+          updateShowMoreBtnState();
+          renderCertifications();
+        });
+      }
+
+      // 4. Holographic Card Shimmer mouse listener
+      const grid = document.getElementById('certifications-grid');
+      if (grid) {
+        grid.addEventListener('mousemove', (e) => {
+          const card = e.target.closest('.holographic');
+          if (card) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+            card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+          }
+        });
+      }
+    }
+
+    function updateShowMoreBtnState() {
+      const text = document.getElementById('show-more-btn-text');
+      const icon = document.getElementById('show-more-btn-icon');
+      if (text && icon) {
+        if (showAllCerts) {
+          text.textContent = "Show Less Credentials";
+          icon.className = "w-4 h-4";
+          icon.setAttribute('data-lucide', 'chevron-up');
+        } else {
+          text.textContent = "Show All Credentials";
+          icon.className = "w-4 h-4";
+          icon.setAttribute('data-lucide', 'chevron-down');
+        }
+        lucide.createIcons();
+      }
+    }
+
+    // LIVE STATS COMPONENT
+    async function loadCodingStats() {
+      // Default fallback values matching user's actual profile from screenshot
+      const fallback = {
+        totalSolved: 87,
+        easySolved: 28,
+        mediumSolved: 48,
+        hardSolved: 11,
+        acceptanceRate: 93.52,
+        ranking: 1758078,
+        totalSubmissions: 108,
+        totalQuestions: 3200,
+        totalEasy: 950,
+        totalMedium: 2069,
+        totalHard: 943
+      };
+
+      let stats = { ...fallback };
+      let fetched = false;
+
+      // 1. Fetch LeetCode stats
+      try {
+        const response = await fetch('https://leetcode-stats-api.herokuapp.com/Aanya_019');
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.status === 'success') {
+            const easy = data.easySolved ?? data.easy ?? stats.easySolved;
+            const medium = data.mediumSolved ?? data.medium ?? stats.mediumSolved;
+            const hard = data.hardSolved ?? data.hard ?? stats.hardSolved;
+            stats.easySolved = easy;
+            stats.mediumSolved = medium;
+            stats.hardSolved = hard;
+            stats.totalSolved = data.totalSolved ?? (easy + medium + hard) ?? stats.totalSolved;
+            stats.acceptanceRate = data.acceptanceRate ?? data.acceptance ?? stats.acceptanceRate;
+            stats.ranking = data.ranking ?? data.rank ?? stats.ranking;
+            stats.totalEasy = data.totalEasy ?? stats.totalEasy;
+            stats.totalMedium = data.totalMedium ?? stats.totalMedium;
+            stats.totalHard = data.totalHard ?? stats.totalHard;
+            stats.totalQuestions = data.totalQuestions ?? stats.totalQuestions;
+            
+            // Calculate submissions dynamically or fallback
+            stats.totalSubmissions = data.totalSubmissions || Math.round(stats.totalSolved / (stats.acceptanceRate / 100)) || fallback.totalSubmissions;
+            fetched = true;
+          }
+        }
+      } catch (err) {
+        console.warn("Failed to fetch from Heroku LeetCode stats API, trying Render fallback...", err);
+      }
+
+      // Try Alfa API on Render if Heroku API failed
+      if (!fetched) {
+        try {
+          const response = await fetch('https://alfa-leetcode-api.onrender.com/Aanya_019');
+          if (response.ok) {
+            const data = await response.json();
+            if (data && !data.errors) {
+              const easy = data.easySolved ?? data.easy ?? stats.easySolved;
+              const medium = data.mediumSolved ?? data.medium ?? stats.mediumSolved;
+              const hard = data.hardSolved ?? data.hard ?? stats.hardSolved;
+              stats.easySolved = easy;
+              stats.mediumSolved = medium;
+              stats.hardSolved = hard;
+              stats.totalSolved = data.totalSolved ?? (easy + medium + hard) ?? stats.totalSolved;
+              stats.acceptanceRate = data.acceptanceRate ?? data.acceptance ?? stats.acceptanceRate;
+              stats.ranking = data.ranking ?? data.rank ?? stats.ranking;
+              stats.totalEasy = data.totalEasy ?? stats.totalEasy;
+              stats.totalMedium = data.totalMedium ?? stats.totalMedium;
+              stats.totalHard = data.totalHard ?? stats.totalHard;
+              
+              // Calculate submissions dynamically or fallback
+              stats.totalSubmissions = data.totalSubmissions || Math.round(stats.totalSolved / (stats.acceptanceRate / 100)) || fallback.totalSubmissions;
+              fetched = true;
+            }
+          }
+        } catch (err) {
+          console.warn("Failed to fetch from Alfa LeetCode stats API, using fallback values:", err);
+        }
+      }
+
+      // Render stats to the UI
+      // 1. Acceptance rate splitting
+      const acceptanceVal = stats.acceptanceRate || 93.52;
+      const acceptanceStr = acceptanceVal.toFixed(2);
+      const parts = acceptanceStr.split('.');
+      const mainPart = parts[0];
+      const subPart = '.' + parts[1] + '%';
+
+      const accMainEl = document.getElementById('lc-acceptance-main');
+      const accSubEl = document.getElementById('lc-acceptance-sub');
+      if (accMainEl) accMainEl.textContent = mainPart;
+      if (accSubEl) accSubEl.textContent = subPart;
+
+      // 2. Acceptance rate text at bottom
+      const accBottomEl = document.getElementById('lc-acceptance');
+      if (accBottomEl) accBottomEl.textContent = acceptanceStr + '%';
+
+      // 3. Submissions count
+      const subsEl = document.getElementById('lc-submissions');
+      if (subsEl) {
+        subsEl.textContent = `${stats.totalSubmissions} submissions`;
+      }
+
+      // 4. Breakdown text counts (Easy, Med, Hard)
+      const easyCountEl = document.getElementById('lc-easy-count');
+      const medCountEl = document.getElementById('lc-medium-count');
+      const hardCountEl = document.getElementById('lc-hard-count');
+      
+      if (easyCountEl) easyCountEl.textContent = `${stats.easySolved}/${stats.totalEasy}`;
+      if (medCountEl) medCountEl.textContent = `${stats.mediumSolved}/${stats.totalMedium}`;
+      if (hardCountEl) hardCountEl.textContent = `${stats.hardSolved}/${stats.totalHard}`;
+
+      // 5. Progress circle stroke-dashoffset (based on acceptance rate, NOT solved count)
+      const circle = document.getElementById('lc-progress-circle');
+      if (circle) {
+        const r = 46;
+        const circumference = 2 * Math.PI * r; // ~289.026
+        circle.setAttribute('stroke-dasharray', circumference.toFixed(0));
+        // Calculate offset based on acceptance rate
+        const percent = acceptanceVal / 100;
+        const offset = circumference - percent * circumference;
+        circle.style.strokeDashoffset = offset;
+      }
+
+      // 6. Breakdown progress bars
+      const easyBar = document.getElementById('lc-easy-bar');
+      const medBar = document.getElementById('lc-medium-bar');
+      const hardBar = document.getElementById('lc-hard-bar');
+
+      if (easyBar) easyBar.style.width = `${Math.min((stats.easySolved / stats.totalEasy) * 100, 100)}%`;
+      if (medBar) medBar.style.width = `${Math.min((stats.mediumSolved / stats.totalMedium) * 100, 100)}%`;
+      if (hardBar) hardBar.style.width = `${Math.min((stats.hardSolved / stats.totalHard) * 100, 100)}%`;
+
+      // 7. Global ranking
+      const rankingEl = document.getElementById('lc-ranking');
+      if (rankingEl) {
+        if (stats.ranking) {
+          if (stats.ranking > 1000000) {
+            rankingEl.textContent = '#' + Math.round(stats.ranking / 1000) + 'k';
+          } else {
+            rankingEl.textContent = '#' + stats.ranking.toLocaleString();
+          }
+        } else {
+          rankingEl.textContent = 'Top 8.5%';
+        }
+      }
+    }
+
+      // 2. Fetch GitHub stats
+      try {
+        const response = await fetch('https://api.github.com/users/Aanya019-coder');
+        const data = await response.json();
+        
+        if (data && data.public_repos !== undefined) {
+          document.getElementById('gh-repos').textContent = data.public_repos;
+          document.getElementById('gh-followers').textContent = data.followers;
+          
+          // Fetch stars from repos API
+          const reposRes = await fetch('https://api.github.com/users/Aanya019-coder/repos?per_page=100');
+          const repos = await reposRes.json();
+          let stars = 0;
+          if (Array.isArray(repos)) {
+            stars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+          }
+          document.getElementById('gh-stars').textContent = stars;
+        }
+      } catch (err) {
+        console.warn("Failed to fetch live GitHub stats, using fallback numbers.", err);
+      }
+    }
+
+    // THEME SWITCHER LOGIC
+    function initTheme() {
+      const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-mode');
+        setThemeUI(true);
+      } else {
+        document.documentElement.classList.remove('light-mode');
+        setThemeUI(false);
+      }
+    }
+
+    function setThemeUI(isLight) {
+      const sunIcon = document.getElementById('theme-icon-sun');
+      const moonIcon = document.getElementById('theme-icon-moon');
+      const mobileSunIcon = document.getElementById('mobile-theme-icon-sun');
+      const mobileMoonIcon = document.getElementById('mobile-theme-icon-moon');
+
+      if (isLight) {
+        if (sunIcon) sunIcon.classList.add('hidden');
+        if (moonIcon) moonIcon.classList.remove('hidden');
+        if (mobileSunIcon) mobileSunIcon.classList.add('hidden');
+        if (mobileMoonIcon) mobileMoonIcon.classList.remove('hidden');
+      } else {
+        if (sunIcon) sunIcon.classList.remove('hidden');
+        if (moonIcon) moonIcon.classList.add('hidden');
+        if (mobileSunIcon) mobileSunIcon.classList.remove('hidden');
+        if (mobileMoonIcon) mobileMoonIcon.classList.add('hidden');
+      }
+
+      // Update GitHub Stats cards themes dynamically
+      const statsCard = document.getElementById('github-stats-card');
+      const streakCard = document.getElementById('github-streak-card');
+      
+      if (statsCard) {
+        const baseSrc = "https://github-readme-stats.vercel.app/api?username=Aanya019-coder&show_icons=true";
+        if (isLight) {
+          statsCard.src = `${baseSrc}&theme=transparent&title_color=059669&text_color=4B5563&icon_color=059669&border_color=A7F3D0`;
+        } else {
+          statsCard.src = `${baseSrc}&theme=transparent&title_color=06B6D4&text_color=94A3B8&icon_color=06B6D4&border_color=22D3EE`;
+        }
+      }
+      
+      if (streakCard) {
+        const baseStreakSrc = "https://github-readme-streak-stats.herokuapp.com/?user=Aanya019-coder&theme=transparent";
+        if (isLight) {
+          streakCard.src = `${baseStreakSrc}&currStreakNum=059669&sideNums=4B5563&sideLabels=4B5563&currStreakLabel=059669&ring=059669&fire=059669&border=A7F3D0`;
+        } else {
+          streakCard.src = `${baseStreakSrc}&background=0A0A0F&currStreakNum=06B6D4&sideNums=94A3B8&sideLabels=94A3B8&currStreakLabel=06B6D4&ring=06B6D4&fire=06B6D4&border=22D3EE`;
+        }
+      }
+    }
+
+    function toggleTheme() {
+      const isLight = document.documentElement.classList.toggle('light-mode');
+      localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+      setThemeUI(isLight);
+    }
+
+    // Initialize themes immediately
+    initTheme();
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    const mobileThemeBtn = document.getElementById('mobile-theme-toggle-btn');
+    if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+    if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', toggleTheme);
+
+    // LOADING SCREEN SYSTEM
+    const loadingScreen = document.getElementById('loading-screen');
+    const loadingCmd = document.getElementById('loading-cmd');
+    const loadingLogs = document.getElementById('loading-logs');
+    const loadingProgress = document.getElementById('loading-progress');
+
+    const loadingCommands = [
+      { text: "npm install dependencies --silent", logs: ["✓ Loaded Lucide React & Icons", "✓ Connected to Three.js canvas engines", "✓ Resolved Tailwind configurations"] },
+      { text: "npm run build-production", logs: ["✓ Staging visual design systems assets", "✓ Initializing full stack responsive grids", "✓ System compiled successfully in 1.45s"] },
+      { text: "npm run portfolio", logs: ["✓ Loaded! Ready to review."] }
+    ];
+
+    let cmdIdx = 0;
+    let progressVal = 0;
+
+    function typeLoaderCommand() {
+      if (cmdIdx >= loadingCommands.length) {
+        setTimeout(() => {
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+            type();
+            startGlitch();
+            
+            // Start loading database contents
+            loadProjects();
+            loadExperience();
+            loadCertifications();
+            loadCodingStats();
+          }, 500);
+        }, 600);
+        return;
+      }
+
+      const current = loadingCommands[cmdIdx];
+      let typingIdx = 0;
+      loadingCmd.textContent = "";
+
+      const interval = setInterval(() => {
+        loadingCmd.textContent += current.text[typingIdx];
+        typingIdx++;
+        if (typingIdx === current.text.length) {
+          clearInterval(interval);
+          
+          current.logs.forEach((logLine, lineIdx) => {
+            setTimeout(() => {
+              const logEl = document.createElement('div');
+              logEl.className = "text-slate-500 font-mono text-[11px]";
+              logEl.textContent = logLine;
+              loadingLogs.appendChild(logEl);
+            }, lineIdx * 100);
+          });
+
+          setTimeout(() => {
+            cmdIdx++;
+            progressVal = (cmdIdx / loadingCommands.length) * 100;
+            loadingProgress.style.width = progressVal + '%';
+            setTimeout(typeLoaderCommand, 600);
+          }, current.logs.length * 100 + 300);
+        }
+      }, 35);
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(typeLoaderCommand, 300);
+    });
+
+    function handleTimelineScroll() {
+      const timeline = document.getElementById('experience-timeline');
+      const glowTrack = document.getElementById('timeline-track-glow');
+      if (!timeline || !glowTrack) return;
+
+      const rect = timeline.getBoundingClientRect();
+      const viewHeight = window.innerHeight;
+      
+      const startTrigger = viewHeight * 0.7; 
+      const timelineHeight = rect.height;
+      const scrolled = startTrigger - rect.top;
+      
+      let percentage = (scrolled / timelineHeight) * 100;
+      percentage = Math.max(0, Math.min(percentage, 100));
+      
+      glowTrack.style.height = percentage + '%';
+
+      const nodes = timeline.querySelectorAll('.timeline-node');
+      nodes.forEach(node => {
+        const nodeRect = node.getBoundingClientRect();
+        const dot = node.querySelector('.timeline-dot');
+        if (dot) {
+          if (nodeRect.top < startTrigger - 40) {
+            dot.classList.add('timeline-node-active');
+          } else {
+            dot.classList.remove('timeline-node-active');
+          }
+        }
+      });
+    }
+
+    window.addEventListener('scroll', handleTimelineScroll);
+    window.addEventListener('resize', handleTimelineScroll);
+
+    // SCROLL ANIMATIONS / INTERSECTION OBSERVER SETUP
+    function setupObserver() {
+      const revealElements = document.querySelectorAll('.scroll-reveal');
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+            
+            if (entry.target.id === 'projects') {
+              const underline = document.getElementById('projects-underline');
+              if (underline) underline.style.width = '100%';
+            }
+
+            if (entry.target.id === 'skills') {
+              const pBars = document.querySelectorAll('.proficiency-bar');
+              pBars.forEach(bar => {
+                bar.style.width = bar.dataset.target;
+              });
+            }
+          }
+        });
+      }, { threshold: 0.05 });
+
+      revealElements.forEach(el => {
+        if (!el.classList.contains('opacity-100')) {
+          el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700', 'ease-out');
+        }
+        sectionObserver.observe(el);
+      });
+    }
+
+    // FILTERABLE PROJECTS GRID SETUP
+    function setupProjectFilters() {
+      const projectTabs = document.querySelectorAll('.project-tab-btn');
+      const projectCards = document.querySelectorAll('.project-card-item');
+
+      projectTabs.forEach(tab => {
+        // Remove old event listener if duplicates occur
+        tab.replaceWith(tab.cloneNode(true));
+      });
+
+      const newTabs = document.querySelectorAll('.project-tab-btn');
+      newTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          newTabs.forEach(t => {
+            t.classList.remove('bg-cyan-400', 'text-slate-900', 'border-cyan-400');
+            t.classList.add('bg-white/5', 'text-slate-400', 'hover:text-white', 'border-white/10');
+          });
+          tab.classList.add('bg-cyan-400', 'text-slate-900', 'border-cyan-400');
+          tab.classList.remove('bg-white/5', 'text-slate-400', 'hover:text-white', 'border-white/10');
+
+          const filter = tab.dataset.filter;
+          const cards = document.querySelectorAll('.project-card-item');
+          
+          cards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+              card.style.display = 'flex';
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+              }, 50);
+            } else {
+              card.style.opacity = '0';
+              card.style.transform = 'scale(0.95)';
+              setTimeout(() => {
+                card.style.display = 'none';
+              }, 300);
+            }
+          });
+        });
+      });
+    }
+
+    // TOGGLE SKILLS VIEW
+    const gridBtn = document.getElementById('skills-grid-btn');
+    const radarBtn = document.getElementById('skills-radar-btn');
+    const gridPane = document.getElementById('skills-grid-view');
+    const radarPane = document.getElementById('skills-radar-chart');
+
+    gridBtn.addEventListener('click', () => {
+      gridBtn.className = "px-4 py-2 rounded-full text-xs font-semibold bg-cyan-400 text-slate-900";
+      radarBtn.className = "px-4 py-2 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white border border-white/10";
+      gridPane.classList.remove('hidden');
+      radarPane.classList.add('hidden');
+    });
+
+    radarBtn.addEventListener('click', () => {
+      radarBtn.className = "px-4 py-2 rounded-full text-xs font-semibold bg-cyan-400 text-slate-900";
+      gridBtn.className = "px-4 py-2 rounded-full text-xs font-semibold bg-white/5 text-slate-400 hover:text-white border border-white/10";
+      gridPane.classList.add('hidden');
+      radarPane.classList.remove('hidden');
+    });
+
+    // CONTACT FORM SUBMISSION TO EXPRESS BACKEND API
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('form-submit-btn');
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg class="animate-spin h-5 w-5 text-slate-950" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Sending Message...</span>
+      `;
+
+      const payload = {
+        name: document.getElementById('form-name').value,
+        email: document.getElementById('form-email').value,
+        message: document.getElementById('form-message').value
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+          submitBtn.className = "w-full py-4 rounded-xl bg-green-500 font-bold text-sm text-slate-950 transition-all flex items-center justify-center gap-2";
+          submitBtn.innerHTML = `
+            <i class="w-5 h-5 text-slate-950" data-lucide="check-circle"></i>
+            <span>Message Saved to Database!</span>
+          `;
+          lucide.createIcons();
+          contactForm.reset();
+        } else {
+          throw new Error(data.error || "Failed");
+        }
+      } catch (err) {
+        submitBtn.className = "w-full py-4 rounded-xl bg-red-500 font-bold text-sm text-white transition-all flex items-center justify-center gap-2";
+        submitBtn.innerHTML = `
+          <span>Error Submitting Message</span>
+        `;
+      } finally {
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.className = "w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-400 font-bold text-sm text-white hover:shadow-lg hover:shadow-cyan-400/20 transition-all flex items-center justify-center gap-2";
+          submitBtn.innerHTML = originalText;
+          lucide.createIcons();
+        }, 3500);
+      }
+    });
+
+    // MESSAGE CHAR COUNTER
+    const formMessage = document.getElementById('form-message');
+    const charCounter = document.getElementById('char-counter');
+    if (formMessage) {
+      formMessage.addEventListener('input', () => {
+        const remaining = formMessage.value.length;
+        charCounter.textContent = remaining;
+        if (remaining > 500) {
+          formMessage.value = formMessage.value.substring(0, 500);
+          charCounter.textContent = 500;
+        }
+      });
+    }
+
+    // ACTIVE SECTION DOT INDICATOR SLIDE
+    const navItems = document.querySelectorAll('.nav-item');
+    const navIndicator = document.getElementById('nav-indicator');
+
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navItems.forEach(item => {
+            const href = item.getAttribute('href').substring(1);
+            if (href === id) {
+              const rect = item.getBoundingClientRect();
+              const parentRect = item.parentElement.getBoundingClientRect();
+              const leftOffset = rect.left - parentRect.left + (rect.width / 2) - 4;
+              
+              if (navIndicator) {
+                navIndicator.style.left = leftOffset + 'px';
+                navIndicator.style.opacity = '1';
+              }
+            }
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('section').forEach(section => {
+      activeObserver.observe(section);
+    });
+
+    // MOBILE DRAWER MENU
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileMenuBtn && mobileDrawer) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileDrawer.style.transform = 'translateX(0)';
+      });
+    }
+
+    if (closeDrawerBtn && mobileDrawer) {
+      closeDrawerBtn.addEventListener('click', () => {
+        mobileDrawer.style.transform = 'translateX(100%)';
+      });
+    }
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileDrawer) mobileDrawer.style.transform = 'translateX(100%)';
+      });
+    });
+
+    // DYNAMIC AI CHATBOT SECURED VIA EXPRESS ENDPOINT
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInputField = document.getElementById('chat-input-field');
+    const sendChatBtn = document.getElementById('send-chat-btn');
+
+    function appendMessage(sender, text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = "flex gap-3";
+      
+      const avatar = document.createElement('div');
+      avatar.className = `w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 ${sender === 'user' ? 'bg-cyan-500 text-slate-950 ml-auto' : 'bg-gradient-to-tr from-purple-600 to-cyan-400'}`;
+      avatar.textContent = sender === 'user' ? 'ME' : 'AI';
+
+      const content = document.createElement('div');
+      content.className = `${sender === 'user' ? 'bg-cyan-500/10 border border-cyan-500/20 text-slate-200' : 'bg-white/5 border border-white/5 text-slate-300'} p-3 rounded-2xl max-w-[80%] leading-relaxed`;
+      content.textContent = text;
+
+      if (sender === 'user') {
+        msgDiv.appendChild(content);
+        msgDiv.appendChild(avatar);
+      } else {
+        msgDiv.appendChild(avatar);
+        msgDiv.appendChild(content);
+      }
+
+      chatMessages.appendChild(msgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    async function processQuestion(input) {
+      if (!input) return;
+      appendMessage('user', input);
+
+      // Loading bubble
+      const loaderDiv = document.createElement('div');
+      loaderDiv.className = "flex gap-3";
+      loaderDiv.innerHTML = `
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-400 flex items-center justify-center font-bold text-xs shrink-0">AI</div>
+        <div class="bg-white/5 border border-white/5 text-slate-500 p-3 rounded-2xl max-w-[80%] leading-relaxed italic animate-pulse">Thinking...</div>
+      `;
+      chatMessages.appendChild(loaderDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: input })
+        });
+        const data = await res.json();
+        
+        // Remove loader bubble
+        chatMessages.removeChild(loaderDiv);
+        
+        appendMessage('ai', data.reply || "No reply generated.");
+      } catch (err) {
+        console.error(err);
+        chatMessages.removeChild(loaderDiv);
+        appendMessage('ai', "Error connecting to backend AI server. Check console.");
+      }
+    }
+
+    function sendQuickQuestion(questionText) {
+      processQuestion(questionText);
+    }
+
+    if (sendChatBtn && chatInputField) {
+      sendChatBtn.addEventListener('click', () => {
+        const val = chatInputField.value.trim();
+        if (val) {
+          processQuestion(val);
+          chatInputField.value = "";
+        }
+      });
+      chatInputField.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const val = chatInputField.value.trim();
+          if (val) {
+            processQuestion(val);
+            chatInputField.value = "";
+          }
+        }
+      });
+    }
+
+    // FLOATING CHAT WIDGET SYSTEM
+    const floatBubble = document.getElementById('floating-chat-bubble');
+    const floatTray = document.getElementById('floating-chat-tray');
+    const closeFloatTrayBtn = document.getElementById('close-chat-tray-btn');
+    const floatInput = document.getElementById('floating-chat-input');
+    const sendFloatChatBtn = document.getElementById('send-floating-chat-btn');
+    const floatMessages = document.getElementById('floating-chat-messages');
+
+    if (floatBubble && floatTray) {
+      floatBubble.addEventListener('click', () => {
+        floatTray.classList.toggle('tray-active');
+        if (floatTray.classList.contains('tray-active')) {
+          floatBubble.classList.remove('animate-bounce');
+          setTimeout(() => floatInput && floatInput.focus(), 150);
+        } else {
+          floatBubble.classList.add('animate-bounce');
+        }
+      });
+    }
+
+    if (closeFloatTrayBtn && floatTray) {
+      closeFloatTrayBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        floatTray.classList.remove('tray-active');
+        floatBubble.classList.add('animate-bounce');
+      });
+    }
+
+    function appendFloatingMessage(sender, text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = "flex gap-2";
+      
+      const avatar = document.createElement('div');
+      avatar.className = `w-6 h-6 rounded-full flex items-center justify-center font-bold text-[9px] shrink-0 text-white ${sender === 'user' ? 'bg-cyan-500 text-slate-950 ml-auto' : 'bg-gradient-to-tr from-purple-600 to-cyan-400'}`;
+      avatar.textContent = sender === 'user' ? 'ME' : 'AI';
+
+      const content = document.createElement('div');
+      content.className = `${sender === 'user' ? 'bg-cyan-500/10 border border-cyan-500/20 text-slate-200' : 'bg-white/5 border border-white/5 text-slate-300'} p-2.5 rounded-xl max-w-[80%] leading-relaxed`;
+      content.textContent = text;
+
+      if (sender === 'user') {
+        msgDiv.appendChild(content);
+        msgDiv.appendChild(avatar);
+      } else {
+        msgDiv.appendChild(avatar);
+        msgDiv.appendChild(content);
+      }
+
+      floatMessages.appendChild(msgDiv);
+      floatMessages.scrollTop = floatMessages.scrollHeight;
+    }
+
+    async function processFloatingQuestion(input) {
+      if (!input) return;
+      appendFloatingMessage('user', input);
+
+      // Loading bubble
+      const loaderDiv = document.createElement('div');
+      loaderDiv.className = "flex gap-2";
+      loaderDiv.innerHTML = `
+        <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-600 to-cyan-400 flex items-center justify-center font-bold text-[9px] shrink-0 text-white">AI</div>
+        <div class="bg-white/5 border border-white/5 text-slate-500 p-2.5 rounded-xl max-w-[80%] leading-relaxed italic animate-pulse">Thinking...</div>
+      `;
+      floatMessages.appendChild(loaderDiv);
+      floatMessages.scrollTop = floatMessages.scrollHeight;
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: input })
+        });
+        const data = await res.json();
+        
+        if (loaderDiv.parentNode) floatMessages.removeChild(loaderDiv);
+        appendFloatingMessage('ai', data.reply || "No reply generated.");
+      } catch (err) {
+        console.error(err);
+        if (loaderDiv.parentNode) floatMessages.removeChild(loaderDiv);
+        appendFloatingMessage('ai', "Error connecting to backend AI server.");
+      }
+    }
+
+    function sendQuickQuestionFloating(questionText) {
+      processFloatingQuestion(questionText);
+    }
+
+    if (sendFloatChatBtn && floatInput) {
+      sendFloatChatBtn.addEventListener('click', () => {
+        const val = floatInput.value.trim();
+        if (val) {
+          processFloatingQuestion(val);
+          floatInput.value = "";
+        }
+      });
+      floatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const val = floatInput.value.trim();
+          if (val) {
+            processFloatingQuestion(val);
+            floatInput.value = "";
+          }
+        }
+      });
+    }
+
+    // INTERACTIVE HERO FLOATING CODE PARTICLES
+    const heroCanvas = document.getElementById('hero-particles');
+    if (heroCanvas) {
+      const ctx = heroCanvas.getContext('2d');
+      let width = (heroCanvas.width = window.innerWidth);
+      let height = (heroCanvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = (heroCanvas.width = window.innerWidth);
+        height = (heroCanvas.height = window.innerHeight);
+      });
+
+      const symbols = ["{}", "</>", "()", "=>", "[]", "const", "import", "async", "await", "return"];
+      const particles = [];
+
+      for (let i = 0; i < 40; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height + height,
+          text: symbols[Math.floor(Math.random() * symbols.length)],
+          fontSize: Math.random() * 12 + 10,
+          speed: Math.random() * 1 + 0.5,
+          opacity: Math.random() * 0.15 + 0.05,
+          drift: Math.random() * 0.4 - 0.2
+        });
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          ctx.font = `${p.fontSize}px 'JetBrains Mono', monospace`;
+          ctx.fillStyle = `rgba(6, 182, 212, ${p.opacity})`;
+          ctx.fillText(p.text, p.x, p.y);
+
+          p.y -= p.speed;
+          p.x += p.drift;
+
+          if (p.y < -30) {
+            p.y = height + 30;
+            p.x = Math.random() * width;
+          }
+        });
+        requestAnimationFrame(drawParticles);
+      }
+      drawParticles();
+    }
+
+    // KONAMI CODE EASTER EGG (Rain Matrix Rain Code style)
+    const konamiCode = [
+      "ArrowUp", "ArrowUp",
+      "ArrowDown", "ArrowDown",
+      "ArrowLeft", "ArrowRight",
+      "ArrowLeft", "ArrowRight",
+      "b", "a"
+    ];
+    let konamiIndex = 0;
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+          triggerMatrixRain();
+          konamiIndex = 0;
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    });
+
+    function triggerMatrixRain() {
+      document.body.classList.add('matrix-active');
+      const canvas = document.getElementById('matrix-canvas');
+      const ctx = canvas.getContext('2d');
+      
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = (canvas.width = window.innerWidth);
+        height = (canvas.height = window.innerHeight);
+      });
+
+      const columns = Math.floor(width / 20) + 1;
+      const yPositions = Array(columns).fill(0);
+
+      function matrix() {
+        ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.fillStyle = '#0F0';
+        ctx.font = '15pt monospace';
+
+        yPositions.forEach((y, index) => {
+          const text = String.fromCharCode(1e2 + Math.random() * 33);
+          const x = index * 20;
+          ctx.fillText(text, x, y);
+
+          if (y > 100 + Math.random() * 10000) {
+            yPositions[index] = 0;
+          } else {
+            yPositions[index] = y + 20;
+          }
+        });
+      }
+
+      const rainInterval = setInterval(matrix, 30);
+
+      setTimeout(() => {
+        clearInterval(rainInterval);
+        document.body.classList.remove('matrix-active');
+        ctx.clearRect(0, 0, width, height);
+      }, 10000);
+    }
+  </script>
+</body>
+</html>
