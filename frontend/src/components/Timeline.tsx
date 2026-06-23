@@ -116,14 +116,12 @@ export const Timeline: React.FC = () => {
     <section id="experience" className="py-20 max-w-5xl mx-auto px-6 relative border-t border-[var(--card-border)]">
       
       {/* Section Header */}
-      <div className="flex flex-col items-center mb-16 select-none">
-        <div className="text-center pb-2">
-          <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-            MY PROFESSIONAL ADVENTURE 🌟
-          </span>
-        </div>
-        <h2 className="font-syne text-2xl md:text-4xl font-black uppercase text-center w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-          Where I've Made an Impact 💥
+      <div className="text-center mb-16 select-none">
+        <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-secondary)] font-bold bg-[var(--card-bg)] px-3.5 py-1.5 rounded-full border border-[var(--card-border)]">
+          💼 MY JOURNEY & EXPERIENCE
+        </span>
+        <h2 className="font-display font-extrabold text-3xl md:text-5xl text-[var(--text-primary)] mt-4">
+          Where I've Made an Impact
         </h2>
       </div>
 
@@ -153,10 +151,10 @@ export const Timeline: React.FC = () => {
               {/* Node Contents */}
               <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-1 mb-3 pb-2 border-b border-dotted border-[var(--card-border)]">
                 <div>
-                  <h3 className="text-lg md:text-xl font-syne font-black text-[var(--text-primary)] leading-tight">
+                  <h3 className="text-lg md:text-xl font-display font-bold text-[var(--text-primary)] leading-tight">
                     {node.role}
                   </h3>
-                  <span className="text-[var(--accent-primary)] font-syne font-bold text-xs block md:inline md:mt-1">
+                  <span className="text-[var(--accent-primary)] font-display font-bold text-xs block md:inline md:mt-1">
                     {node.company}
                   </span>
                 </div>
@@ -189,14 +187,14 @@ export const Timeline: React.FC = () => {
 
       {/* Education Section */}
       <div className="mt-20 pt-10 border-t border-[var(--card-border)]">
-        <h3 className="font-syne font-black text-xl text-center mb-8 flex items-center justify-center gap-2 text-[var(--text-primary)] uppercase select-none">
-          <GraduationCap className="text-[var(--accent-primary)] w-5 h-5" /> My Education & Academic Journey 🎓
+        <h3 className="font-sans font-extrabold text-2xl text-center mb-8 flex items-center justify-center gap-2 text-[var(--text-primary)] uppercase select-none">
+          <GraduationCap className="text-[var(--accent-primary)] w-5 h-5" /> Education & Academic Journey 🎓
         </h3>
         
         <div className="max-w-2xl mx-auto border-2 border-[var(--card-border)] p-6 bg-black/5 rounded-2xl relative shadow-sm">
           <div className="border border-[var(--card-border)] rounded-xl p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-[var(--bg-color)]">
             <div>
-              <h4 className="font-syne font-black text-lg text-[var(--text-primary)]">
+              <h4 className="font-sans font-bold text-lg text-[var(--text-primary)]">
                 B.Tech in Mathematics & Computer Science
               </h4>
               <p className="font-mono text-xs text-[var(--text-secondary)] mt-1">

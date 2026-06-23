@@ -1,46 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
 @import "tailwindcss";
 
 @theme {
-  --color-spacebg: #141312;
-  --color-surface: #22211F;
-  --color-coral: #D4AF37;
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Fredoka', sans-serif;
-  --font-syne: 'Syne', sans-serif;
+  --color-spacebg: #0B0F19;
+  --color-surface: #151C2C;
+  --color-coral: #FFB800;
+  --font-sans: 'Poppins', 'Inter', sans-serif;
+  --font-display: 'Poppins', sans-serif;
+  --font-syne: 'Poppins', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-serif: 'Syne', sans-serif;
+  --font-serif: 'Poppins', sans-serif;
   --font-typewriter: 'JetBrains Mono', monospace;
 }
 
 :root {
-  --bg-color: #141312; /* Rich dark charcoal paper */
-  --text-primary: #EAE3D8; /* Soft warm linen text */
-  --text-secondary: #A09B90;
-  --accent-primary: #D4AF37; /* Bright gold */
-  --accent-secondary: #A88C52;
-  --card-bg: #22211F;
-  --card-border: #2D2C2A;
-  --green-line: #D4AF37;
+  --bg-color: #0B0F19; /* Cozy slate dark */
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --accent-primary: #FFB800; /* Vibrant Gold-Yellow */
+  --accent-secondary: #1E60D5; /* Royal Blue */
+  --card-bg: #151C2C;
+  --card-border: #242F47;
+  --green-line: #FFB800;
 }
 
 :root.light-mode {
-  --bg-color: #FAF8F5; /* Warm off-white poster paper */
-  --text-primary: #1A1A1A; /* Crisp charcoal ink */
-  --text-secondary: #605B55;
-  --accent-primary: #A88C52; /* Vintage Gold-Brown */
-  --accent-secondary: #8E743F;
-  --card-bg: #F5F1E9;
-  --card-border: #333333;
-  --green-line: #A88C52;
+  --bg-color: #FFFFFF; /* Pure clean white */
+  --text-primary: #111827; /* Deep slate text */
+  --text-secondary: #4B5563;
+  --accent-primary: #FFB800; /* Vibrant Gold-Yellow */
+  --accent-secondary: #1E60D5; /* Royal Blue */
+  --card-bg: #F9FAFB; /* Soft light gray card background */
+  --card-border: #F3F4F6;
+  --green-line: #FFB800;
 }
 
 body {
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', 'Inter', sans-serif;
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -51,7 +51,7 @@ body {
 }
 
 .light-mode .gradient-mesh {
-  background: #FAF9F6 !important;
+  background: #FFFFFF !important;
 }
 
 /* Developer Blueprint Grid Overlay */

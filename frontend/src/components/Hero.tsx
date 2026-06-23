@@ -1,238 +1,84 @@
-import React, { useState } from 'react';
-import { Download, ExternalLink, Code } from 'lucide-react';
-import { Github, Linkedin } from './Icons';
+import React from 'react';
+import { Download, Mail } from 'lucide-react';
+import { Github, Linkedin, Twitter } from './Icons';
 
 export const Hero: React.FC = () => {
-  const [activeTool, setActiveTool] = useState<string | null>(null);
-
-  const experiences = [
-    {
-      company: 'Beyond Career',
-      role: 'Tech Lead',
-      period: 'Jul 2025 – Present',
-      desc: 'Architected AI roadmap platform on Next.js, Node.js, and Gemini API. Engineered RAG search lowering response times to <2s.'
-    },
-    {
-      company: 'Lawxygen',
-      role: "Founder's Office Intern",
-      period: 'Feb 2026 – Present',
-      desc: 'Engineered legal document automation workflows powered by LLMs and NLP, reducing manual processing time by 60%.'
-    },
-    {
-      company: 'PW (PhysicsWallah)',
-      role: 'App Developer',
-      period: 'Dec 2024 – Mar 2025',
-      desc: 'Integrated native mobile features using Flutter and Dart for an edtech platform servicing 100M+ users.'
-    },
-    {
-      company: 'SGCA Technologies',
-      role: 'COO & Frontend Developer',
-      period: 'Dec 2023 – Jun 2025',
-      desc: 'Managed operations for 10+ software projects, reducing lead times by 25%. Built reusable UI libraries in React.'
-    }
-  ];
-
-  const tools = [
-    { key: 'Py', name: 'Python' },
-    { key: 'Js', name: 'JavaScript' },
-    { key: 'Re', name: 'React.js' },
-    { key: 'Nx', name: 'Next.js' },
-    { key: 'TF', name: 'TensorFlow' },
-    { key: 'Fl', name: 'Flutter' },
-    { key: 'C+', name: 'C++ (DSA)' },
-    { key: 'Nd', name: 'Node.js' },
-    { key: 'Fa', name: 'FastAPI' },
-    { key: 'Dk', name: 'Docker' },
-    { key: 'Tb', name: 'Tableau BI' },
-  ];
-
   return (
-    <section id="hero" className="relative px-6 pt-8 pb-16 overflow-hidden select-none">
-      <div className="max-w-4xl mx-auto z-10 relative">
+    <section id="hero" className="relative px-6 pt-16 pb-20 md:py-24 overflow-hidden select-none bg-[var(--bg-color)]">
+      <div className="max-w-6xl mx-auto z-10 relative grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
         
-        {/* Top Header Block: Centered Title & Portrait */}
-        <div className="flex flex-col items-center text-center border-b border-[var(--card-border)] pb-12">
-          
-          {/* Name & Huge "PORTFOLIO" Title */}
-          <div className="relative mb-6">
-            <div className="relative inline-block">
-              <h1 className="font-display font-black text-6xl sm:text-8xl md:text-9xl tracking-tighter leading-none text-[var(--text-primary)] uppercase select-none">
-                Portfolio
-              </h1>
-              <span className="absolute -top-4 -right-10 font-display font-bold text-xl sm:text-3xl text-[var(--accent-primary)] rotate-12 select-none">
-                '26
-              </span>
-            </div>
-            
-            <div className="text-center mt-2">
-              <span className="font-syne font-bold text-xs sm:text-sm uppercase tracking-widest text-[var(--accent-primary)] block">
-                Aanya Chaudhary
-              </span>
-            </div>
-          </div>
-
-          {/* Arched Profile Picture (Centered) */}
-          <div className="my-8">
-            <div className="relative w-60 h-72 pfp-arch-bg p-1.5 shadow-xl border border-[var(--card-border)]">
-              <div className="profile-arch-frame w-full h-full relative">
-                <img
-                  src="/profile_pic.png"
-                  alt="Aanya Chaudhary"
-                  className="w-full h-full object-cover grayscale brightness-95 contrast-105 hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Intro Header & Description */}
-          <div className="max-w-2xl">
-            <h2 className="font-syne font-extrabold text-2xl sm:text-3xl text-[var(--text-primary)] leading-tight mb-4 uppercase">
-              Hi, I'm Aanya
+        {/* Left Column: Bio & Actions */}
+        <div className="md:col-span-7 space-y-6 text-left order-2 md:order-1">
+          <div className="space-y-2">
+            <span className="font-sans font-semibold text-base md:text-lg text-[var(--text-primary)]">
+              Hi I am
+            </span>
+            <h2 className="font-sans font-bold text-lg md:text-xl text-[var(--accent-secondary)] tracking-wide">
+              Aanya Chaudhary
             </h2>
-            <p className="font-sans text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed text-center">
-              I describe myself as a person with a creative mindset and a drive to achieve high-performance results. My passion lies in full-stack architecture, machine learning research, and natural language processing. Beyond that, I also have a strong knack for engineering clean developer interfaces.
-            </p>
+            <h1 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl leading-tight text-[var(--text-primary)] tracking-tight">
+              Full-Stack AI <br />
+              <span className="text-[var(--accent-primary)]">Engineer</span>
+            </h1>
           </div>
+          
+          <p className="font-sans text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed max-w-xl">
+            I am a full-stack engineer and AI researcher passionate about building high-performance systems from pixels to pipelines. My work bridges advanced deep learning systems, custom natural language processing workflows, and high-quality, responsive developer interfaces.
+          </p>
 
           {/* Action buttons */}
-          <div className="flex flex-wrap justify-center gap-3 font-mono text-[10px] select-none mt-6">
+          <div className="flex flex-wrap gap-4 pt-2">
+            <a
+              href="#contact"
+              className="px-6 py-2.5 bg-[var(--accent-primary)] text-white hover:opacity-95 font-bold rounded-full transition-all tracking-wider text-xs uppercase shadow-sm"
+            >
+              Hire Me
+            </a>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 border border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-[var(--bg-color)] font-bold transition-all flex items-center gap-1.5"
+              className="px-6 py-2.5 border border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-white font-bold rounded-full transition-all tracking-wider text-xs uppercase"
             >
-              <Download className="w-3.5 h-3.5" /> Grab My Resume 📄
-            </a>
-            <a
-              href="#contact"
-              className="px-4 py-2.5 bg-[var(--text-primary)] text-[var(--bg-color)] hover:opacity-90 font-bold transition-all uppercase"
-            >
-              [ Let's Chat! 💬 ]
+              <Download className="w-3.5 h-3.5 inline mr-1" /> Grab Resume
             </a>
           </div>
 
+          {/* Social Row */}
+          <div className="flex items-center gap-4 pt-4">
+            <a href="https://github.com/Aanya019-coder" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-full hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-all">
+              <Github className="w-4 h-4" />
+            </a>
+            <a href="https://www.linkedin.com/in/aanyachaudhary" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-full hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-all">
+              <Linkedin className="w-4 h-4" />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-full hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-all">
+              <Twitter className="w-4 h-4" />
+            </a>
+            <a href="mailto:aanyachaudhary024@gmail.com" className="p-2.5 bg-[var(--card-bg)] border border-[var(--card-border)] rounded-full hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-all">
+              <Mail className="w-4 h-4" />
+            </a>
+          </div>
         </div>
 
-        {/* Bottom Block: Dual Grid columns */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-10">
-          
-          {/* Left Block: Experience (Col span 7) */}
-          <div className="md:col-span-7 flex flex-col gap-6 md:border-r border-[var(--card-border)] md:pr-8">
-            <h3 className="font-syne font-extrabold text-xs uppercase tracking-widest text-[var(--accent-primary)] mb-2">
-              MY JOURNEY 🚀
-            </h3>
+        {/* Right Column: Arched Profile Picture with Paint Splash */}
+        <div className="md:col-span-5 flex justify-center items-center order-1 md:order-2">
+          <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 flex items-center justify-center">
             
-            <div className="space-y-6">
-              {experiences.map((exp, idx) => (
-                <div key={idx} className="group relative">
-                  {/* Ledger lines */}
-                  <div className="flex justify-between items-baseline mb-1 border-b border-dashed border-[var(--card-border)] pb-1">
-                    <span className="font-syne font-bold text-sm text-[var(--text-primary)]">
-                      {exp.company}
-                    </span>
-                    <span className="font-mono text-[9px] text-[var(--text-secondary)] whitespace-nowrap">
-                      {exp.period}
-                    </span>
-                  </div>
-                  
-                  <div className="flex justify-between items-center text-[10px] font-mono text-[var(--accent-primary)] mb-1.5 uppercase tracking-wider">
-                    <span>{exp.role}</span>
-                  </div>
-                  
-                  <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed text-justify">
-                    {exp.desc}
-                  </p>
-                </div>
-              ))}
+            {/* Artistic Paint Splash Background Shape */}
+            <svg viewBox="0 0 200 200" className="absolute w-[120%] h-[120%] z-0 text-[var(--accent-secondary)] fill-current opacity-85 scale-105 select-none pointer-events-none">
+              <path d="M145.2,50.1C160.1,68,168.3,92,162.7,112.5C157.1,133,137.6,150,115.1,158C92.6,166,67.1,165,49.2,152.9C31.3,140.8,21,117.6,22.6,96.3C24.2,75,37.7,55.7,56.9,43.2C76.1,30.7,101,25,122.4,32.4C131.7,35.6,138.8,42.4,145.2,50.1Z" />
+            </svg>
+            
+            {/* Circle portrait picture container */}
+            <div className="relative z-10 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-[var(--bg-color)] shadow-xl bg-[var(--card-bg)]">
+              <img
+                src="/profile_pic.png"
+                alt="Aanya Chaudhary"
+                className="w-full h-full object-cover grayscale brightness-95 contrast-105 hover:grayscale-0 transition-all duration-500"
+              />
             </div>
           </div>
-
-          {/* Right Block: Socials & Tools (Col span 5) */}
-          <div className="md:col-span-5 flex flex-col gap-8 md:pl-4">
-            
-            {/* Socials Link List */}
-            <div>
-              <h3 className="font-syne font-extrabold text-xs uppercase tracking-widest text-[var(--accent-primary)] mb-4">
-                CONNECT 🌐
-              </h3>
-              
-              <div className="space-y-3 font-mono text-xs text-[var(--text-secondary)]">
-                <a
-                  href="https://www.linkedin.com/in/aanyachaudhary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between border-b border-[var(--card-border)] pb-2 hover:text-[var(--text-primary)] group transition-colors"
-                >
-                  <span className="flex items-center gap-2">
-                    <Linkedin className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
-                    <span>LinkedIn</span>
-                  </span>
-                  <span className="text-[10px] opacity-50 group-hover:opacity-100 flex items-center gap-1">
-                    in/aanyachaudhary <ExternalLink className="w-2.5 h-2.5" />
-                  </span>
-                </a>
-
-                <a
-                  href="https://github.com/Aanya019-coder"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between border-b border-[var(--card-border)] pb-2 hover:text-[var(--text-primary)] group transition-colors"
-                >
-                  <span className="flex items-center gap-2">
-                    <Github className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
-                    <span>GitHub</span>
-                  </span>
-                  <span className="text-[10px] opacity-50 group-hover:opacity-100 flex items-center gap-1">
-                    github/Aanya019-coder <ExternalLink className="w-2.5 h-2.5" />
-                  </span>
-                </a>
-
-                <a
-                  href="https://leetcode.com/u/Aanya_019/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between border-b border-[var(--card-border)] pb-2 hover:text-[var(--text-primary)] group transition-colors"
-                >
-                  <span className="flex items-center gap-2">
-                    <Code className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
-                    <span>LeetCode</span>
-                  </span>
-                  <span className="text-[10px] opacity-50 group-hover:opacity-100 flex items-center gap-1">
-                    u/Aanya_019 <ExternalLink className="w-2.5 h-2.5" />
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            {/* Retro Tool Keycaps Badges */}
-            <div>
-              <div className="flex justify-between items-baseline mb-4">
-                <h3 className="font-syne font-extrabold text-xs uppercase tracking-widest text-[var(--accent-primary)]">
-                  MY FAVORITE TOOLS 🛠️
-                </h3>
-                <span className="font-mono text-[9px] text-[var(--accent-primary)] font-bold min-h-[14px]">
-                  {activeTool ? `[ ${activeTool} ]` : '[ hover a key! ]'}
-                </span>
-              </div>
-              
-              <div className="flex flex-wrap gap-2.5">
-                {tools.map((t, idx) => (
-                  <button
-                    key={idx}
-                    onMouseEnter={() => setActiveTool(t.name)}
-                    onMouseLeave={() => setActiveTool(null)}
-                    className="tool-key-badge cursor-default select-none"
-                    title={t.name}
-                  >
-                    {t.key}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
         </div>
 
       </div>

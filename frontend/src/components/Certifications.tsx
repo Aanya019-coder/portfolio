@@ -152,20 +152,18 @@ export const Certifications: React.FC = () => {
     <section id="certifications" className="py-20 max-w-6xl mx-auto px-6 relative border-t border-[var(--card-border)] select-none">
       
       {/* Section Header */}
-      <div className="flex flex-col items-center mb-12 select-none">
-        <div className="text-center pb-2">
-          <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-            VERIFIED CREDENTIALS & CERTIFICATES
-          </span>
-        </div>
-        <h2 className="font-syne font-extrabold text-2xl md:text-4xl text-center w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-          ACHIEVEMENTS & BADGES 🏆
+      <div className="text-center mb-12 select-none">
+        <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-secondary)] font-bold bg-[var(--card-bg)] px-3.5 py-1.5 rounded-full border border-[var(--card-border)]">
+          🏆 VERIFIED CREDENTIALS & CERTIFICATES
+        </span>
+        <h2 className="font-display font-extrabold text-3xl md:text-5xl text-[var(--text-primary)] mt-4">
+          Achievements & Badges
         </h2>
       </div>
 
       {/* Category Filter Tabs & Monospaced Search Input */}
-      <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8 select-none">
-        <div className="flex flex-wrap gap-2 justify-center">
+      <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-10 select-none">
+        <div className="flex flex-wrap gap-2.5 justify-center">
           {categories.map((cat) => {
             const count = getCategoryCount(cat.value);
             return (
@@ -175,10 +173,10 @@ export const Certifications: React.FC = () => {
                   setActiveFilter(cat.value);
                   setShowAll(false);
                 }}
-                className={`px-3 py-1.5 border font-mono text-[10px] uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 ${
+                className={`px-4 py-2 text-[10px] uppercase font-mono font-bold tracking-wider transition-all duration-300 rounded-full cursor-pointer flex items-center gap-1.5 border ${
                   activeFilter === cat.value
-                    ? 'border-[var(--accent-primary)] text-[var(--accent-primary)] bg-[rgba(var(--accent-primary),0.05)] font-bold'
-                    : 'border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                    ? 'bg-[var(--accent-primary)] text-slate-900 border-[var(--accent-primary)] shadow-sm'
+                    : 'bg-[var(--card-bg)] border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-secondary)]'
                 }`}
               >
                 <span>{cat.label}</span>
@@ -198,13 +196,14 @@ export const Certifications: React.FC = () => {
               setSearchQuery(e.target.value);
               setShowAll(false);
             }}
-            className="w-full bg-black/10 border border-[var(--card-border)] rounded px-4 py-2 text-xs font-mono text-[var(--text-primary)] placeholder-stone-500 focus:outline-none focus:border-[var(--accent-primary)]"
+            className="w-full bg-[var(--card-bg)] border border-[var(--card-border)] rounded-full px-5 py-2 text-xs font-mono text-[var(--text-primary)] placeholder-stone-500 focus:outline-none focus:border-[var(--accent-secondary)]"
           />
         </div>
       </div>
+
       {/* Verification Badges Grid */}
       {filtered.length === 0 ? (
-        <div className="py-16 text-center text-stone-500 font-mono text-xs border border-dashed border-[var(--card-border)] rounded-xl">
+        <div className="py-16 text-center text-stone-500 font-mono text-xs border border-dashed border-[var(--card-border)] rounded-2xl">
           No badges found matching your search term. Try a different filter!
         </div>
       ) : (
@@ -215,35 +214,36 @@ export const Certifications: React.FC = () => {
               <div
                 key={index}
                 onClick={() => setSelectedCert(c)}
-                className={`border p-5 flex flex-col justify-between transition-all duration-300 relative bg-transparent cursor-pointer group rounded-xl ${
+                className={`border p-6 flex flex-col justify-between transition-all duration-300 relative bg-[var(--card-bg)] cursor-pointer group rounded-2xl hover:-translate-y-1.5 hover:shadow-md ${
                   c.gold
-                    ? 'border-yellow-600/40 hover:border-yellow-500 hover:bg-yellow-500/5'
-                    : 'border-[var(--card-border)] hover:border-[var(--accent-primary)] hover:bg-[rgba(var(--accent-primary),0.03)]'
+                    ? 'border-yellow-600/30 hover:border-yellow-500'
+                    : 'border-[var(--card-border)] hover:border-[var(--accent-secondary)]'
                 }`}
               >
                 <div className="relative z-10">
                   {/* Badge Meta Info */}
-                  <div className="flex justify-between items-center mb-4 select-none font-mono text-[9px] text-[var(--text-secondary)] border-b border-dashed border-[var(--card-border)] pb-1.5">
+                  <div className="flex justify-between items-center mb-4 select-none font-mono text-[9px] text-[var(--text-secondary)] border-b border-dashed border-[var(--card-border)] pb-2">
                     <span>ID: {meta.id}</span>
                     <span className="font-bold">{meta.date}</span>
                   </div>
 
                   {/* Issuer Stamp */}
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className={`text-[8.5px] font-mono font-bold tracking-widest px-2 py-0.5 border rounded ${
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className={`text-[8.5px] font-mono font-bold tracking-widest px-2.5 py-0.5 border rounded-full ${
                       c.gold
-                        ? 'border-yellow-500/45 text-yellow-500 bg-yellow-500/10'
-                        : 'border-[var(--card-border)] text-[var(--text-secondary)] bg-black/10'
+                        ? 'border-yellow-500/40 text-yellow-600 dark:text-yellow-400 bg-yellow-500/5'
+                        : 'border-[var(--card-border)] text-[var(--text-secondary)] bg-[var(--bg-color)]'
                     }`}>
                       {c.issuer.toUpperCase()}
                     </span>
-                    <span className="border border-emerald-500/25 text-emerald-500 bg-emerald-500/5 px-2 py-0.5 text-[8.5px] font-mono rounded">
-                      [VERIFIED]
+                    <span className="inline-flex items-center gap-1 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 text-[8.5px] font-mono rounded-full font-bold">
+                      <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse"></span>
+                      VERIFIED
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h4 className="font-syne font-extrabold text-sm md:text-base text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors leading-snug">
+                  <h4 className="font-display font-bold text-sm md:text-base text-[var(--text-primary)] group-hover:text-[var(--accent-secondary)] transition-colors leading-snug">
                     {c.name}
                   </h4>
                 </div>
@@ -254,7 +254,7 @@ export const Certifications: React.FC = () => {
                     FILE: {c.fileName.substring(0, 14)}...
                   </span>
                   <span className="text-[10px] font-mono font-bold text-[var(--accent-primary)] group-hover:underline">
-                    [ View Badge ]
+                    View Badge
                   </span>
                 </div>
               </div>
@@ -268,9 +268,9 @@ export const Certifications: React.FC = () => {
         <div className="mt-12 flex justify-center">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="px-4 py-2 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5 rounded-full"
+            className="px-5 py-2.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5 rounded-full bg-[var(--card-bg)]"
           >
-            <span>{showAll ? '[ Show Less ✨ ]' : '[ Show All Badges 🏆 ]'}</span>
+            <span>{showAll ? 'Show Less ✨' : 'Show All Badges 🏆'}</span>
             {showAll ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
           </button>
         </div>
@@ -281,7 +281,7 @@ export const Certifications: React.FC = () => {
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8 select-none">
           {/* Backdrop Click Close */}
           <div 
-            className="absolute inset-0 bg-black/90 cursor-pointer"
+            className="absolute inset-0 bg-black/90 backdrop-blur-sm cursor-pointer"
             onClick={() => setSelectedCert(null)}
           />
 
@@ -303,7 +303,7 @@ export const Certifications: React.FC = () => {
                     
                     <button 
                       onClick={() => setSelectedCert(null)}
-                      className="p-1 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer rounded"
+                      className="p-1.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer rounded-full bg-[var(--card-bg)]"
                     >
                       <X className="w-3.5 h-3.5" />
                     </button>
@@ -315,16 +315,16 @@ export const Certifications: React.FC = () => {
                       <span className="text-[9px] uppercase font-mono font-bold tracking-widest text-[var(--text-secondary)]">
                         ISSUED BY
                       </span>
-                      <h4 className="font-syne font-extrabold text-xl text-[var(--text-primary)] leading-tight mt-1">
+                      <h4 className="font-display font-bold text-xl text-[var(--text-primary)] leading-tight mt-1">
                         {selectedCert.name}
                       </h4>
                     </div>
 
                     <div className="flex flex-wrap gap-2 pt-1 text-[9px] font-mono">
-                      <span className="border border-emerald-500/25 text-emerald-500 bg-emerald-500/5 px-2 py-0.5 rounded">
+                      <span className="border border-emerald-500/25 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 px-2.5 py-0.5 rounded-full">
                         VERIFIED BADGE ✅
                       </span>
-                      <span className="border border-[var(--card-border)] text-[var(--text-secondary)] px-2 py-0.5 rounded">
+                      <span className="border border-[var(--card-border)] text-[var(--text-secondary)] px-2.5 py-0.5 rounded-full">
                         {selectedCert.category.toUpperCase()}
                       </span>
                     </div>
@@ -353,14 +353,14 @@ export const Certifications: React.FC = () => {
                     href={`/${selectedCert.fileName}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 text-center bg-[var(--text-primary)] text-[var(--bg-color)] font-bold text-xs hover:opacity-95 transition-opacity rounded"
+                    className="w-full py-2.5 text-center bg-[var(--text-primary)] text-[var(--bg-color)] font-bold text-xs hover:opacity-95 transition-opacity rounded-full"
                   >
                     Download Certificate PDF 📄
                   </a>
                   
                   <button 
                     onClick={() => setSelectedCert(null)}
-                    className="w-full py-2.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-xs text-[var(--text-primary)] font-bold transition-all cursor-pointer rounded"
+                    className="w-full py-2.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-xs text-[var(--text-primary)] font-bold transition-all cursor-pointer rounded-full"
                   >
                     Close Preview
                   </button>
@@ -372,7 +372,7 @@ export const Certifications: React.FC = () => {
               <div className="hidden md:flex flex-1 bg-black items-center justify-center p-4 relative">
                 <iframe 
                   src={`/${selectedCert.fileName}#toolbar=0&navpanes=0`}
-                  className="w-full h-full bg-stone-900 border border-[var(--card-border)]"
+                  className="w-full h-full bg-stone-900 border border-[var(--card-border)] rounded-lg"
                   title={`Certificate Preview - ${selectedCert.name}`}
                 />
               </div>

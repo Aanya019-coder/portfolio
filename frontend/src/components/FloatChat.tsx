@@ -79,26 +79,26 @@ export const FloatChat: React.FC = () => {
         <div className="w-full h-full border border-[var(--card-border)] rounded-[14px] overflow-hidden flex flex-col bg-transparent">
           
           {/* Header */}
-          <div className="bg-black/10 px-4 py-3 border-b border-[var(--card-border)] flex items-center justify-between font-mono text-[9px] text-[var(--text-secondary)]">
-            <div className="flex items-center gap-1.5">
+          <div className="bg-[var(--card-bg)] px-4 py-3 border-b border-[var(--card-border)] flex items-center justify-between font-mono text-[9px] text-[var(--text-secondary)]">
+            <div className="flex items-center gap-1.5 font-sans font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span className="font-syne font-bold uppercase tracking-wider text-[var(--text-primary)]">Aanya's AI Assistant 🤖</span>
+              <span className="font-display uppercase tracking-wider text-[var(--text-primary)]">Aanya's AI Assistant 🤖</span>
             </div>
             <button
               onClick={() => setTrayOpen(false)}
-              className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer border border-[var(--card-border)] p-0.5 rounded"
+              className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer border border-[var(--card-border)] p-1 rounded-full bg-[var(--bg-color)]"
             >
               <X className="w-3 h-3" />
             </button>
           </div>
 
           {/* Message Log */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-[10px] font-mono min-h-[100px] bg-transparent">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-[10px] font-sans min-h-[100px] bg-transparent">
             {messages.map((msg, index) => {
               const isUser = msg.sender === 'user';
               return (
                 <div key={index} className="space-y-0.5">
-                  <div className={`text-[8px] font-bold opacity-60 mb-0.5 ${isUser ? 'text-right' : 'text-left'}`}>
+                  <div className={`text-[8px] font-bold font-mono opacity-60 mb-0.5 ${isUser ? 'text-right' : 'text-left'}`}>
                     {isUser ? 'YOU' : 'AI ASSISTANT'}
                   </div>
                   <div
@@ -116,7 +116,7 @@ export const FloatChat: React.FC = () => {
 
             {isThinking && (
               <div className="space-y-0.5 animate-pulse">
-                <div className="text-[8px] font-bold opacity-60 text-left">AI ASSISTANT</div>
+                <div className="text-[8px] font-bold font-mono opacity-60 text-left">AI ASSISTANT</div>
                 <div className="p-3 chat-bubble-ai max-w-[85%] italic text-stone-500">
                   Thinking... 🤔
                 </div>
@@ -127,40 +127,40 @@ export const FloatChat: React.FC = () => {
           </div>
 
           {/* Quick Suggestions Chips */}
-          <div className="px-3 py-1.5 flex flex-wrap gap-1.5 bg-black/10 border-t border-[var(--card-border)] font-mono text-[9px]">
+          <div className="px-3 py-2 flex flex-wrap gap-1.5 bg-[var(--card-bg)] border-t border-[var(--card-border)] font-mono text-[9px]">
             <button
               onClick={() => handleQuickQuestion("What are Aanya's technical skills?")}
-              className="px-2.5 py-1 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer rounded-full bg-[var(--bg-color)]"
+              className="px-3 py-1.5 border border-[var(--card-border)] hover:border-[var(--accent-secondary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer rounded-full bg-[var(--bg-color)] font-bold"
             >
               Skills 🛠️
             </button>
             <button
               onClick={() => handleQuickQuestion("Why hire Aanya?")}
-              className="px-2.5 py-1 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer rounded-full bg-[var(--bg-color)]"
+              className="px-3 py-1.5 border border-[var(--card-border)] hover:border-[var(--accent-secondary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer rounded-full bg-[var(--bg-color)] font-bold"
             >
               Why Hire? 🌟
             </button>
             <button
               onClick={() => handleQuickQuestion("Tell me about Beyond Career")}
-              className="px-2.5 py-1 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer rounded-full bg-[var(--bg-color)]"
+              className="px-3 py-1.5 border border-[var(--card-border)] hover:border-[var(--accent-secondary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer rounded-full bg-[var(--bg-color)] font-bold"
             >
               Projects 🚀
             </button>
           </div>
 
           {/* Input Row */}
-          <div className="p-2 border-t border-[var(--card-border)] bg-black/10 flex gap-1.5 font-mono text-[10px]">
+          <div className="p-2 border-t border-[var(--card-border)] bg-[var(--card-bg)] flex gap-1.5 font-mono text-[10px]">
             <input
               type="text"
               placeholder="Ask me anything..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(inputValue)}
-              className="flex-1 bg-[var(--bg-color)] border border-[var(--card-border)] px-3 py-1.5 text-[var(--text-primary)] placeholder-stone-600 focus:outline-none focus:border-[var(--accent-primary)] rounded-lg"
+              className="flex-1 bg-[var(--bg-color)] border border-[var(--card-border)] px-4 py-2 text-[var(--text-primary)] placeholder-stone-600 focus:outline-none focus:border-[var(--accent-secondary)] rounded-full text-xs"
             />
             <button
               onClick={() => handleSendMessage(inputValue)}
-              className="px-4 bg-[var(--text-primary)] text-[var(--bg-color)] font-bold hover:opacity-90 transition-opacity flex items-center justify-center cursor-pointer rounded-lg uppercase"
+              className="px-4 py-2 bg-[var(--accent-secondary)] hover:bg-[var(--accent-primary)] text-white hover:text-slate-900 font-bold hover:opacity-90 transition-all flex items-center justify-center cursor-pointer rounded-full uppercase"
             >
               Send
             </button>

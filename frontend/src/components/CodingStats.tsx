@@ -146,12 +146,12 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
   }, []);
 
   const statsTheme = isLight
-    ? "theme=transparent&title_color=A88C52&text_color=605B55&icon_color=A88C52&border_color=A88C52"
-    : "theme=transparent&title_color=D4AF37&text_color=A09B90&icon_color=D4AF37&border_color=2D2C2A";
+    ? "theme=transparent&title_color=1E60D5&text_color=111827&icon_color=FFB800&border_color=F3F4F6"
+    : "theme=transparent&title_color=FFB800&text_color=F3F4F6&icon_color=1E60D5&border_color=242F47";
 
   const streakTheme = isLight
-    ? "currStreakNum=A88C52&sideNums=605B55&sideLabels=605B55&currStreakLabel=A88C52&ring=A88C52&fire=A88C52&border=A88C52"
-    : "background=141312&currStreakNum=D4AF37&sideNums=A09B90&sideLabels=A09B90&currStreakLabel=D4AF37&ring=D4AF37&fire=D4AF37&border=2D2C2A";
+    ? "currStreakNum=1E60D5&sideNums=111827&sideLabels=4B5563&currStreakLabel=FFB800&ring=FFB800&fire=FFB800&border=F3F4F6"
+    : "background=0B0F19&currStreakNum=FFB800&sideNums=F3F4F6&sideLabels=9CA3AF&currStreakLabel=1E60D5&ring=1E60D5&fire=1E60D5&border=242F47";
 
   const statsCardSrc = `https://github-readme-stats.vercel.app/api?username=Aanya019-coder&show_icons=true&${statsTheme}`;
   const streakCardSrc = `https://github-readme-streak-stats.herokuapp.com/?user=Aanya019-coder&theme=transparent&${streakTheme}`;
@@ -165,33 +165,31 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
 
   return (
     <>
-      {/* CODES & METRICS REPORT SECTION (Financial Market Style) */}
+      {/* CODES & METRICS REPORT SECTION */}
       <section id="coding-stats" className="py-20 max-w-6xl mx-auto px-6 relative border-t border-[var(--card-border)]">
         
         {/* Banner Header */}
-        <div className="flex flex-col items-center mb-12 select-none">
-          <div className="text-center pb-2">
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-              NUMBERS, METRICS & STATS
-            </span>
-          </div>
-          <h2 className="font-syne font-extrabold text-2xl md:text-4xl text-center w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-            MY CODING DASHBOARD 📊
+        <div className="text-center mb-12 select-none">
+          <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-secondary)] font-bold bg-[var(--card-bg)] px-3.5 py-1.5 rounded-full border border-[var(--card-border)]">
+            📊 NUMBERS, METRICS & STATS
+          </span>
+          <h2 className="font-display font-extrabold text-3xl md:text-5xl text-[var(--text-primary)] mt-4">
+            Coding Dashboard
           </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* LeetCode Report (Col Span 5) */}
-          <div className="lg:col-span-5 border border-[var(--card-border)] p-6 flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-2xl flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
             <div>
               {/* Report Header */}
               <div className="flex items-center justify-between pb-3 border-b border-[var(--card-border)] mb-6 select-none font-mono">
                 <div className="flex items-center gap-2 text-[var(--text-primary)] font-bold text-sm">
-                  <Activity className="w-4 h-4 text-[var(--accent-primary)]" />
+                  <Activity className="w-4 h-4 text-[var(--accent-secondary)]" />
                   <span>LEETCODE STATS</span>
                 </div>
-                <span className="text-[9px] border border-[var(--accent-primary)] text-[var(--accent-primary)] px-1 py-0.2">
+                <span className="text-[9px] border border-[var(--accent-primary)] text-[var(--accent-primary)] px-2 py-0.5 rounded-full font-bold">
                   LIVE SYNC
                 </span>
               </div>
@@ -199,15 +197,15 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
               {/* Data Table and Ring */}
               <div className="flex flex-col sm:flex-row items-center gap-6 mb-6">
                 
-                {/* Traditional Dial */}
+                {/* Dial */}
                 <div className="relative w-24 h-24 flex items-center justify-center shrink-0">
                   <svg className="w-full h-full transform -rotate-90">
-                    <circle cx="48" cy="48" r="40" stroke="var(--card-border)" strokeWidth="6" fill="transparent" />
+                    <circle cx="48" cy="48" r="40" stroke={isLight ? "#E5E7EB" : "#242F47"} strokeWidth="6" fill="transparent" />
                     <circle
                       cx="48"
                       cy="48"
                       r="40"
-                      stroke="var(--accent-primary)"
+                      stroke="var(--accent-secondary)"
                       strokeWidth="6"
                       fill="transparent"
                       strokeDasharray={2 * Math.PI * 40}
@@ -217,10 +215,10 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
                   </svg>
                   <div className="absolute text-center select-none">
                     <div className="flex items-baseline justify-center">
-                      <span className="text-xl font-bold font-serif text-[var(--text-primary)]">{mainPart}</span>
+                      <span className="text-xl font-bold font-sans text-[var(--text-primary)]">{mainPart}</span>
                       <span className="text-[10px] font-bold text-[var(--text-secondary)]">{subPart}</span>
                     </div>
-                    <span className="block text-[8px] uppercase tracking-wider text-[var(--text-secondary)] font-mono">ACCEPTANCE</span>
+                    <span className="block text-[8px] uppercase tracking-wider text-[var(--text-secondary)] font-mono font-bold">ACCEPTANCE</span>
                   </div>
                 </div>
 
@@ -232,15 +230,15 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
                   </div>
                   <div className="space-y-1.5">
                     <div className="flex justify-between items-center">
-                      <span className="font-bold">Easy Algorithms</span>
+                      <span className="font-medium text-[var(--text-secondary)]">Easy Solved</span>
                       <span className="font-bold text-[var(--text-primary)]">{lcStats.easySolved} / {lcStats.totalEasy}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="font-bold">Medium Algorithms</span>
+                      <span className="font-medium text-[var(--text-secondary)]">Medium Solved</span>
                       <span className="font-bold text-[var(--text-primary)]">{lcStats.mediumSolved} / {lcStats.totalMedium}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="font-bold">Hard Algorithms</span>
+                      <span className="font-medium text-[var(--text-secondary)]">Hard Solved</span>
                       <span className="font-bold text-[var(--text-primary)]">{lcStats.hardSolved} / {lcStats.totalHard}</span>
                     </div>
                   </div>
@@ -249,14 +247,14 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
               </div>
 
               {/* Ledger Summary Stats */}
-              <div className="border border-[var(--card-border)] bg-black/10 p-4 font-mono text-xs space-y-1.5 select-none">
+              <div className="border border-[var(--card-border)] bg-[var(--bg-color)] p-4 rounded-xl font-mono text-xs space-y-1.5 select-none">
                 <div className="flex justify-between text-[var(--text-secondary)]">
                   <span>TOTAL SUBMISSIONS:</span>
                   <span className="text-[var(--text-primary)] font-bold">{lcStats.totalSubmissions} runs</span>
                 </div>
                 <div className="flex justify-between text-[var(--text-secondary)] font-bold">
                   <span>GLOBAL RATING:</span>
-                  <span className="text-[var(--accent-primary)] font-black uppercase">{lcStats.ranking}</span>
+                  <span className="text-[var(--accent-secondary)] font-black uppercase">{lcStats.ranking}</span>
                 </div>
               </div>
             </div>
@@ -266,54 +264,54 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
                 href="https://leetcode.com/u/Aanya_019/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] text-xs font-mono font-bold text-center block transition-all rounded"
+                className="w-full py-2.5 border border-[var(--card-border)] hover:border-[var(--accent-secondary)] hover:bg-[var(--accent-secondary)] hover:text-white text-[var(--text-primary)] text-xs font-mono font-bold text-center block transition-all rounded-full"
               >
-                [ VIEW MY LEETCODE PROFILE <ArrowUpRight className="w-3 h-3 inline mb-0.5" /> ]
+                VIEW MY LEETCODE PROFILE <ArrowUpRight className="w-3.5 h-3.5 inline mb-0.5" />
               </a>
             </div>
           </div>
 
           {/* GitHub Report (Col Span 7) */}
-          <div className="lg:col-span-7 border border-[var(--card-border)] p-6 flex flex-col justify-between">
+          <div className="lg:col-span-7 bg-[var(--card-bg)] border border-[var(--card-border)] p-6 rounded-2xl flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
             <div>
               {/* Report Header */}
               <div className="flex items-center justify-between pb-3 border-b border-[var(--card-border)] mb-6 select-none font-mono">
                 <div className="flex items-center gap-2 text-[var(--text-primary)] font-bold text-sm">
-                  <BarChart2 className="w-4 h-4 text-[var(--accent-primary)]" />
+                  <BarChart2 className="w-4 h-4 text-[var(--accent-secondary)]" />
                   <span>GITHUB STATS</span>
                 </div>
-                <span className="text-[9px] border border-[var(--accent-primary)] text-[var(--accent-primary)] px-1 py-0.2">
+                <span className="text-[9px] border border-[var(--accent-primary)] text-[var(--accent-primary)] px-2 py-0.5 rounded-full font-bold">
                   ACTIVE SYNC
                 </span>
               </div>
 
               {/* Core Index Numbers Grid */}
               <div className="grid grid-cols-3 gap-4 mb-6 font-mono text-center select-none">
-                <div className="border border-[var(--card-border)] p-3">
-                  <span className="block text-[9px] text-[var(--text-secondary)] mb-1 uppercase">Public Repos</span>
+                <div className="border border-[var(--card-border)] bg-[var(--bg-color)] p-3 rounded-xl">
+                  <span className="block text-[9px] text-[var(--text-secondary)] mb-1 uppercase font-bold">Public Repos</span>
                   <span className="text-xl font-bold text-[var(--text-primary)]">{ghStats.repos}</span>
                 </div>
-                <div className="border border-[var(--card-border)] p-3">
-                  <span className="block text-[9px] text-[var(--text-secondary)] mb-1 uppercase">Followers</span>
+                <div className="border border-[var(--card-border)] bg-[var(--bg-color)] p-3 rounded-xl">
+                  <span className="block text-[9px] text-[var(--text-secondary)] mb-1 uppercase font-bold">Followers</span>
                   <span className="text-xl font-bold text-[var(--text-primary)]">{ghStats.followers}</span>
                 </div>
-                <div className="border border-[var(--card-border)] p-3">
-                  <span className="block text-[9px] text-[var(--text-secondary)] mb-1 uppercase">Total Stars</span>
+                <div className="border border-[var(--card-border)] bg-[var(--bg-color)] p-3 rounded-xl">
+                  <span className="block text-[9px] text-[var(--text-secondary)] mb-1 uppercase font-bold">Total Stars</span>
                   <span className="text-xl font-bold text-[var(--text-primary)]">{ghStats.stars}</span>
                 </div>
               </div>
 
               {/* GitHub Readme Cards */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center select-none border border-[var(--card-border)] p-3 bg-black/5">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center select-none border border-[var(--card-border)] p-4 bg-[var(--bg-color)] rounded-xl">
                 <img
                   src={statsCardSrc}
                   alt="Aanya's GitHub Stats"
-                  className="w-full sm:w-1/2 max-h-40 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="w-full sm:w-1/2 max-h-40 object-contain hover:scale-102 transition-all duration-300"
                 />
                 <img
                   src={streakCardSrc}
                   alt="Aanya's GitHub Streak"
-                  className="w-full sm:w-1/2 max-h-40 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="w-full sm:w-1/2 max-h-40 object-contain hover:scale-102 transition-all duration-300"
                 />
               </div>
             </div>
@@ -323,9 +321,9 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
                 href="https://github.com/Aanya019-coder"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] text-xs font-mono font-bold text-center block transition-all rounded"
+                className="w-full py-2.5 border border-[var(--card-border)] hover:border-[var(--accent-secondary)] hover:bg-[var(--accent-secondary)] hover:text-white text-[var(--text-primary)] text-xs font-mono font-bold text-center block transition-all rounded-full"
               >
-                [ VISIT MY GITHUB PROFILE <ArrowUpRight className="w-3 h-3 inline mb-0.5" /> ]
+                VISIT MY GITHUB PROFILE <ArrowUpRight className="w-3.5 h-3.5 inline mb-0.5" />
               </a>
             </div>
           </div>
@@ -337,16 +335,14 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
       <section id="skills" className="py-20 max-w-6xl mx-auto px-6 relative border-t border-[var(--card-border)] select-none">
         
         {/* Skills Masthead */}
-        <div className="flex flex-col items-center mb-10 text-center select-none">
-          <div className="pb-2">
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-              TECH STACK & SKILLS 🛠️
-            </span>
-          </div>
-          <h2 className="font-syne font-extrabold text-2xl md:text-3xl text-center w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-            MY SKILLS & CAPABILITIES
+        <div className="text-center mb-10 select-none">
+          <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-secondary)] font-bold bg-[var(--card-bg)] px-3.5 py-1.5 rounded-full border border-[var(--card-border)]">
+            🛠️ TECH STACK & SKILLS
+          </span>
+          <h2 className="font-display font-extrabold text-3xl md:text-5xl text-[var(--text-primary)] mt-4">
+            Skills & Capabilities
           </h2>
-          <div className="py-1 px-4 text-[9px] font-mono text-[var(--text-secondary)] uppercase tracking-wider">
+          <div className="mt-3 text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-wider">
             Languages · Frameworks · Machine Learning · Cloud & Databases
           </div>
         </div>
@@ -355,23 +351,23 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
         <div className="flex gap-4 justify-center mb-10 select-none">
           <button
             onClick={() => setSkillsView('grid')}
-            className={`px-4 py-1.5 border font-mono text-[10px] uppercase transition-all cursor-pointer rounded-full ${
+            className={`px-4 py-2 font-mono text-[10px] uppercase transition-all font-bold duration-300 rounded-full cursor-pointer border ${
               skillsView === 'grid'
-                ? 'border-[var(--accent-primary)] text-[var(--accent-primary)] bg-[rgba(var(--accent-primary),0.05)] font-bold'
-                : 'border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                ? 'bg-[var(--accent-primary)] text-slate-900 border-[var(--accent-primary)] shadow-sm'
+                : 'bg-[var(--card-bg)] border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-secondary)]'
             }`}
           >
-            [ Interactive Cards ]
+            Interactive Cards
           </button>
           <button
             onClick={() => setSkillsView('radar')}
-            className={`px-4 py-1.5 border font-mono text-[10px] uppercase transition-all cursor-pointer rounded-full ${
+            className={`px-4 py-2 font-mono text-[10px] uppercase transition-all font-bold duration-300 rounded-full cursor-pointer border ${
               skillsView === 'radar'
-                ? 'border-[var(--accent-primary)] text-[var(--accent-primary)] bg-[rgba(var(--accent-primary),0.05)] font-bold'
-                : 'border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                ? 'bg-[var(--accent-primary)] text-slate-900 border-[var(--accent-primary)] shadow-sm'
+                : 'bg-[var(--card-bg)] border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-secondary)]'
             }`}
           >
-            [ Skills Radar Map ]
+            Skills Radar Map
           </button>
         </div>
 
@@ -383,33 +379,33 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 
                 {/* Skill Card 1 */}
-                <div className="classified-ad rounded-xl">
-                  <div className="classified-ad-header">LANGUAGES 💻</div>
-                  <div className="classified-ad-body font-sans">
+                <div className="bg-[var(--card-bg)] border border-[var(--card-border)] border-l-4 border-l-[var(--accent-secondary)] p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="font-display font-bold text-sm uppercase tracking-wider text-[var(--accent-secondary)] mb-2">LANGUAGES 💻</div>
+                  <div className="text-xs text-[var(--text-secondary)] leading-relaxed font-sans">
                     Deep expertise in writing clean code and scaling logic with: <strong>Python</strong>, <strong>C++ (OOPs & DSA)</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, and <strong>Dart</strong>.
                   </div>
                 </div>
 
                 {/* Skill Card 2 */}
-                <div className="classified-ad rounded-xl">
-                  <div className="classified-ad-header">FRAMEWORKS ⚡</div>
-                  <div className="classified-ad-body font-sans">
+                <div className="bg-[var(--card-bg)] border border-[var(--card-border)] border-l-4 border-l-[var(--accent-primary)] p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="font-display font-bold text-sm uppercase tracking-wider text-[var(--accent-primary)] mb-2">FRAMEWORKS ⚡</div>
+                  <div className="text-xs text-[var(--text-secondary)] leading-relaxed font-sans">
                     Building responsive frontend interfaces and fast APIs using: <strong>React.js</strong>, <strong>Next.js</strong>, <strong>FastAPI</strong>, <strong>Node.js</strong>, <strong>Express</strong>, and <strong>Flutter</strong>.
                   </div>
                 </div>
 
                 {/* Skill Card 3 */}
-                <div className="classified-ad rounded-xl">
-                  <div className="classified-ad-header">AI & DEEP LEARNING 🧠</div>
-                  <div className="classified-ad-body font-sans">
+                <div className="bg-[var(--card-bg)] border border-[var(--card-border)] border-l-4 border-l-[var(--accent-primary)] p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="font-display font-bold text-sm uppercase tracking-wider text-[var(--accent-primary)] mb-2">AI & DEEP LEARNING 🧠</div>
+                  <div className="text-xs text-[var(--text-secondary)] leading-relaxed font-sans">
                     Designing advanced <strong>RAG architectures</strong> with <strong>FAISS vector search</strong>, integrating <strong>Gemini APIs</strong>, and training custom <strong>CNN models</strong> (EfficientNet, Grad-CAM).
                   </div>
                 </div>
 
                 {/* Skill Card 4 */}
-                <div className="classified-ad rounded-xl">
-                  <div className="classified-ad-header">INFRASTRUCTURE & DBs 🛠️</div>
-                  <div className="classified-ad-body font-sans">
+                <div className="bg-[var(--card-bg)] border border-[var(--card-border)] border-l-4 border-l-[var(--accent-secondary)] p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="font-display font-bold text-sm uppercase tracking-wider text-[var(--accent-secondary)] mb-2">INFRASTRUCTURE & DBs 🛠️</div>
+                  <div className="text-xs text-[var(--text-secondary)] leading-relaxed font-sans">
                     Deploying applications and database models with: <strong>Docker</strong>, <strong>PostgreSQL</strong>, <strong>MongoDB</strong>, <strong>Supabase</strong>, <strong>Git</strong>, and <strong>GitHub Actions CI/CD</strong> pipelines.
                   </div>
                 </div>
@@ -417,26 +413,26 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
               </div>
             ) : (
               /* Proficiency bars */
-              <div className="space-y-5 py-4 font-mono text-xs">
+              <div className="space-y-6 py-4 font-mono text-xs">
                 <div>
-                  <div className="flex justify-between text-[var(--text-secondary)] mb-1">
+                  <div className="flex justify-between text-[var(--text-secondary)] mb-1.5 font-bold">
                     <span>AI ENGINEERING & RAG PIPELINES</span>
                     <span className="font-bold text-[var(--text-primary)]">90%</span>
                   </div>
-                  <div className="w-full bg-[var(--card-border)] h-2.5 rounded-full overflow-hidden p-0.5 border border-[var(--card-border)]">
+                  <div className="w-full bg-[var(--card-border)] h-3 rounded-full overflow-hidden p-0.5 border border-[var(--card-border)]">
                     <div
-                      className="bg-[var(--accent-primary)] h-full transition-all duration-[1.5s] rounded-full"
+                      className="bg-[var(--accent-secondary)] h-full transition-all duration-[1.5s] rounded-full"
                       style={{ width: '90%' }}
                     ></div>
                   </div>
                 </div>
                 
                 <div>
-                  <div className="flex justify-between text-[var(--text-secondary)] mb-1">
+                  <div className="flex justify-between text-[var(--text-secondary)] mb-1.5 font-bold">
                     <span>FULL STACK DEVELOPMENT</span>
                     <span className="font-bold text-[var(--text-primary)]">85%</span>
                   </div>
-                  <div className="w-full bg-[var(--card-border)] h-2.5 rounded-full overflow-hidden p-0.5 border border-[var(--card-border)]">
+                  <div className="w-full bg-[var(--card-border)] h-3 rounded-full overflow-hidden p-0.5 border border-[var(--card-border)]">
                     <div
                       className="bg-[var(--accent-primary)] h-full transition-all duration-[1.5s] rounded-full"
                       style={{ width: '85%' }}
@@ -445,13 +441,13 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
                 </div>
 
                 <div>
-                  <div className="flex justify-between text-[var(--text-secondary)] mb-1">
+                  <div className="flex justify-between text-[var(--text-secondary)] mb-1.5 font-bold">
                     <span>MOBILE APP ARCHITECTURES</span>
                     <span className="font-bold text-[var(--text-primary)]">75%</span>
                   </div>
-                  <div className="w-full bg-[var(--card-border)] h-2.5 rounded-full overflow-hidden p-0.5 border border-[var(--card-border)]">
+                  <div className="w-full bg-[var(--card-border)] h-3 rounded-full overflow-hidden p-0.5 border border-[var(--card-border)]">
                     <div
-                      className="bg-[var(--accent-primary)] h-full transition-all duration-[1.5s] rounded-full"
+                      className="bg-[var(--accent-secondary)] h-full transition-all duration-[1.5s] rounded-full"
                       style={{ width: '75%' }}
                     ></div>
                   </div>
@@ -462,7 +458,7 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
 
           {/* Right Container (Radar Chart) */}
           <div className="lg:col-span-5 flex justify-center items-center">
-            <div className="w-72 h-72 md:w-80 md:h-80 relative flex items-center justify-center border border-[var(--card-border)] p-4 bg-black/5 rounded-2xl shadow-sm">
+            <div className="w-72 h-72 md:w-80 md:h-80 relative flex items-center justify-center border border-[var(--card-border)] p-4 bg-[var(--card-bg)] rounded-2xl shadow-sm">
               <svg viewBox="0 0 100 100" className="w-full h-full">
                 {/* Grid Lines */}
                 <polygon points="50,10 90,38 75,85 25,85 10,38" fill="none" stroke="var(--card-border)" strokeWidth="0.8" />
@@ -487,8 +483,8 @@ export const CodingStats: React.FC<CodingStatsProps> = ({ isLight }) => {
                 {/* Radar Area */}
                 <polygon
                   points="50,14 88,38 72,80.8 31.25,76.25 17.2,40.16"
-                  fill={isLight ? "rgba(168, 140, 82, 0.15)" : "rgba(197, 160, 89, 0.15)"}
-                  stroke="var(--accent-primary)"
+                  fill={isLight ? "rgba(30, 96, 213, 0.12)" : "rgba(255, 184, 0, 0.12)"}
+                  stroke="var(--accent-secondary)"
                   strokeWidth="1.5"
                 />
               </svg>

@@ -62,27 +62,25 @@ export const InlineChat: React.FC = () => {
     <section id="ai-chat" className="py-20 max-w-4xl mx-auto px-6 relative border-t border-[var(--card-border)] select-none">
       
       {/* Section Header */}
-      <div className="flex flex-col items-center mb-10 text-center select-none">
-        <div className="pb-2">
-          <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-            ASK ME ANYTHING! 🤖
-          </span>
-        </div>
-        <h2 className="font-syne text-2xl md:text-3xl font-black uppercase w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-          Aanya's AI Chatbot ✨
+      <div className="text-center mb-10 select-none">
+        <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-secondary)] font-bold bg-[var(--card-bg)] px-3.5 py-1.5 rounded-full border border-[var(--card-border)]">
+          🤖 ASK ME ANYTHING!
+        </span>
+        <h2 className="font-display font-extrabold text-3xl md:text-5xl text-[var(--text-primary)] mt-4">
+          Aanya's AI Chatbot
         </h2>
-        <div className="py-1 px-4 text-[9px] font-mono text-[var(--text-secondary)] uppercase tracking-wider">
+        <div className="mt-3 text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-wider">
           Ask my AI assistant about my B.Tech studies, projects, and work experience!
         </div>
       </div>
 
       {/* Quick Prompts */}
-      <div className="flex flex-wrap gap-2.5 justify-center mb-6 select-none font-mono text-xs">
+      <div className="flex flex-wrap gap-2.5 justify-center mb-8 select-none font-mono text-xs">
         {quickPrompts.map((prompt, idx) => (
           <button
             key={idx}
             onClick={() => handleSendMessage(prompt.text)}
-            className="px-3.5 py-1.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer rounded-full bg-[var(--bg-color)] shadow-sm"
+            className="px-4 py-2 border border-[var(--card-border)] hover:border-[var(--accent-secondary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer rounded-full bg-[var(--card-bg)] shadow-sm font-bold"
           >
             {prompt.label}
           </button>
@@ -90,24 +88,24 @@ export const InlineChat: React.FC = () => {
       </div>
 
       {/* Chat Container */}
-      <div className="border-2 border-[var(--card-border)] rounded-2xl overflow-hidden bg-black/5 flex flex-col shadow-sm">
+      <div className="border-2 border-[var(--card-border)] rounded-2xl overflow-hidden bg-[var(--card-bg)] flex flex-col shadow-sm">
         {/* Chat Header Banner */}
-        <div className="px-6 py-3 border-b border-[var(--card-border)] bg-black/10 flex items-center justify-between text-[10px] font-mono text-[var(--text-secondary)]">
+        <div className="px-6 py-3.5 border-b border-[var(--card-border)] bg-[var(--bg-color)] flex items-center justify-between text-[10px] font-mono text-[var(--text-secondary)]">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span className="font-bold">AI ASSISTANT ACTIVE</span>
+            <span className="font-bold text-[var(--text-primary)]">AI ASSISTANT ACTIVE</span>
           </div>
-          <span>SECURE CONNECTED</span>
+          <span className="font-bold">SECURE CONNECTION</span>
         </div>
 
         {/* Messages Log */}
-        <div className="h-80 overflow-y-auto p-6 space-y-6 text-xs font-mono">
+        <div className="h-80 overflow-y-auto p-6 space-y-6 text-xs font-sans">
           {messages.map((msg, index) => {
             const isUser = msg.sender === 'user';
             return (
               <div key={index} className="space-y-1">
                 {/* Stamp label */}
-                <div className={`text-[9px] font-bold opacity-60 ${isUser ? 'text-right' : 'text-left'}`}>
+                <div className={`text-[9px] font-mono font-bold opacity-60 ${isUser ? 'text-right' : 'text-left'}`}>
                   {isUser ? 'YOU' : 'AI ASSISTANT'}
                 </div>
                 
@@ -124,8 +122,8 @@ export const InlineChat: React.FC = () => {
           })}
 
           {isThinking && (
-            <div className="space-y-1 animate-pulse">
-              <div className="text-[9px] font-bold opacity-60 text-left">
+            <div className="space-y-1 animate-pulse font-sans">
+              <div className="text-[9px] font-mono font-bold opacity-60 text-left">
                 AI ASSISTANT
               </div>
               <div className="p-3 chat-bubble-ai max-w-[85%] text-stone-500 text-xs italic">
@@ -138,24 +136,23 @@ export const InlineChat: React.FC = () => {
         </div>
 
         {/* Input Row */}
-        <div className="p-3 border-t border-[var(--card-border)] bg-black/10 flex gap-2 font-mono text-xs">
+        <div className="p-3 border-t border-[var(--card-border)] bg-[var(--bg-color)] flex gap-2 font-mono text-xs">
           <input
             type="text"
             placeholder="Ask me anything..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(inputValue)}
-            className="flex-1 bg-[var(--bg-color)] border border-[var(--card-border)] px-4 py-2 text-[var(--text-primary)] placeholder-stone-600 focus:outline-none focus:border-[var(--accent-primary)] rounded-lg"
+            className="flex-1 bg-[var(--card-bg)] border border-[var(--card-border)] px-4 py-2.5 text-[var(--text-primary)] placeholder-stone-600 focus:outline-none focus:border-[var(--accent-secondary)] rounded-full"
           />
           <button
             onClick={() => handleSendMessage(inputValue)}
-            className="px-4 py-2 bg-[var(--text-primary)] text-[var(--bg-color)] font-bold hover:opacity-90 transition-opacity flex items-center gap-1.5 cursor-pointer rounded-lg uppercase"
+            className="px-5 py-2.5 bg-[var(--accent-secondary)] hover:bg-[var(--accent-primary)] text-white hover:text-slate-900 font-bold hover:opacity-90 transition-all flex items-center gap-1.5 cursor-pointer rounded-full uppercase"
           >
             Send <Send className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
-
     </section>
   );
 };

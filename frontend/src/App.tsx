@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { AboutMe } from './components/AboutMe';
 import { Projects } from './components/Projects';
 import { CodingStats } from './components/CodingStats';
 import { Timeline } from './components/Timeline';
@@ -220,6 +221,7 @@ function App() {
       {/* CORE SECTIONS */}
       <main className="relative z-10">
         <Hero />
+        <AboutMe />
         <Projects />
         <CodingStats isLight={isLight} />
         <Timeline />
@@ -229,14 +231,12 @@ function App() {
         <section id="contact" className="py-20 max-w-6xl mx-auto px-6 relative border-t border-[var(--card-border)] select-none">
           {/* Section Header */}
           <div className="flex flex-col items-center mb-12 select-none">
-            <div className="text-center pb-2">
-              <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-                LET'S BUILD SOMETHING COOL TOGETHER
-              </span>
-            </div>
-            <h2 className="font-syne font-extrabold text-2xl md:text-4xl text-center w-full py-2.5 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-              SAY HELLO! ✉️
+            <h2 className="font-sans font-extrabold text-3xl md:text-4xl text-center text-[var(--text-primary)]">
+              Say Hello! ✉️
             </h2>
+            <p className="font-sans text-xs text-[var(--text-secondary)] tracking-wider mt-2 uppercase">
+              LET'S BUILD SOMETHING COOL TOGETHER
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-6">
@@ -298,9 +298,9 @@ function App() {
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                     placeholder=" "
-                    className="w-full bg-[var(--bg-color)] border border-[var(--card-border)] px-4 py-3 text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] peer"
+                    className="w-full bg-[var(--card-bg)] border border-[var(--card-border)] px-4 py-3 text-[var(--text-primary)] rounded-xl focus:outline-none focus:border-[var(--accent-primary)] peer"
                   />
-                  <label className="absolute left-4 top-3 text-stone-500 pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-stone-500 peer-focus:top-1 peer-focus:text-[9px] peer-focus:text-[var(--accent-primary)] peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-[9px] peer-[:not(:placeholder-shown)]:text-[var(--accent-primary)]">
+                  <label className="absolute left-4 top-3.5 text-stone-500 pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-focus:top-1.5 peer-focus:text-[8px] peer-focus:text-[var(--accent-primary)] peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-[8px] peer-[:not(:placeholder-shown)]:text-[var(--accent-primary)] font-sans text-xs">
                     YOUR NAME
                   </label>
                 </div>
@@ -312,9 +312,9 @@ function App() {
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
                     placeholder=" "
-                    className="w-full bg-[var(--bg-color)] border border-[var(--card-border)] px-4 py-3 text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] peer"
+                    className="w-full bg-[var(--card-bg)] border border-[var(--card-border)] px-4 py-3 text-[var(--text-primary)] rounded-xl focus:outline-none focus:border-[var(--accent-primary)] peer"
                   />
-                  <label className="absolute left-4 top-3 text-stone-500 pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-stone-500 peer-focus:top-1 peer-focus:text-[9px] peer-focus:text-[var(--accent-primary)] peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-[9px] peer-[:not(:placeholder-shown)]:text-[var(--accent-primary)]">
+                  <label className="absolute left-4 top-3.5 text-stone-500 pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-focus:top-1.5 peer-focus:text-[8px] peer-focus:text-[var(--accent-primary)] peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-[8px] peer-[:not(:placeholder-shown)]:text-[var(--accent-primary)] font-sans text-xs">
                     YOUR EMAIL ADDRESS
                   </label>
                 </div>
@@ -326,9 +326,9 @@ function App() {
                     onChange={(e) => setContactMessage(e.target.value.substring(0, 500))}
                     placeholder=" "
                     rows={4}
-                    className="w-full bg-[var(--bg-color)] border border-[var(--card-border)] px-4 py-3 text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] peer resize-none"
+                    className="w-full bg-[var(--card-bg)] border border-[var(--card-border)] px-4 py-3 text-[var(--text-primary)] rounded-xl focus:outline-none focus:border-[var(--accent-primary)] peer resize-none"
                   ></textarea>
-                  <label className="absolute left-4 top-3 text-stone-500 pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-stone-500 peer-focus:top-1 peer-focus:text-[9px] peer-focus:text-[var(--accent-primary)] peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-[9px] peer-[:not(:placeholder-shown)]:text-[var(--accent-primary)]">
+                  <label className="absolute left-4 top-3.5 text-stone-500 pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-focus:top-1.5 peer-focus:text-[8px] peer-focus:text-[var(--accent-primary)] peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:text-[8px] peer-[:not(:placeholder-shown)]:text-[var(--accent-primary)] font-sans text-xs">
                     YOUR MESSAGE
                   </label>
                   <div className="text-right text-[9px] text-stone-500 mt-1">
@@ -337,26 +337,26 @@ function App() {
                 </div>
 
                 {formStatus === 'sending' && (
-                  <button type="button" disabled className="w-full py-3 bg-[var(--card-border)] text-stone-400 flex items-center justify-center gap-2">
+                  <button type="button" disabled className="w-full py-3 bg-[var(--card-border)] text-stone-400 flex items-center justify-center gap-2 rounded-full">
                     <span>SENDING MESSAGE...</span>
                   </button>
                 )}
 
                 {formStatus === 'success' && (
-                  <button type="button" disabled className="w-full py-3 bg-emerald-700/25 border border-emerald-500 text-emerald-400 flex items-center justify-center gap-2">
+                  <button type="button" disabled className="w-full py-3 bg-emerald-700/25 border border-emerald-500 text-emerald-400 flex items-center justify-center gap-2 rounded-full">
                     <CheckCircle className="w-4 h-4" />
                     <span>MESSAGE SENT SUCCESSFULLY! 🎉</span>
                   </button>
                 )}
 
                 {formStatus === 'error' && (
-                  <button type="button" disabled className="w-full py-3 bg-red-950/20 border border-red-500 text-red-400 flex items-center justify-center gap-2">
+                  <button type="button" disabled className="w-full py-3 bg-red-950/20 border border-red-500 text-red-400 flex items-center justify-center gap-2 rounded-full">
                     <span>SENDING FAILED. TRY AGAIN. ❌</span>
                   </button>
                 )}
 
                 {formStatus === 'idle' && (
-                  <button type="submit" className="w-full py-3 bg-[var(--text-primary)] text-[var(--bg-color)] font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 cursor-pointer uppercase">
+                  <button type="submit" className="w-full py-3 bg-[var(--accent-primary)] text-white font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 cursor-pointer uppercase rounded-full shadow-sm">
                     <span>Send Message 🚀</span>
                   </button>
                 )}

@@ -101,25 +101,32 @@ export const Projects: React.FC = () => {
     fetchProjects();
   }, []);
 
-  // Card background styling based on index number
-  const getCardStyle = (num: string) => {
-    switch (num) {
-      case '01':
-        return 'bg-[#E2ECE9] hover:bg-[#D4E3DE] border-[#B9CFC8] text-[#2C4A3F] dark:bg-[#1A2D27] dark:hover:bg-[#1E362F] dark:border-[#27443C] dark:text-[#E2ECE9]';
-      case '02':
-        return 'bg-[#F5EFEB] hover:bg-[#EFE5DE] border-[#DFD1C7] text-[#5C4D43] dark:bg-[#2E241E] dark:hover:bg-[#362B24] dark:border-[#42342B] dark:text-[#F5EFEB]';
-      case '03':
-        return 'bg-[#E9EDF0] hover:bg-[#DDE3E8] border-[#CDD6DF] text-[#3D4F5E] dark:bg-[#202930] dark:hover:bg-[#27323C] dark:border-[#313E4A] dark:text-[#E9EDF0]';
-      case '04':
-        return 'bg-[#FBF6E9] hover:bg-[#F7EED2] border-[#ECE2C5] text-[#6A5A35] dark:bg-[#302A1A] dark:hover:bg-[#3A321E] dark:border-[#4A4027] dark:text-[#FBF6E9]';
-      case '05':
-      default:
-        return 'bg-[#EAEFF5] hover:bg-[#DCE5EF] border-[#CAD6E5] text-[#3A4E68] dark:bg-[#1C2530] dark:hover:bg-[#232E3C] dark:border-[#2C3A4B] dark:text-[#EAEFF5]';
+  const [activeTab, setActiveTab] = useState('All');
+  const categories = ['All', 'AI / ML', 'Full-Stack', 'Mobile'];
+
+  const matchesTab = (proj: Project) => {
+    if (activeTab === 'All') return true;
+    const cat = proj.category.toLowerCase();
+    const tags = proj.tags.map(t => t.toLowerCase());
+
+    if (activeTab === 'AI / ML') {
+      return cat.includes('research') || cat.includes('nlp') || cat.includes('workflow') || cat.includes('ai') || cat.includes('machine') || tags.includes('cv') || tags.includes('nlp') || tags.includes('tf') || tags.includes('tensorflow') || tags.includes('gemini api') || tags.includes('openai api');
     }
+    if (activeTab === 'Full-Stack') {
+      return cat.includes('full-stack') || cat.includes('web') || tags.includes('next.js') || tags.includes('react.js');
+    }
+    if (activeTab === 'Mobile') {
+      return cat.includes('mobile') || cat.includes('app') || tags.includes('flutter') || tags.includes('dart') || tags.includes('mobile');
+    }
+    return true;
+  };
+
+  const getCardStyle = () => {
+    return 'bg-[var(--card-bg)] border-[var(--card-border)] text-[var(--text-primary)] hover:border-[var(--accent-secondary)] rounded-2xl';
   };
 
   const getCardIcon = (num: string) => {
-    const classStr = "w-10 h-10 stroke-[1.2] opacity-80";
+    const classStr = "w-10 h-10 stroke-[1.2] text-[var(--accent-secondary)] transition-transform duration-300 group-hover:scale-110";
     switch (num) {
       case '01':
         return <Leaf className={classStr} />;
@@ -136,34 +143,49 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-16 max-w-6xl mx-auto px-6 relative border-t border-[var(--card-border)] select-none">
+    <section id="projects" className="py-20 max-w-6xl mx-auto px-6 relative border-t border-[var(--card-border)] select-none">
       
       {/* Section Header */}
-      <div className="flex flex-col items-center mb-10 select-none">
-        <div className="text-center pb-2">
-          <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] font-bold">
-            FEAST YOUR EYES ON MY BUILDS
-          </span>
-        </div>
-        <h2 className="font-syne font-extrabold text-2xl md:text-4xl text-center w-full py-3 border-y border-[var(--card-border)] text-[var(--text-primary)]">
-          MY PROJECTS & CREATIONS 🚀
+      <div className="text-center mb-10 select-none">
+        <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-secondary)] font-bold bg-[var(--card-bg)] px-3.5 py-1.5 rounded-full border border-[var(--card-border)]">
+          🚀 FEAST YOUR EYES ON MY BUILDS
+        </span>
+        <h2 className="font-display font-extrabold text-3xl md:text-5xl text-[var(--text-primary)] mt-4">
+          Projects & Creations
         </h2>
       </div>
 
+      {/* Category Filter Tabs */}
+      <div className="flex flex-wrap gap-3 justify-center mb-12 select-none">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveTab(cat)}
+            className={`px-4 py-2 font-mono text-[10px] uppercase font-bold tracking-wider transition-all duration-300 rounded-full cursor-pointer border ${
+              activeTab === cat
+                ? 'bg-[var(--accent-primary)] text-slate-900 border-[var(--accent-primary)] shadow-sm'
+                : 'bg-[var(--card-bg)] border-[var(--card-border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-secondary)]'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       {/* Grid of Poster-style Vertical Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        {projects.map((p) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {projects.filter(matchesTab).map((p) => (
           <div
             key={p.num}
             onClick={() => setSelectedProj(p)}
-            className={`border rounded-lg p-5 flex flex-col justify-between h-80 transition-all duration-300 cursor-pointer shadow-sm relative overflow-hidden group ${getCardStyle(p.num)}`}
+            className={`border p-6 flex flex-col justify-between h-80 transition-all duration-300 cursor-pointer shadow-sm relative overflow-hidden group ${getCardStyle()} hover:-translate-y-1.5 hover:shadow-md`}
           >
             {/* Header info */}
             <div>
-              <span className="font-mono text-[9px] uppercase tracking-widest opacity-60 block mb-3">
+              <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--text-secondary)] font-bold block mb-2">
                 {p.category}
               </span>
-              <h3 className="font-syne font-extrabold text-sm sm:text-base leading-tight uppercase select-none group-hover:underline">
+              <h3 className="font-display font-bold text-sm sm:text-base leading-snug uppercase select-none text-[var(--text-primary)] group-hover:text-[var(--accent-secondary)] transition-colors">
                 {p.title}
               </h3>
             </div>
@@ -174,11 +196,11 @@ export const Projects: React.FC = () => {
             </div>
 
             {/* Bottom: Massive Number Overlay */}
-            <div className="flex justify-between items-end border-t border-current/15 pt-3">
-              <span className="font-mono text-[9px] font-bold">
-                {p.meta ? p.meta.toUpperCase() : '[ EXPLORE ]'}
+            <div className="flex justify-between items-end border-t border-[var(--card-border)] pt-3">
+              <span className="font-mono text-[9px] font-bold text-[var(--accent-primary)]">
+                {p.meta ? p.meta.toUpperCase() : 'EXPLORE'}
               </span>
-              <span className="font-display font-black text-4xl leading-none opacity-40 select-none">
+              <span className="font-display font-black text-4xl leading-none text-[var(--accent-secondary)] opacity-10 select-none group-hover:opacity-25 transition-opacity">
                 {p.num}
               </span>
             </div>
@@ -191,17 +213,17 @@ export const Projects: React.FC = () => {
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 animate-fade-in">
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"
+            className="absolute inset-0 bg-black/85 backdrop-blur-sm cursor-pointer"
             onClick={() => setSelectedProj(null)}
           />
 
           {/* Modal Container */}
-          <div className="relative w-full max-w-lg bg-[var(--bg-color)] border-2 border-[var(--card-border)] p-6 md:p-8 rounded-lg shadow-2xl z-10 animate-scale-up font-mono text-xs text-[var(--text-secondary)]">
+          <div className="relative w-full max-w-lg bg-[var(--bg-color)] border-2 border-[var(--card-border)] p-6 md:p-8 rounded-2xl shadow-2xl z-10 animate-scale-up font-mono text-xs text-[var(--text-secondary)]">
             
             {/* Close Button */}
             <button 
               onClick={() => setSelectedProj(null)}
-              className="absolute top-4 right-4 p-1.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] transition-colors rounded cursor-pointer"
+              className="absolute top-4 right-4 p-1.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] transition-colors rounded-full cursor-pointer bg-[var(--card-bg)]"
             >
               <X className="w-4 h-4" />
             </button>
@@ -214,16 +236,16 @@ export const Projects: React.FC = () => {
             </div>
 
             {/* Title & Meta */}
-            <div className="space-y-2 mb-6">
-              <h3 className="font-syne font-extrabold text-lg text-[var(--text-primary)] uppercase leading-tight">
+            <div className="space-y-2 mb-6 font-sans">
+              <h3 className="font-display font-bold text-lg text-[var(--text-primary)] uppercase leading-tight">
                 {selectedProj.title}
               </h3>
-              <div className="flex flex-wrap gap-2 text-[9px]">
-                <span className="border border-[var(--card-border)] px-2 py-0.5 rounded text-[var(--text-primary)] font-bold">
+              <div className="flex flex-wrap gap-2 text-[9px] font-mono">
+                <span className="border border-[var(--card-border)] bg-[var(--card-bg)] px-2.5 py-0.5 rounded-full text-[var(--text-primary)] font-bold">
                   {selectedProj.category.toUpperCase()}
                 </span>
                 {selectedProj.meta && (
-                  <span className="border border-[var(--accent-primary)]/30 text-[var(--accent-primary)] px-2 py-0.5 rounded font-bold">
+                  <span className="border border-[var(--accent-primary)]/35 text-[var(--accent-primary)] bg-[rgba(255,184,0,0.05)] px-2.5 py-0.5 rounded-full font-bold">
                     {selectedProj.meta.toUpperCase()}
                   </span>
                 )}
@@ -242,7 +264,7 @@ export const Projects: React.FC = () => {
               <span className="text-[9px] font-bold text-[var(--text-primary)] block mb-2 uppercase">STACK INTEGRATION</span>
               <div className="flex flex-wrap gap-1.5">
                 {selectedProj.tags.map((tag) => (
-                  <span key={tag} className="border border-[var(--card-border)] bg-black/10 px-2 py-0.5 rounded text-[9px]">
+                  <span key={tag} className="border border-[var(--card-border)] bg-[var(--card-bg)] px-2.5 py-0.5 rounded-full text-[9px] text-[var(--text-secondary)]">
                     {tag}
                   </span>
                 ))}
@@ -252,7 +274,7 @@ export const Projects: React.FC = () => {
             {/* Actions */}
             <div className="flex gap-3">
               {selectedProj.enterprise ? (
-                <div className="flex-1 py-2.5 bg-[var(--card-border)] text-stone-500 rounded flex items-center justify-center gap-1.5 select-none font-bold uppercase text-[10px]">
+                <div className="flex-1 py-2.5 bg-[var(--card-border)] text-stone-500 rounded-full flex items-center justify-center gap-1.5 select-none font-bold uppercase text-[10px]">
                   <Lock className="w-3.5 h-3.5" /> Codebase is Private 🔒
                 </div>
               ) : (
@@ -260,14 +282,14 @@ export const Projects: React.FC = () => {
                   href={selectedProj.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2.5 bg-[var(--text-primary)] text-[var(--bg-color)] font-bold rounded flex items-center justify-center gap-1.5 hover:opacity-95 transition-opacity text-center text-[10px]"
+                  className="flex-1 py-2.5 bg-[var(--text-primary)] text-[var(--bg-color)] font-bold rounded-full flex items-center justify-center gap-1.5 hover:opacity-95 transition-opacity text-center text-[10px]"
                 >
                   <ExternalLink className="w-3.5 h-3.5" /> Check Out Code on GitHub 💻
                 </a>
               )}
               <button
                 onClick={() => setSelectedProj(null)}
-                className="px-4 py-2.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] transition-all font-bold rounded text-[10px] cursor-pointer"
+                className="px-5 py-2.5 border border-[var(--card-border)] hover:border-[var(--accent-primary)] text-[var(--text-primary)] transition-all font-bold rounded-full text-[10px] cursor-pointer"
               >
                 Close
               </button>
